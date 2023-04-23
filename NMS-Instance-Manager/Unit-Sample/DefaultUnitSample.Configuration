@@ -1,0 +1,58 @@
+{
+ "applications": {
+  "example_java11": {
+   "processes": 1,
+   "type": "java 11",
+   "webapp": "/usr/share/doc/unit-jsc11/examples/jsc-app"
+  },
+  "example_perl": {
+   "type": "perl",
+   "processes": 1,
+   "working_directory": "/usr/share/doc/unit-perl/examples/perl-app",
+   "script": "/usr/share/doc/unit-perl/examples/perl-app/index.pl"
+  },
+  "example_php": {
+   "type": "php",
+   "processes": 2,
+   "root": "/usr/share/doc/unit-php/examples/phpinfo-app",
+   "index": "index.php"
+  },
+  "example_python2": {
+   "type": "python 2.7",
+   "processes": 2,
+   "path": "/usr/share/doc/unit-python2.7/examples/python-app",
+   "module": "wsgi"
+  },
+  "example_python3": {
+   "type": "python 3.8",
+   "processes": 2,
+   "path": "/usr/share/doc/unit-python3.8/examples/python-app",
+   "module": "wsgi"
+  },
+  "example_ruby": {
+   "type": "ruby",
+   "processes": 2,
+   "script": "/usr/share/doc/unit-ruby/examples/ruby-app.ru"
+  }
+ },
+ "listeners": {
+  "*:8100": {
+   "pass": "applications/example_java11"
+  },
+  "*:8200": {
+   "pass": "applications/example_perl"
+  },
+  "*:8300": {
+   "pass": "applications/example_php"
+  },
+  "*:8401": {
+   "pass": "applications/example_python2"
+  },
+  "*:8400": {
+   "pass": "applications/example_python3"
+  },
+  "*:8500": {
+   "pass": "applications/example_ruby"
+  }
+ }
+}

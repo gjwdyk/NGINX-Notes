@@ -1,0 +1,2218 @@
+login as: ubuntu
+ubuntu@192.168.123.201's password:
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue 25 Oct 2022 09:42:59 AM UTC
+
+  System load:  1.08               Processes:              257
+  Usage of /:   18.6% of 32.97GB   Users logged in:        0
+  Memory usage: 8%                 IPv4 address for ens33: 192.168.101.201
+  Swap usage:   0%                 IPv4 address for ens34: 192.168.123.201
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Tue Apr 19 17:04:57 2022 from 192.168.123.245
+ubuntu@Server1:~$ cd $HOME;sudo curl -k -L -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/Unit-Install/RemoteAll.sh;sudo chmod 777 $HOME/RemoteAll.sh;/bin/bash $HOME/RemoteAll.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1394  100  1394    0     0  12017      0 --:--:-- --:--:-- --:--:-- 12121
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  4466  100  4466    0     0  38834      0 --:--:-- --:--:-- --:--:-- 38834
+--2022-10-25 09:45:42--  https://nginx.org/keys/nginx_signing.key
+Resolving nginx.org (nginx.org)... 3.125.197.172, 52.58.199.22
+Connecting to nginx.org (nginx.org)|3.125.197.172|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1561 (1.5K) [application/octet-stream]
+Saving to: ‘nginx_signing.key’
+
+nginx_signing.key                                 100%[============================================================================================================>]   1.52K  --.-KB/s    in 0s
+
+2022-10-25 09:45:43 (425 MB/s) - ‘nginx_signing.key’ saved [1561/1561]
+
+OK
+deb https://packages.nginx.org/unit/ubuntu/ focal unit
+deb-src https://packages.nginx.org/unit/ubuntu/ focal unit
+Get:1 https://packages.nginx.org/unit/ubuntu focal InRelease [2,812 B]
+Hit:2 http://id.archive.ubuntu.com/ubuntu focal InRelease
+Get:3 http://id.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:4 http://id.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:5 http://id.archive.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:6 https://packages.nginx.org/unit/ubuntu focal/unit amd64 Packages [28.9 kB]
+Get:7 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2,191 kB]
+Get:8 http://id.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [385 kB]
+Get:9 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [16.0 kB]
+Get:10 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1,372 kB]
+Get:11 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [194 kB]
+Get:12 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 c-n-f Metadata [600 B]
+Get:13 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [970 kB]
+Get:14 http://id.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [221 kB]
+Get:15 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 c-n-f Metadata [21.8 kB]
+Get:16 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [29.9 kB]
+Get:17 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse Translation-en [7,940 B]
+Get:18 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 c-n-f Metadata [664 B]
+Get:19 http://id.archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [45.6 kB]
+Get:20 http://id.archive.ubuntu.com/ubuntu focal-backports/main Translation-en [16.3 kB]
+Get:21 http://id.archive.ubuntu.com/ubuntu focal-backports/main amd64 c-n-f Metadata [1,420 B]
+Get:22 http://id.archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [23.9 kB]
+Get:23 http://id.archive.ubuntu.com/ubuntu focal-backports/universe Translation-en [16.0 kB]
+Get:24 http://id.archive.ubuntu.com/ubuntu focal-backports/universe amd64 c-n-f Metadata [860 B]
+Get:25 http://id.archive.ubuntu.com/ubuntu focal-security/main amd64 Packages [1,818 kB]
+Get:26 http://id.archive.ubuntu.com/ubuntu focal-security/main Translation-en [300 kB]
+Get:27 http://id.archive.ubuntu.com/ubuntu focal-security/main amd64 c-n-f Metadata [11.2 kB]
+Get:28 http://id.archive.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1,282 kB]
+Get:29 http://id.archive.ubuntu.com/ubuntu focal-security/restricted Translation-en [182 kB]
+Get:30 http://id.archive.ubuntu.com/ubuntu focal-security/restricted amd64 c-n-f Metadata [596 B]
+Get:31 http://id.archive.ubuntu.com/ubuntu focal-security/universe amd64 Packages [742 kB]
+Get:32 http://id.archive.ubuntu.com/ubuntu focal-security/universe Translation-en [137 kB]
+Get:33 http://id.archive.ubuntu.com/ubuntu focal-security/universe amd64 c-n-f Metadata [15.3 kB]
+Get:34 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [22.2 kB]
+Get:35 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse Translation-en [5,376 B]
+Get:36 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse amd64 c-n-f Metadata [508 B]
+Fetched 10.4 MB in 10s (1,091 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  unit
+0 upgraded, 1 newly installed, 0 to remove and 135 not upgraded.
+Need to get 297 kB of archives.
+After this operation, 1,125 kB of additional disk space will be used.
+Get:1 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit amd64 1.28.0-1~focal [297 kB]
+Fetched 297 kB in 2s (182 kB/s)
+Selecting previously unselected package unit.
+(Reading database ... 72025 files and directories currently installed.)
+Preparing to unpack .../unit_1.28.0-1~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+Thank you for installing NGINX Unit!
+
+Additional modules are available in standalone packages.
+To see the available modules, run: apt search --names-only '^unit-'
+
+Online documentation is available at https://unit.nginx.org/
+
+----------------------------------------------------------------------
+Unpacking unit (1.28.0-1~focal) ...
+Setting up unit (1.28.0-1~focal) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/unit.service → /lib/systemd/system/unit.service.
+Processing triggers for man-db (2.9.1-1) ...
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu ca-certificates-java cpp cpp-9 fontconfig-config fonts-dejavu-core fonts-lato g++ g++-9 gcc gcc-9 gcc-9-base golang golang-1.13 golang-1.13-doc
+  golang-1.13-go golang-1.13-race-detector-runtime golang-1.13-src golang-doc golang-go golang-race-detector-runtime golang-src java-common javascript-common libasan5 libatomic1 libavahi-client3
+  libavahi-common-data libavahi-common3 libbinutils libc-dev-bin libc6 libc6-dev libcc1-0 libcrypt-dev libctf-nobfd0 libctf0 libcups2 libdpkg-perl libfile-fcntllock-perl libfontconfig1 libgcc-9-dev
+  libgomp1 libgraphite2-3 libharfbuzz0b libisl22 libitm1 libjpeg-turbo8 libjpeg8 libjs-jquery liblcms2-2 liblsan0 libmpc3 libpcsclite1 libphp-embed libphp7.4-embed libpython2.7 libpython2.7-minimal
+  libpython2.7-stdlib libquadmath0 libruby2.7 libstdc++-9-dev libtsan0 libubsan1 linux-libc-dev manpages-dev openjdk-11-jre-headless php-common php7.4-cli php7.4-common php7.4-json php7.4-opcache
+  php7.4-readline pkg-config rake ruby ruby-minitest ruby-net-telnet ruby-power-assert ruby-rack ruby-test-unit ruby-xmlrpc ruby2.7 rubygems-integration unit-jsc-common unzip zip
+Suggested packages:
+  binutils-doc cpp-doc gcc-9-locales g++-multilib g++-9-multilib gcc-9-doc gcc-multilib make autoconf automake libtool flex bison gdb gcc-doc gcc-9-multilib bzr | brz mercurial subversion
+  default-jre apache2 | lighttpd | httpd glibc-doc cups-common debian-keyring bzr liblcms2-utils pcscd php-pear libstdc++-9-doc libnss-mdns fonts-dejavu-extra fonts-ipafont-gothic
+  fonts-ipafont-mincho fonts-wqy-microhei | fonts-wqy-zenhei fonts-indic dpkg-dev ri ruby-dev bundler
+The following NEW packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu ca-certificates-java cpp cpp-9 fontconfig-config fonts-dejavu-core fonts-lato g++ g++-9 gcc gcc-9 gcc-9-base golang golang-1.13 golang-1.13-doc
+  golang-1.13-go golang-1.13-race-detector-runtime golang-1.13-src golang-doc golang-go golang-race-detector-runtime golang-src java-common javascript-common libasan5 libatomic1 libavahi-client3
+  libavahi-common-data libavahi-common3 libbinutils libc-dev-bin libc6-dev libcc1-0 libcrypt-dev libctf-nobfd0 libctf0 libcups2 libdpkg-perl libfile-fcntllock-perl libfontconfig1 libgcc-9-dev
+  libgomp1 libgraphite2-3 libharfbuzz0b libisl22 libitm1 libjpeg-turbo8 libjpeg8 libjs-jquery liblcms2-2 liblsan0 libmpc3 libpcsclite1 libphp-embed libphp7.4-embed libpython2.7 libpython2.7-minimal
+  libpython2.7-stdlib libquadmath0 libruby2.7 libstdc++-9-dev libtsan0 libubsan1 linux-libc-dev manpages-dev openjdk-11-jre-headless php-common php7.4-cli php7.4-common php7.4-json php7.4-opcache
+  php7.4-readline pkg-config rake ruby ruby-minitest ruby-net-telnet ruby-power-assert ruby-rack ruby-test-unit ruby-xmlrpc ruby2.7 rubygems-integration unit-dev unit-go unit-jsc-common unit-jsc11
+  unit-perl unit-php unit-python2.7 unit-python3.8 unit-ruby unzip zip
+The following packages will be upgraded:
+  libc6
+1 upgraded, 96 newly installed, 0 to remove and 134 not upgraded.
+Need to get 172 MB of archives.
+After this operation, 782 MB of additional disk space will be used.
+Get:1 http://id.archive.ubuntu.com/ubuntu focal/main amd64 fonts-lato all 2.0-2 [2,698 kB]
+Get:2 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-dev amd64 1.28.0-1~focal [59.4 kB]
+Get:3 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-go all 1.28.0-1~focal [8,672 B]
+Get:4 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-jsc-common all 1.28.0-1~focal [6,390 kB]
+Get:5 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libc6 amd64 2.31-0ubuntu9.9 [2,722 kB]
+Get:6 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 binutils-common amd64 2.34-6ubuntu1.3 [207 kB]
+Get:7 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libbinutils amd64 2.34-6ubuntu1.3 [474 kB]
+Get:8 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libctf-nobfd0 amd64 2.34-6ubuntu1.3 [47.4 kB]
+Get:9 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libctf0 amd64 2.34-6ubuntu1.3 [46.6 kB]
+Get:10 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.34-6ubuntu1.3 [1,613 kB]
+Get:11 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 binutils amd64 2.34-6ubuntu1.3 [3,380 B]
+Get:12 http://id.archive.ubuntu.com/ubuntu focal/main amd64 java-common all 0.72 [6,816 B]
+Get:13 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libavahi-common-data amd64 0.7-4ubuntu7.1 [21.4 kB]
+Get:14 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libavahi-common3 amd64 0.7-4ubuntu7.1 [21.7 kB]
+Get:15 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libavahi-client3 amd64 0.7-4ubuntu7.1 [25.5 kB]
+Get:16 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libcups2 amd64 2.3.1-9ubuntu1.2 [233 kB]
+Get:17 http://id.archive.ubuntu.com/ubuntu focal/main amd64 liblcms2-2 amd64 2.9-4 [140 kB]
+Get:18 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libjpeg-turbo8 amd64 2.0.3-0ubuntu1.20.04.3 [118 kB]
+Get:19 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libjpeg8 amd64 8c-2ubuntu8 [2,194 B]
+Get:20 http://id.archive.ubuntu.com/ubuntu focal/main amd64 fonts-dejavu-core all 2.37-1 [1,041 kB]
+Get:21 http://id.archive.ubuntu.com/ubuntu focal/main amd64 fontconfig-config all 2.13.1-2ubuntu3 [28.8 kB]
+Get:22 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libfontconfig1 amd64 2.13.1-2ubuntu3 [114 kB]
+Get:23 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libgraphite2-3 amd64 1.3.13-11build1 [73.5 kB]
+Get:24 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libharfbuzz0b amd64 2.6.4-1ubuntu4.2 [391 kB]
+Get:25 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libpcsclite1 amd64 1.8.26-3 [22.0 kB]
+Get:26 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 openjdk-11-jre-headless amd64 11.0.16+8-0ubuntu1~20.04 [37.4 MB]
+Get:27 http://id.archive.ubuntu.com/ubuntu focal/main amd64 ca-certificates-java all 20190405ubuntu1 [12.2 kB]
+Get:28 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gcc-9-base amd64 9.4.0-1ubuntu1~20.04.1 [19.4 kB]
+Get:29 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libisl22 amd64 0.22.1-1 [592 kB]
+Get:30 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libmpc3 amd64 1.1.0-1 [40.8 kB]
+Get:31 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 cpp-9 amd64 9.4.0-1ubuntu1~20.04.1 [7,500 kB]
+Get:32 http://id.archive.ubuntu.com/ubuntu focal/main amd64 cpp amd64 4:9.3.0-1ubuntu2 [27.6 kB]
+Get:33 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libcc1-0 amd64 10.3.0-1ubuntu1~20.04 [48.8 kB]
+Get:34 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libgomp1 amd64 10.3.0-1ubuntu1~20.04 [102 kB]
+Get:35 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libitm1 amd64 10.3.0-1ubuntu1~20.04 [26.2 kB]
+Get:36 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libatomic1 amd64 10.3.0-1ubuntu1~20.04 [9,284 B]
+Get:37 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libasan5 amd64 9.4.0-1ubuntu1~20.04.1 [2,751 kB]
+Get:38 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 liblsan0 amd64 10.3.0-1ubuntu1~20.04 [835 kB]
+Get:39 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libtsan0 amd64 10.3.0-1ubuntu1~20.04 [2,009 kB]
+Get:40 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libubsan1 amd64 10.3.0-1ubuntu1~20.04 [784 kB]
+Get:41 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libquadmath0 amd64 10.3.0-1ubuntu1~20.04 [146 kB]
+Get:42 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libgcc-9-dev amd64 9.4.0-1ubuntu1~20.04.1 [2,359 kB]
+Get:43 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gcc-9 amd64 9.4.0-1ubuntu1~20.04.1 [8,274 kB]
+Get:44 http://id.archive.ubuntu.com/ubuntu focal/main amd64 gcc amd64 4:9.3.0-1ubuntu2 [5,208 B]
+Get:45 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libc-dev-bin amd64 2.31-0ubuntu9.9 [71.8 kB]
+Get:46 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 linux-libc-dev amd64 5.4.0-131.147 [1,109 kB]
+Get:47 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libcrypt-dev amd64 1:4.4.10-10ubuntu4 [104 kB]
+Get:48 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libc6-dev amd64 2.31-0ubuntu9.9 [2,519 kB]
+Get:49 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-jsc11 amd64 1.28.0-1~focal [335 kB]
+Get:50 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-perl amd64 1.28.0-1~focal [52.5 kB]
+Get:51 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-php amd64 1.28.0-1~focal [48.1 kB]
+Get:52 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-python2.7 amd64 1.28.0-1~focal [52.3 kB]
+Get:53 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-python3.8 amd64 1.28.0-1~focal [76.3 kB]
+Get:54 https://packages.nginx.org/unit/ubuntu focal/unit amd64 unit-ruby amd64 1.28.0-1~focal [53.5 kB]
+Get:55 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libstdc++-9-dev amd64 9.4.0-1ubuntu1~20.04.1 [1,722 kB]
+Get:56 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 g++-9 amd64 9.4.0-1ubuntu1~20.04.1 [8,420 kB]
+Get:57 http://id.archive.ubuntu.com/ubuntu focal/main amd64 g++ amd64 4:9.3.0-1ubuntu2 [1,604 B]
+Get:58 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-1.13-src amd64 1.13.8-1ubuntu1 [12.6 MB]
+Get:59 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-1.13-go amd64 1.13.8-1ubuntu1 [47.6 MB]
+Get:60 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-1.13-doc all 1.13.8-1ubuntu1 [2,525 kB]
+Get:61 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-1.13 all 1.13.8-1ubuntu1 [11.2 kB]
+Get:62 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-src amd64 2:1.13~1ubuntu2 [4,044 B]
+Get:63 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-go amd64 2:1.13~1ubuntu2 [22.0 kB]
+Get:64 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-doc all 2:1.13~1ubuntu2 [2,948 B]
+Get:65 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang amd64 2:1.13~1ubuntu2 [2,900 B]
+Get:66 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-1.13-race-detector-runtime amd64 0.0+svn332029-0ubuntu2 [713 kB]
+Get:67 http://id.archive.ubuntu.com/ubuntu focal/main amd64 javascript-common all 11 [6,066 B]
+Get:68 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libdpkg-perl all 1.19.7ubuntu3.2 [231 kB]
+Get:69 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libfile-fcntllock-perl amd64 0.22-3build4 [33.1 kB]
+Get:70 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libjs-jquery all 3.3.1~dfsg-3 [329 kB]
+Get:71 http://id.archive.ubuntu.com/ubuntu focal/main amd64 php-common all 2:75 [11.9 kB]
+Get:72 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 php7.4-common amd64 7.4.3-4ubuntu2.13 [981 kB]
+Get:73 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 php7.4-json amd64 7.4.3-4ubuntu2.13 [19.2 kB]
+Get:74 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 php7.4-opcache amd64 7.4.3-4ubuntu2.13 [199 kB]
+Get:75 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 php7.4-readline amd64 7.4.3-4ubuntu2.13 [12.6 kB]
+Get:76 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 php7.4-cli amd64 7.4.3-4ubuntu2.13 [1,426 kB]
+Get:77 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libphp7.4-embed amd64 7.4.3-4ubuntu2.13 [1,367 kB]
+Get:78 http://id.archive.ubuntu.com/ubuntu focal/universe amd64 libphp-embed all 2:7.4+75 [2,796 B]
+Get:79 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7-minimal amd64 2.7.18-1~20.04.3 [336 kB]
+Get:80 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7-stdlib amd64 2.7.18-1~20.04.3 [1,888 kB]
+Get:81 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libpython2.7 amd64 2.7.18-1~20.04.3 [1,037 kB]
+Get:82 http://id.archive.ubuntu.com/ubuntu focal/main amd64 rubygems-integration all 1.16 [5,092 B]
+Get:83 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 ruby2.7 amd64 2.7.0-5ubuntu1.7 [95.6 kB]
+Get:84 http://id.archive.ubuntu.com/ubuntu focal/main amd64 ruby amd64 1:2.7+1 [5,412 B]
+Get:85 http://id.archive.ubuntu.com/ubuntu focal/main amd64 rake all 13.0.1-4 [61.6 kB]
+Get:86 http://id.archive.ubuntu.com/ubuntu focal/main amd64 ruby-minitest all 5.13.0-1 [40.9 kB]
+Get:87 http://id.archive.ubuntu.com/ubuntu focal/main amd64 ruby-net-telnet all 0.1.1-2 [12.6 kB]
+Get:88 http://id.archive.ubuntu.com/ubuntu focal/main amd64 ruby-power-assert all 1.1.7-1 [11.4 kB]
+Get:89 http://id.archive.ubuntu.com/ubuntu focal/main amd64 ruby-test-unit all 3.3.5-1 [73.2 kB]
+Get:90 http://id.archive.ubuntu.com/ubuntu focal/main amd64 ruby-xmlrpc all 0.3.0-2 [23.8 kB]
+Get:91 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libruby2.7 amd64 2.7.0-5ubuntu1.7 [3,533 kB]
+Get:92 http://id.archive.ubuntu.com/ubuntu focal/main amd64 manpages-dev all 5.05-1 [2,266 kB]
+Get:93 http://id.archive.ubuntu.com/ubuntu focal/main amd64 pkg-config amd64 0.29.1-0ubuntu4 [45.5 kB]
+Get:94 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 ruby-rack all 2.0.7-2ubuntu0.1 [79.7 kB]
+Get:95 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 unzip amd64 6.0-25ubuntu1.1 [168 kB]
+Get:96 http://id.archive.ubuntu.com/ubuntu focal/main amd64 zip amd64 3.0-11build1 [167 kB]
+Get:97 http://id.archive.ubuntu.com/ubuntu focal/main amd64 golang-race-detector-runtime amd64 2:1.13~1ubuntu2 [3,836 B]
+Fetched 172 MB in 9min 36s (298 kB/s)
+Extracting templates from packages: 100%
+Preconfiguring packages ...
+Selecting previously unselected package fonts-lato.
+(Reading database ... 72042 files and directories currently installed.)
+Preparing to unpack .../fonts-lato_2.0-2_all.deb ...
+Unpacking fonts-lato (2.0-2) ...
+Preparing to unpack .../libc6_2.31-0ubuntu9.9_amd64.deb ...
+Unpacking libc6:amd64 (2.31-0ubuntu9.9) over (2.31-0ubuntu9.7) ...
+Setting up libc6:amd64 (2.31-0ubuntu9.9) ...
+Selecting previously unselected package binutils-common:amd64.
+(Reading database ... 72067 files and directories currently installed.)
+Preparing to unpack .../00-binutils-common_2.34-6ubuntu1.3_amd64.deb ...
+Unpacking binutils-common:amd64 (2.34-6ubuntu1.3) ...
+Selecting previously unselected package libbinutils:amd64.
+Preparing to unpack .../01-libbinutils_2.34-6ubuntu1.3_amd64.deb ...
+Unpacking libbinutils:amd64 (2.34-6ubuntu1.3) ...
+Selecting previously unselected package libctf-nobfd0:amd64.
+Preparing to unpack .../02-libctf-nobfd0_2.34-6ubuntu1.3_amd64.deb ...
+Unpacking libctf-nobfd0:amd64 (2.34-6ubuntu1.3) ...
+Selecting previously unselected package libctf0:amd64.
+Preparing to unpack .../03-libctf0_2.34-6ubuntu1.3_amd64.deb ...
+Unpacking libctf0:amd64 (2.34-6ubuntu1.3) ...
+Selecting previously unselected package binutils-x86-64-linux-gnu.
+Preparing to unpack .../04-binutils-x86-64-linux-gnu_2.34-6ubuntu1.3_amd64.deb ...
+Unpacking binutils-x86-64-linux-gnu (2.34-6ubuntu1.3) ...
+Selecting previously unselected package binutils.
+Preparing to unpack .../05-binutils_2.34-6ubuntu1.3_amd64.deb ...
+Unpacking binutils (2.34-6ubuntu1.3) ...
+Selecting previously unselected package java-common.
+Preparing to unpack .../06-java-common_0.72_all.deb ...
+Unpacking java-common (0.72) ...
+Selecting previously unselected package libavahi-common-data:amd64.
+Preparing to unpack .../07-libavahi-common-data_0.7-4ubuntu7.1_amd64.deb ...
+Unpacking libavahi-common-data:amd64 (0.7-4ubuntu7.1) ...
+Selecting previously unselected package libavahi-common3:amd64.
+Preparing to unpack .../08-libavahi-common3_0.7-4ubuntu7.1_amd64.deb ...
+Unpacking libavahi-common3:amd64 (0.7-4ubuntu7.1) ...
+Selecting previously unselected package libavahi-client3:amd64.
+Preparing to unpack .../09-libavahi-client3_0.7-4ubuntu7.1_amd64.deb ...
+Unpacking libavahi-client3:amd64 (0.7-4ubuntu7.1) ...
+Selecting previously unselected package libcups2:amd64.
+Preparing to unpack .../10-libcups2_2.3.1-9ubuntu1.2_amd64.deb ...
+Unpacking libcups2:amd64 (2.3.1-9ubuntu1.2) ...
+Selecting previously unselected package liblcms2-2:amd64.
+Preparing to unpack .../11-liblcms2-2_2.9-4_amd64.deb ...
+Unpacking liblcms2-2:amd64 (2.9-4) ...
+Selecting previously unselected package libjpeg-turbo8:amd64.
+Preparing to unpack .../12-libjpeg-turbo8_2.0.3-0ubuntu1.20.04.3_amd64.deb ...
+Unpacking libjpeg-turbo8:amd64 (2.0.3-0ubuntu1.20.04.3) ...
+Selecting previously unselected package libjpeg8:amd64.
+Preparing to unpack .../13-libjpeg8_8c-2ubuntu8_amd64.deb ...
+Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../14-fonts-dejavu-core_2.37-1_all.deb ...
+Unpacking fonts-dejavu-core (2.37-1) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../15-fontconfig-config_2.13.1-2ubuntu3_all.deb ...
+Unpacking fontconfig-config (2.13.1-2ubuntu3) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../16-libfontconfig1_2.13.1-2ubuntu3_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.13.1-2ubuntu3) ...
+Selecting previously unselected package libgraphite2-3:amd64.
+Preparing to unpack .../17-libgraphite2-3_1.3.13-11build1_amd64.deb ...
+Unpacking libgraphite2-3:amd64 (1.3.13-11build1) ...
+Selecting previously unselected package libharfbuzz0b:amd64.
+Preparing to unpack .../18-libharfbuzz0b_2.6.4-1ubuntu4.2_amd64.deb ...
+Unpacking libharfbuzz0b:amd64 (2.6.4-1ubuntu4.2) ...
+Selecting previously unselected package libpcsclite1:amd64.
+Preparing to unpack .../19-libpcsclite1_1.8.26-3_amd64.deb ...
+Unpacking libpcsclite1:amd64 (1.8.26-3) ...
+Selecting previously unselected package openjdk-11-jre-headless:amd64.
+Preparing to unpack .../20-openjdk-11-jre-headless_11.0.16+8-0ubuntu1~20.04_amd64.deb ...
+Unpacking openjdk-11-jre-headless:amd64 (11.0.16+8-0ubuntu1~20.04) ...
+Selecting previously unselected package ca-certificates-java.
+Preparing to unpack .../21-ca-certificates-java_20190405ubuntu1_all.deb ...
+Unpacking ca-certificates-java (20190405ubuntu1) ...
+Selecting previously unselected package gcc-9-base:amd64.
+Preparing to unpack .../22-gcc-9-base_9.4.0-1ubuntu1~20.04.1_amd64.deb ...
+Unpacking gcc-9-base:amd64 (9.4.0-1ubuntu1~20.04.1) ...
+Selecting previously unselected package libisl22:amd64.
+Preparing to unpack .../23-libisl22_0.22.1-1_amd64.deb ...
+Unpacking libisl22:amd64 (0.22.1-1) ...
+Selecting previously unselected package libmpc3:amd64.
+Preparing to unpack .../24-libmpc3_1.1.0-1_amd64.deb ...
+Unpacking libmpc3:amd64 (1.1.0-1) ...
+Selecting previously unselected package cpp-9.
+Preparing to unpack .../25-cpp-9_9.4.0-1ubuntu1~20.04.1_amd64.deb ...
+Unpacking cpp-9 (9.4.0-1ubuntu1~20.04.1) ...
+Selecting previously unselected package cpp.
+Preparing to unpack .../26-cpp_4%3a9.3.0-1ubuntu2_amd64.deb ...
+Unpacking cpp (4:9.3.0-1ubuntu2) ...
+Selecting previously unselected package libcc1-0:amd64.
+Preparing to unpack .../27-libcc1-0_10.3.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libcc1-0:amd64 (10.3.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libgomp1:amd64.
+Preparing to unpack .../28-libgomp1_10.3.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libgomp1:amd64 (10.3.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libitm1:amd64.
+Preparing to unpack .../29-libitm1_10.3.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libitm1:amd64 (10.3.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libatomic1:amd64.
+Preparing to unpack .../30-libatomic1_10.3.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libatomic1:amd64 (10.3.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libasan5:amd64.
+Preparing to unpack .../31-libasan5_9.4.0-1ubuntu1~20.04.1_amd64.deb ...
+Unpacking libasan5:amd64 (9.4.0-1ubuntu1~20.04.1) ...
+Selecting previously unselected package liblsan0:amd64.
+Preparing to unpack .../32-liblsan0_10.3.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking liblsan0:amd64 (10.3.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libtsan0:amd64.
+Preparing to unpack .../33-libtsan0_10.3.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libtsan0:amd64 (10.3.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libubsan1:amd64.
+Preparing to unpack .../34-libubsan1_10.3.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libubsan1:amd64 (10.3.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libquadmath0:amd64.
+Preparing to unpack .../35-libquadmath0_10.3.0-1ubuntu1~20.04_amd64.deb ...
+Unpacking libquadmath0:amd64 (10.3.0-1ubuntu1~20.04) ...
+Selecting previously unselected package libgcc-9-dev:amd64.
+Preparing to unpack .../36-libgcc-9-dev_9.4.0-1ubuntu1~20.04.1_amd64.deb ...
+Unpacking libgcc-9-dev:amd64 (9.4.0-1ubuntu1~20.04.1) ...
+Selecting previously unselected package gcc-9.
+Preparing to unpack .../37-gcc-9_9.4.0-1ubuntu1~20.04.1_amd64.deb ...
+Unpacking gcc-9 (9.4.0-1ubuntu1~20.04.1) ...
+Selecting previously unselected package gcc.
+Preparing to unpack .../38-gcc_4%3a9.3.0-1ubuntu2_amd64.deb ...
+Unpacking gcc (4:9.3.0-1ubuntu2) ...
+Selecting previously unselected package libc-dev-bin.
+Preparing to unpack .../39-libc-dev-bin_2.31-0ubuntu9.9_amd64.deb ...
+Unpacking libc-dev-bin (2.31-0ubuntu9.9) ...
+Selecting previously unselected package linux-libc-dev:amd64.
+Preparing to unpack .../40-linux-libc-dev_5.4.0-131.147_amd64.deb ...
+Unpacking linux-libc-dev:amd64 (5.4.0-131.147) ...
+Selecting previously unselected package libcrypt-dev:amd64.
+Preparing to unpack .../41-libcrypt-dev_1%3a4.4.10-10ubuntu4_amd64.deb ...
+Unpacking libcrypt-dev:amd64 (1:4.4.10-10ubuntu4) ...
+Selecting previously unselected package libc6-dev:amd64.
+Preparing to unpack .../42-libc6-dev_2.31-0ubuntu9.9_amd64.deb ...
+Unpacking libc6-dev:amd64 (2.31-0ubuntu9.9) ...
+Selecting previously unselected package libstdc++-9-dev:amd64.
+Preparing to unpack .../43-libstdc++-9-dev_9.4.0-1ubuntu1~20.04.1_amd64.deb ...
+Unpacking libstdc++-9-dev:amd64 (9.4.0-1ubuntu1~20.04.1) ...
+Selecting previously unselected package g++-9.
+Preparing to unpack .../44-g++-9_9.4.0-1ubuntu1~20.04.1_amd64.deb ...
+Unpacking g++-9 (9.4.0-1ubuntu1~20.04.1) ...
+Selecting previously unselected package g++.
+Preparing to unpack .../45-g++_4%3a9.3.0-1ubuntu2_amd64.deb ...
+Unpacking g++ (4:9.3.0-1ubuntu2) ...
+Selecting previously unselected package golang-1.13-src.
+Preparing to unpack .../46-golang-1.13-src_1.13.8-1ubuntu1_amd64.deb ...
+Unpacking golang-1.13-src (1.13.8-1ubuntu1) ...
+Selecting previously unselected package golang-1.13-go.
+Preparing to unpack .../47-golang-1.13-go_1.13.8-1ubuntu1_amd64.deb ...
+Unpacking golang-1.13-go (1.13.8-1ubuntu1) ...
+Selecting previously unselected package golang-1.13-doc.
+Preparing to unpack .../48-golang-1.13-doc_1.13.8-1ubuntu1_all.deb ...
+Unpacking golang-1.13-doc (1.13.8-1ubuntu1) ...
+Selecting previously unselected package golang-1.13.
+Preparing to unpack .../49-golang-1.13_1.13.8-1ubuntu1_all.deb ...
+Unpacking golang-1.13 (1.13.8-1ubuntu1) ...
+Selecting previously unselected package golang-src.
+Preparing to unpack .../50-golang-src_2%3a1.13~1ubuntu2_amd64.deb ...
+Unpacking golang-src (2:1.13~1ubuntu2) ...
+Selecting previously unselected package golang-go.
+Preparing to unpack .../51-golang-go_2%3a1.13~1ubuntu2_amd64.deb ...
+Unpacking golang-go (2:1.13~1ubuntu2) ...
+Selecting previously unselected package golang-doc.
+Preparing to unpack .../52-golang-doc_2%3a1.13~1ubuntu2_all.deb ...
+Unpacking golang-doc (2:1.13~1ubuntu2) ...
+Selecting previously unselected package golang.
+Preparing to unpack .../53-golang_2%3a1.13~1ubuntu2_amd64.deb ...
+Unpacking golang (2:1.13~1ubuntu2) ...
+Selecting previously unselected package golang-1.13-race-detector-runtime.
+Preparing to unpack .../54-golang-1.13-race-detector-runtime_0.0+svn332029-0ubuntu2_amd64.deb ...
+Unpacking golang-1.13-race-detector-runtime (0.0+svn332029-0ubuntu2) ...
+Selecting previously unselected package javascript-common.
+Preparing to unpack .../55-javascript-common_11_all.deb ...
+Unpacking javascript-common (11) ...
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../56-libdpkg-perl_1.19.7ubuntu3.2_all.deb ...
+Unpacking libdpkg-perl (1.19.7ubuntu3.2) ...
+Selecting previously unselected package libfile-fcntllock-perl.
+Preparing to unpack .../57-libfile-fcntllock-perl_0.22-3build4_amd64.deb ...
+Unpacking libfile-fcntllock-perl (0.22-3build4) ...
+Selecting previously unselected package libjs-jquery.
+Preparing to unpack .../58-libjs-jquery_3.3.1~dfsg-3_all.deb ...
+Unpacking libjs-jquery (3.3.1~dfsg-3) ...
+Selecting previously unselected package php-common.
+Preparing to unpack .../59-php-common_2%3a75_all.deb ...
+Unpacking php-common (2:75) ...
+Selecting previously unselected package php7.4-common.
+Preparing to unpack .../60-php7.4-common_7.4.3-4ubuntu2.13_amd64.deb ...
+Unpacking php7.4-common (7.4.3-4ubuntu2.13) ...
+Selecting previously unselected package php7.4-json.
+Preparing to unpack .../61-php7.4-json_7.4.3-4ubuntu2.13_amd64.deb ...
+Unpacking php7.4-json (7.4.3-4ubuntu2.13) ...
+Selecting previously unselected package php7.4-opcache.
+Preparing to unpack .../62-php7.4-opcache_7.4.3-4ubuntu2.13_amd64.deb ...
+Unpacking php7.4-opcache (7.4.3-4ubuntu2.13) ...
+Selecting previously unselected package php7.4-readline.
+Preparing to unpack .../63-php7.4-readline_7.4.3-4ubuntu2.13_amd64.deb ...
+Unpacking php7.4-readline (7.4.3-4ubuntu2.13) ...
+Selecting previously unselected package php7.4-cli.
+Preparing to unpack .../64-php7.4-cli_7.4.3-4ubuntu2.13_amd64.deb ...
+Unpacking php7.4-cli (7.4.3-4ubuntu2.13) ...
+Selecting previously unselected package libphp7.4-embed.
+Preparing to unpack .../65-libphp7.4-embed_7.4.3-4ubuntu2.13_amd64.deb ...
+Unpacking libphp7.4-embed (7.4.3-4ubuntu2.13) ...
+Selecting previously unselected package libphp-embed.
+Preparing to unpack .../66-libphp-embed_2%3a7.4+75_all.deb ...
+Unpacking libphp-embed (2:7.4+75) ...
+Selecting previously unselected package libpython2.7-minimal:amd64.
+Preparing to unpack .../67-libpython2.7-minimal_2.7.18-1~20.04.3_amd64.deb ...
+Unpacking libpython2.7-minimal:amd64 (2.7.18-1~20.04.3) ...
+Selecting previously unselected package libpython2.7-stdlib:amd64.
+Preparing to unpack .../68-libpython2.7-stdlib_2.7.18-1~20.04.3_amd64.deb ...
+Unpacking libpython2.7-stdlib:amd64 (2.7.18-1~20.04.3) ...
+Selecting previously unselected package libpython2.7:amd64.
+Preparing to unpack .../69-libpython2.7_2.7.18-1~20.04.3_amd64.deb ...
+Unpacking libpython2.7:amd64 (2.7.18-1~20.04.3) ...
+Selecting previously unselected package rubygems-integration.
+Preparing to unpack .../70-rubygems-integration_1.16_all.deb ...
+Unpacking rubygems-integration (1.16) ...
+Selecting previously unselected package ruby2.7.
+Preparing to unpack .../71-ruby2.7_2.7.0-5ubuntu1.7_amd64.deb ...
+Unpacking ruby2.7 (2.7.0-5ubuntu1.7) ...
+Selecting previously unselected package ruby.
+Preparing to unpack .../72-ruby_1%3a2.7+1_amd64.deb ...
+Unpacking ruby (1:2.7+1) ...
+Selecting previously unselected package rake.
+Preparing to unpack .../73-rake_13.0.1-4_all.deb ...
+Unpacking rake (13.0.1-4) ...
+Selecting previously unselected package ruby-minitest.
+Preparing to unpack .../74-ruby-minitest_5.13.0-1_all.deb ...
+Unpacking ruby-minitest (5.13.0-1) ...
+Selecting previously unselected package ruby-net-telnet.
+Preparing to unpack .../75-ruby-net-telnet_0.1.1-2_all.deb ...
+Unpacking ruby-net-telnet (0.1.1-2) ...
+Selecting previously unselected package ruby-power-assert.
+Preparing to unpack .../76-ruby-power-assert_1.1.7-1_all.deb ...
+Unpacking ruby-power-assert (1.1.7-1) ...
+Selecting previously unselected package ruby-test-unit.
+Preparing to unpack .../77-ruby-test-unit_3.3.5-1_all.deb ...
+Unpacking ruby-test-unit (3.3.5-1) ...
+Selecting previously unselected package ruby-xmlrpc.
+Preparing to unpack .../78-ruby-xmlrpc_0.3.0-2_all.deb ...
+Unpacking ruby-xmlrpc (0.3.0-2) ...
+Selecting previously unselected package libruby2.7:amd64.
+Preparing to unpack .../79-libruby2.7_2.7.0-5ubuntu1.7_amd64.deb ...
+Unpacking libruby2.7:amd64 (2.7.0-5ubuntu1.7) ...
+Selecting previously unselected package manpages-dev.
+Preparing to unpack .../80-manpages-dev_5.05-1_all.deb ...
+Unpacking manpages-dev (5.05-1) ...
+Selecting previously unselected package pkg-config.
+Preparing to unpack .../81-pkg-config_0.29.1-0ubuntu4_amd64.deb ...
+Unpacking pkg-config (0.29.1-0ubuntu4) ...
+Selecting previously unselected package ruby-rack.
+Preparing to unpack .../82-ruby-rack_2.0.7-2ubuntu0.1_all.deb ...
+Unpacking ruby-rack (2.0.7-2ubuntu0.1) ...
+Selecting previously unselected package unit-dev.
+Preparing to unpack .../83-unit-dev_1.28.0-1~focal_amd64.deb ...
+Unpacking unit-dev (1.28.0-1~focal) ...
+Selecting previously unselected package unzip.
+Preparing to unpack .../84-unzip_6.0-25ubuntu1.1_amd64.deb ...
+Unpacking unzip (6.0-25ubuntu1.1) ...
+Selecting previously unselected package zip.
+Preparing to unpack .../85-zip_3.0-11build1_amd64.deb ...
+Unpacking zip (3.0-11build1) ...
+Selecting previously unselected package golang-race-detector-runtime.
+Preparing to unpack .../86-golang-race-detector-runtime_2%3a1.13~1ubuntu2_amd64.deb ...
+Unpacking golang-race-detector-runtime (2:1.13~1ubuntu2) ...
+Selecting previously unselected package unit-go.
+Preparing to unpack .../87-unit-go_1.28.0-1~focal_all.deb ...
+----------------------------------------------------------------------
+
+The Go module for NGINX Unit has been installed.
+
+To check out the sample app, run these commands:
+
+ GOPATH=/usr/share/gocode GO111MODULE=auto go build -o /tmp/go-app /usr/share/doc/unit-go/examples/go-app/let-my-people.go
+ sudo service unit restart
+ cd /usr/share/doc/unit-go/examples
+ sudo curl -X PUT --data-binary @unit.config --unix-socket /var/run/control.unit.sock http://localhost/config
+ curl http://localhost:8500/
+
+Online documentation is available at https://unit.nginx.org
+
+----------------------------------------------------------------------
+Unpacking unit-go (1.28.0-1~focal) ...
+Selecting previously unselected package unit-jsc-common.
+Preparing to unpack .../88-unit-jsc-common_1.28.0-1~focal_all.deb ...
+----------------------------------------------------------------------
+
+The Java shared packages for NGINX Unit have been installed.
+
+Please find licenses and related information at:
+  /usr/share/doc/unit-jsc-common/copyright
+
+----------------------------------------------------------------------
+Unpacking unit-jsc-common (1.28.0-1~focal) ...
+Selecting previously unselected package unit-jsc11.
+Preparing to unpack .../89-unit-jsc11_1.28.0-1~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+The Java 11 module for NGINX Unit has been installed.
+
+To check out the sample app, run these commands:
+
+ sudo service unit restart
+ cd /usr/share/doc/unit-jsc11/examples
+ sudo curl -X PUT --data-binary @unit.config --unix-socket /var/run/control.unit.sock http://localhost/config
+ curl http://localhost:8800/
+
+Online documentation is available at https://unit.nginx.org
+
+NOTICE:
+
+This version of Unit code is made available in support of the open source
+development process.  This is an intermediate build made available for
+testing purposes only.  This Unit code is untested and presumed incompatible
+with the JSR 340 Java Servlet 3.1 specification.  You should not deploy or
+write to this code.  You should instead deploy and write production
+applications on pre-built binaries that have been tested and certified
+to meet the JSR-340 compatibility requirements such as certified binaries
+published for the JSR-340 reference implementation available at
+https://javaee.github.io/glassfish/.
+
+Redistribution of any Intermediate Build must retain this notice.
+
+Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+----------------------------------------------------------------------
+Unpacking unit-jsc11 (1.28.0-1~focal) ...
+Selecting previously unselected package unit-perl.
+Preparing to unpack .../90-unit-perl_1.28.0-1~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+The Perl module for NGINX Unit has been installed.
+
+To check out the sample app, run these commands:
+
+ sudo service unit restart
+ cd /usr/share/doc/unit-perl/examples
+ sudo curl -X PUT --data-binary @unit.config --unix-socket /var/run/control.unit.sock http://localhost/config
+ curl http://localhost:8600/
+
+Online documentation is available at https://unit.nginx.org
+
+----------------------------------------------------------------------
+Unpacking unit-perl (1.28.0-1~focal) ...
+Selecting previously unselected package unit-php.
+Preparing to unpack .../91-unit-php_1.28.0-1~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+The PHP module for NGINX Unit has been installed.
+
+To check out the sample app, run these commands:
+
+ sudo service unit restart
+ cd /usr/share/doc/unit-php/examples
+ sudo curl -X PUT --data-binary @unit.config --unix-socket /var/run/control.unit.sock http://localhost/config
+ curl http://localhost:8300/
+
+Online documentation is available at https://unit.nginx.org
+
+----------------------------------------------------------------------
+Unpacking unit-php (1.28.0-1~focal) ...
+Selecting previously unselected package unit-python2.7.
+Preparing to unpack .../92-unit-python2.7_1.28.0-1~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+The Python 2.7 module for NGINX Unit has been installed.
+
+To check out the sample app, run these commands:
+
+ sudo service unit restart
+ cd /usr/share/doc/unit-python2.7/examples
+ sudo curl -X PUT --data-binary @unit.config --unix-socket /var/run/control.unit.sock http://localhost/config
+ curl http://localhost:8400/
+
+Online documentation is available at https://unit.nginx.org
+
+----------------------------------------------------------------------
+Unpacking unit-python2.7 (1.28.0-1~focal) ...
+Selecting previously unselected package unit-python3.8.
+Preparing to unpack .../93-unit-python3.8_1.28.0-1~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+The Python 3.8 module for NGINX Unit has been installed.
+
+To check out the sample app, run these commands:
+
+ sudo service unit restart
+ cd /usr/share/doc/unit-python3.8/examples
+ sudo curl -X PUT --data-binary @unit.config --unix-socket /var/run/control.unit.sock http://localhost/config
+ curl http://localhost:8400/
+
+Online documentation is available at https://unit.nginx.org
+
+----------------------------------------------------------------------
+Unpacking unit-python3.8 (1.28.0-1~focal) ...
+Selecting previously unselected package unit-ruby.
+Preparing to unpack .../94-unit-ruby_1.28.0-1~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+The Ruby module for NGINX Unit has been installed.
+
+To check out the sample app, run these commands:
+
+ sudo service unit restart
+ cd /usr/share/doc/unit-ruby/examples
+ sudo curl -X PUT --data-binary @unit.config --unix-socket /var/run/control.unit.sock http://localhost/config
+ curl http://localhost:8700/
+
+Online documentation is available at https://unit.nginx.org
+
+----------------------------------------------------------------------
+Unpacking unit-ruby (1.28.0-1~focal) ...
+Setting up javascript-common (11) ...
+Setting up libgraphite2-3:amd64 (1.3.13-11build1) ...
+Setting up liblcms2-2:amd64 (2.9-4) ...
+Setting up php-common (2:75) ...
+Created symlink /etc/systemd/system/timers.target.wants/phpsessionclean.timer → /lib/systemd/system/phpsessionclean.timer.
+Setting up manpages-dev (5.05-1) ...
+Setting up golang-1.13-src (1.13.8-1ubuntu1) ...
+Setting up fonts-lato (2.0-2) ...
+Setting up golang-1.13-race-detector-runtime (0.0+svn332029-0ubuntu2) ...
+Setting up php7.4-common (7.4.3-4ubuntu2.13) ...
+
+Creating config file /etc/php/7.4/mods-available/calendar.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/ctype.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/exif.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/fileinfo.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/ffi.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/ftp.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/gettext.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/iconv.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/pdo.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/phar.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/posix.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/shmop.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/sockets.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/sysvmsg.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/sysvsem.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/sysvshm.ini with new version
+
+Creating config file /etc/php/7.4/mods-available/tokenizer.ini with new version
+Setting up java-common (0.72) ...
+Setting up ruby-power-assert (1.1.7-1) ...
+Setting up libfile-fcntllock-perl (0.22-3build4) ...
+Setting up unzip (6.0-25ubuntu1.1) ...
+Setting up unit-python3.8 (1.28.0-1~focal) ...
+Setting up binutils-common:amd64 (2.34-6ubuntu1.3) ...
+Setting up linux-libc-dev:amd64 (5.4.0-131.147) ...
+Setting up libctf-nobfd0:amd64 (2.34-6ubuntu1.3) ...
+Setting up php7.4-readline (7.4.3-4ubuntu2.13) ...
+
+Creating config file /etc/php/7.4/mods-available/readline.ini with new version
+Setting up rubygems-integration (1.16) ...
+Setting up libgomp1:amd64 (10.3.0-1ubuntu1~20.04) ...
+Setting up ruby-minitest (5.13.0-1) ...
+Setting up zip (3.0-11build1) ...
+Setting up unit-perl (1.28.0-1~focal) ...
+Setting up libpython2.7-minimal:amd64 (2.7.18-1~20.04.3) ...
+Setting up ruby-test-unit (3.3.5-1) ...
+Setting up libavahi-common-data:amd64 (0.7-4ubuntu7.1) ...
+Setting up ruby-net-telnet (0.1.1-2) ...
+Setting up libquadmath0:amd64 (10.3.0-1ubuntu1~20.04) ...
+Setting up libmpc3:amd64 (1.1.0-1) ...
+Setting up libatomic1:amd64 (10.3.0-1ubuntu1~20.04) ...
+Setting up unit-jsc-common (1.28.0-1~focal) ...
+Setting up fonts-dejavu-core (2.37-1) ...
+Setting up libpcsclite1:amd64 (1.8.26-3) ...
+Setting up libjpeg-turbo8:amd64 (2.0.3-0ubuntu1.20.04.3) ...
+Setting up golang-1.13-go (1.13.8-1ubuntu1) ...
+Setting up libdpkg-perl (1.19.7ubuntu3.2) ...
+Setting up libubsan1:amd64 (10.3.0-1ubuntu1~20.04) ...
+Setting up libcrypt-dev:amd64 (1:4.4.10-10ubuntu4) ...
+Setting up libharfbuzz0b:amd64 (2.6.4-1ubuntu4.2) ...
+Setting up libisl22:amd64 (0.22.1-1) ...
+Setting up php7.4-opcache (7.4.3-4ubuntu2.13) ...
+
+Creating config file /etc/php/7.4/mods-available/opcache.ini with new version
+Setting up libjs-jquery (3.3.1~dfsg-3) ...
+Setting up libbinutils:amd64 (2.34-6ubuntu1.3) ...
+Setting up libc-dev-bin (2.31-0ubuntu9.9) ...
+Setting up golang-src (2:1.13~1ubuntu2) ...
+Setting up ruby-xmlrpc (0.3.0-2) ...
+Setting up libcc1-0:amd64 (10.3.0-1ubuntu1~20.04) ...
+Setting up liblsan0:amd64 (10.3.0-1ubuntu1~20.04) ...
+Setting up libitm1:amd64 (10.3.0-1ubuntu1~20.04) ...
+Setting up unit-dev (1.28.0-1~focal) ...
+Setting up gcc-9-base:amd64 (9.4.0-1ubuntu1~20.04.1) ...
+Setting up libtsan0:amd64 (10.3.0-1ubuntu1~20.04) ...
+Setting up libctf0:amd64 (2.34-6ubuntu1.3) ...
+Setting up libjpeg8:amd64 (8c-2ubuntu8) ...
+Setting up golang-race-detector-runtime (2:1.13~1ubuntu2) ...
+Setting up php7.4-json (7.4.3-4ubuntu2.13) ...
+
+Creating config file /etc/php/7.4/mods-available/json.ini with new version
+Setting up golang-go (2:1.13~1ubuntu2) ...
+Setting up fontconfig-config (2.13.1-2ubuntu3) ...
+Setting up libavahi-common3:amd64 (0.7-4ubuntu7.1) ...
+Setting up php7.4-cli (7.4.3-4ubuntu2.13) ...
+update-alternatives: using /usr/bin/php7.4 to provide /usr/bin/php (php) in auto mode
+update-alternatives: using /usr/bin/phar7.4 to provide /usr/bin/phar (phar) in auto mode
+update-alternatives: using /usr/bin/phar.phar7.4 to provide /usr/bin/phar.phar (phar.phar) in auto mode
+
+Creating config file /etc/php/7.4/cli/php.ini with new version
+Setting up libpython2.7-stdlib:amd64 (2.7.18-1~20.04.3) ...
+Setting up libasan5:amd64 (9.4.0-1ubuntu1~20.04.1) ...
+Setting up golang-1.13-doc (1.13.8-1ubuntu1) ...
+Setting up pkg-config (0.29.1-0ubuntu4) ...
+Setting up golang-1.13 (1.13.8-1ubuntu1) ...
+Setting up cpp-9 (9.4.0-1ubuntu1~20.04.1) ...
+Setting up libc6-dev:amd64 (2.31-0ubuntu9.9) ...
+Setting up libfontconfig1:amd64 (2.13.1-2ubuntu3) ...
+Setting up golang-doc (2:1.13~1ubuntu2) ...
+Setting up libavahi-client3:amd64 (0.7-4ubuntu7.1) ...
+Setting up binutils-x86-64-linux-gnu (2.34-6ubuntu1.3) ...
+Setting up golang (2:1.13~1ubuntu2) ...
+Setting up libpython2.7:amd64 (2.7.18-1~20.04.3) ...
+Setting up unit-python2.7 (1.28.0-1~focal) ...
+Setting up libphp7.4-embed (7.4.3-4ubuntu2.13) ...
+update-alternatives: using /usr/lib/libphp7.4.so to provide /usr/lib/libphp7.so (libphp7) in auto mode
+
+Creating config file /etc/php/7.4/embed/php.ini with new version
+Setting up unit-php (1.28.0-1~focal) ...
+Setting up binutils (2.34-6ubuntu1.3) ...
+Setting up libphp-embed (2:7.4+75) ...
+Setting up libgcc-9-dev:amd64 (9.4.0-1ubuntu1~20.04.1) ...
+Setting up libcups2:amd64 (2.3.1-9ubuntu1.2) ...
+Setting up cpp (4:9.3.0-1ubuntu2) ...
+Setting up unit-go (1.28.0-1~focal) ...
+Setting up gcc-9 (9.4.0-1ubuntu1~20.04.1) ...
+Setting up libstdc++-9-dev:amd64 (9.4.0-1ubuntu1~20.04.1) ...
+Setting up gcc (4:9.3.0-1ubuntu2) ...
+Setting up g++-9 (9.4.0-1ubuntu1~20.04.1) ...
+Setting up g++ (4:9.3.0-1ubuntu2) ...
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+Setting up openjdk-11-jre-headless:amd64 (11.0.16+8-0ubuntu1~20.04) ...
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/jjs to provide /usr/bin/jjs (jjs) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/rmid to provide /usr/bin/rmid (rmid) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/pack200 to provide /usr/bin/pack200 (pack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/bin/unpack200 to provide /usr/bin/unpack200 (unpack200) in auto mode
+update-alternatives: using /usr/lib/jvm/java-11-openjdk-amd64/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode
+Setting up ruby (1:2.7+1) ...
+Setting up rake (13.0.1-4) ...
+Setting up unit-jsc11 (1.28.0-1~focal) ...
+Setting up ca-certificates-java (20190405ubuntu1) ...
+head: cannot open '/etc/ssl/certs/java/cacerts' for reading: No such file or directory
+Adding debian:Staat_der_Nederlanden_Root_CA_-_G3.pem
+Adding debian:SecureTrust_CA.pem
+Adding debian:Starfield_Class_2_CA.pem
+Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Adding debian:Security_Communication_Root_CA.pem
+Adding debian:COMODO_ECC_Certification_Authority.pem
+Adding debian:AffirmTrust_Commercial.pem
+Adding debian:emSign_Root_CA_-_G1.pem
+Adding debian:GlobalSign_Root_CA_-_R6.pem
+Adding debian:Network_Solutions_Certificate_Authority.pem
+Adding debian:UCA_Global_G2_Root.pem
+Adding debian:CFCA_EV_ROOT.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2011.pem
+Adding debian:GTS_Root_R1.pem
+Adding debian:Certum_Trusted_Network_CA_2.pem
+Adding debian:NAVER_Global_Root_Certification_Authority.pem
+Adding debian:CA_Disig_Root_R2.pem
+Adding debian:GTS_Root_R3.pem
+Adding debian:Baltimore_CyberTrust_Root.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G4.pem
+Adding debian:Amazon_Root_CA_1.pem
+Adding debian:QuoVadis_Root_CA_3_G3.pem
+Adding debian:Go_Daddy_Class_2_CA.pem
+Adding debian:COMODO_Certification_Authority.pem
+Adding debian:DigiCert_Global_Root_CA.pem
+Adding debian:TWCA_Root_Certification_Authority.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Adding debian:QuoVadis_Root_CA_2.pem
+Adding debian:Chambers_of_Commerce_Root_-_2008.pem
+Adding debian:emSign_ECC_Root_CA_-_G3.pem
+Adding debian:Amazon_Root_CA_4.pem
+Adding debian:Entrust_Root_Certification_Authority.pem
+Adding debian:SZAFIR_ROOT_CA2.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Adding debian:Security_Communication_RootCA2.pem
+Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+Adding debian:Certum_Trusted_Network_CA.pem
+Adding debian:DigiCert_Global_Root_G3.pem
+Adding debian:SSL.com_Root_Certification_Authority_RSA.pem
+Adding debian:TWCA_Global_Root_CA.pem
+Adding debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+Adding debian:Izenpe.com.pem
+Adding debian:DigiCert_Global_Root_G2.pem
+Adding debian:Certigna.pem
+Adding debian:certSIGN_ROOT_CA.pem
+Adding debian:Actalis_Authentication_Root_CA.pem
+Adding debian:Sonera_Class_2_Root_CA.pem
+Adding debian:Entrust_Root_Certification_Authority_-_EC1.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+Adding debian:E-Tugra_Certification_Authority.pem
+Adding debian:AC_RAIZ_FNMT-RCM.pem
+Adding debian:Atos_TrustedRoot_2011.pem
+Adding debian:Amazon_Root_CA_2.pem
+Adding debian:ISRG_Root_X1.pem
+Adding debian:OISTE_WISeKey_Global_Root_GC_CA.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Adding debian:Microsoft_RSA_Root_Certificate_Authority_2017.pem
+Adding debian:Certigna_Root_CA.pem
+Adding debian:SSL.com_Root_Certification_Authority_ECC.pem
+Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Adding debian:TrustCor_RootCert_CA-2.pem
+Adding debian:emSign_Root_CA_-_C1.pem
+Adding debian:Secure_Global_CA.pem
+Adding debian:Amazon_Root_CA_3.pem
+Adding debian:GlobalSign_Root_CA.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Adding debian:GlobalSign_Root_CA_-_R3.pem
+Adding debian:DigiCert_Trusted_Root_G4.pem
+Adding debian:Trustwave_Global_ECC_P384_Certification_Authority.pem
+Adding debian:DigiCert_Assured_ID_Root_G2.pem
+Adding debian:Comodo_AAA_Services_root.pem
+Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Adding debian:GTS_Root_R2.pem
+Adding debian:emSign_ECC_Root_CA_-_C3.pem
+Adding debian:Entrust.net_Premium_2048_Secure_Server_CA.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Adding debian:Microsoft_ECC_Root_Certificate_Authority_2017.pem
+Adding debian:SwissSign_Gold_CA_-_G2.pem
+Adding debian:GTS_Root_R4.pem
+Adding debian:DigiCert_Assured_ID_Root_G3.pem
+Adding debian:Trustwave_Global_Certification_Authority.pem
+Adding debian:QuoVadis_Root_CA_2_G3.pem
+Adding debian:TrustCor_ECA-1.pem
+Adding debian:AffirmTrust_Premium_ECC.pem
+Adding debian:Staat_der_Nederlanden_EV_Root_CA.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_ECC.pem
+Adding debian:QuoVadis_Root_CA_3.pem
+Adding debian:COMODO_RSA_Certification_Authority.pem
+Adding debian:Trustwave_Global_ECC_P256_Certification_Authority.pem
+Adding debian:certSIGN_Root_CA_G2.pem
+Adding debian:ePKI_Root_Certification_Authority.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Adding debian:SwissSign_Silver_CA_-_G2.pem
+Adding debian:SecureSign_RootCA11.pem
+Adding debian:e-Szigno_Root_CA_2017.pem
+Adding debian:Hongkong_Post_Root_CA_3.pem
+Adding debian:GDCA_TrustAUTH_R5_ROOT.pem
+Adding debian:XRamp_Global_CA_Root.pem
+Adding debian:QuoVadis_Root_CA.pem
+Adding debian:USERTrust_RSA_Certification_Authority.pem
+Adding debian:Cybertrust_Global_Root.pem
+Adding debian:TeliaSonera_Root_CA_v1.pem
+Adding debian:Hongkong_Post_Root_CA_1.pem
+Adding debian:QuoVadis_Root_CA_1_G3.pem
+Adding debian:UCA_Extended_Validation_Root.pem
+Adding debian:ACCVRAIZ1.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Adding debian:AffirmTrust_Premium.pem
+Adding debian:AffirmTrust_Networking.pem
+Adding debian:Entrust_Root_Certification_Authority_-_G2.pem
+Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Adding debian:Buypass_Class_3_Root_CA.pem
+Adding debian:GlobalSign_Root_CA_-_R2.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+Adding debian:TrustCor_RootCert_CA-1.pem
+Adding debian:DigiCert_Assured_ID_Root_CA.pem
+Adding debian:Trustis_FPS_Root_CA.pem
+Adding debian:USERTrust_ECC_Certification_Authority.pem
+Adding debian:Buypass_Class_2_Root_CA.pem
+Adding debian:DigiCert_High_Assurance_EV_Root_CA.pem
+Adding debian:EC-ACC.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_RSA_R2.pem
+Adding debian:GeoTrust_Primary_Certification_Authority_-_G2.pem
+Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Adding debian:VeriSign_Universal_Root_Certification_Authority.pem
+Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+Adding debian:Global_Chambersign_Root_-_2008.pem
+done.
+Setting up ruby-rack (2.0.7-2ubuntu0.1) ...
+Setting up libruby2.7:amd64 (2.7.0-5ubuntu1.7) ...
+Setting up ruby2.7 (2.7.0-5ubuntu1.7) ...
+Setting up unit-ruby (1.28.0-1~focal) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for ca-certificates (20210119~20.04.2) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+
+done.
+done.
+Processing triggers for mime-support (3.64ubuntu1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+Processing triggers for php7.4-cli (7.4.3-4ubuntu2.13) ...
+Processing triggers for libphp7.4-embed (7.4.3-4ubuntu2.13) ...
+DAEMON_ARGS=--control *:43210
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 09:56:21 UTC. --
+Oct 25 09:46:01 Server1.Ubuntu systemd[1]: Starting NGINX Unit...
+Oct 25 09:46:01 Server1.Ubuntu unitd[2212]: 2022/10/25 09:46:01 [info] 2212#2212 unit 1.28.0 started
+Oct 25 09:46:01 Server1.Ubuntu systemd[1]: Started NGINX Unit.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Stopping NGINX Unit...
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: unit.service: Succeeded.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Stopped NGINX Unit.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Starting NGINX Unit...
+Oct 25 09:56:21 Server1.Ubuntu unitd[17240]: 2022/10/25 09:56:21 [info] 17240#17240 unit 1.28.0 started
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Started NGINX Unit.
+root       17241       1  0 09:56 ?        00:00:00 unit: main v1.28.0 [/usr/sbin/unitd --control *:43210]
+unit       17249   17241  0 09:56 ?        00:00:00 unit: controller
+unit       17250   17241  0 09:56 ?        00:00:00 unit: router
+ubuntu     17288    1343  0 09:56 pts/0    00:00:00 grep unit
+2022/10/25 09:46:01 [info] 2219#2219 discovery started
+2022/10/25 09:46:01 [notice] 2219#2219 no modules matching: "/usr/lib/unit/modules/*.unit.so" found
+2022/10/25 09:46:01 [info] 2218#2218 controller started
+2022/10/25 09:46:01 [notice] 2218#2218 process 2219 exited with code 0
+2022/10/25 09:46:01 [info] 2228#2228 router started
+2022/10/25 09:46:01 [info] 2228#2228 OpenSSL 1.1.1f  31 Mar 2020, 1010106f
+2022/10/25 09:56:21 [notice] 2218#2218 process 2227 exited with code 0
+2022/10/25 09:56:21 [notice] 2218#2218 process 2228 exited with code 0
+2022/10/25 09:56:21 [info] 17242#17242 discovery started
+2022/10/25 09:56:21 [notice] 17242#17242 module: java 11.0.8 "/usr/lib/unit/modules/java11.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: perl 5.30.0 "/usr/lib/unit/modules/perl.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: php 7.4.3 "/usr/lib/unit/modules/php.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: python 2.7.18rc1 "/usr/lib/unit/modules/python2.7.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: python 3.8.2 "/usr/lib/unit/modules/python3.8.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: ruby 2.7.0 "/usr/lib/unit/modules/ruby.unit.so"
+2022/10/25 09:56:21 [info] 17241#17241 controller started
+2022/10/25 09:56:21 [notice] 17241#17241 process 17242 exited with code 0
+2022/10/25 09:56:21 [info] 17250#17250 router started
+2022/10/25 09:56:21 [info] 17250#17250 OpenSSL 1.1.1f  31 Mar 2020, 1010106f
+{
+        "certificates": {},
+        "config": {
+                "listeners": {},
+                "applications": {}
+        },
+
+        "status": {
+                "connections": {
+                        "accepted": 0,
+                        "active": 0,
+                        "idle": 0,
+                        "closed": 0
+                },
+
+                "requests": {
+                        "total": 0
+                },
+
+                "applications": {}
+        }
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1305  100  1305    0     0  11059      0 --:--:-- --:--:-- --:--:-- 11059
+{
+        "success": "Reconfiguration done."
+}
+{
+        "certificates": {},
+        "config": {
+                "applications": {
+                        "example_java11": {
+                                "processes": 1,
+                                "type": "java 11",
+                                "webapp": "/usr/share/doc/unit-jsc11/examples/jsc-app"
+                        },
+
+                        "example_perl": {
+                                "type": "perl",
+                                "processes": 1,
+                                "working_directory": "/usr/share/doc/unit-perl/examples/perl-app",
+                                "script": "/usr/share/doc/unit-perl/examples/perl-app/index.pl"
+                        },
+
+                        "example_php": {
+                                "type": "php",
+                                "processes": 2,
+                                "root": "/usr/share/doc/unit-php/examples/phpinfo-app",
+                                "index": "index.php"
+                        },
+
+                        "example_python2": {
+                                "type": "python 2.7",
+                                "processes": 2,
+                                "path": "/usr/share/doc/unit-python2.7/examples/python-app",
+                                "module": "wsgi"
+                        },
+
+                        "example_python3": {
+                                "type": "python 3.8",
+                                "processes": 2,
+                                "path": "/usr/share/doc/unit-python3.8/examples/python-app",
+                                "module": "wsgi"
+                        },
+
+                        "example_ruby": {
+                                "type": "ruby",
+                                "processes": 2,
+                                "script": "/usr/share/doc/unit-ruby/examples/ruby-app.ru"
+                        }
+                },
+
+                "listeners": {
+                        "*:8100": {
+                                "pass": "applications/example_java11"
+                        },
+
+                        "*:8200": {
+                                "pass": "applications/example_perl"
+                        },
+
+                        "*:8300": {
+                                "pass": "applications/example_php"
+                        },
+
+                        "*:8401": {
+                                "pass": "applications/example_python2"
+                        },
+
+                        "*:8400": {
+                                "pass": "applications/example_python3"
+                        },
+
+                        "*:8500": {
+                                "pass": "applications/example_ruby"
+                        }
+                }
+        },
+
+        "status": {
+                "connections": {
+                        "accepted": 0,
+                        "active": 0,
+                        "idle": 0,
+                        "closed": 0
+                },
+
+                "requests": {
+                        "total": 0
+                },
+
+                "applications": {
+                        "example_java11": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_perl": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_php": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_python2": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_python3": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_ruby": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        }
+                }
+        }
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  7318  100  7318    0     0  55439      0 --:--:-- --:--:-- --:--:-- 55862
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  build-essential dpkg-dev fakeroot libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libexpat1-dev libfakeroot libpython3-dev libpython3.8 libpython3.8-dev
+  libpython3.8-minimal libpython3.8-stdlib make python-pip-whl python3-dev python3-wheel python3.8 python3.8-dev python3.8-minimal zlib1g zlib1g-dev
+Suggested packages:
+  debian-keyring make-doc python3.8-venv python3.8-doc binfmt-support
+The following NEW packages will be installed:
+  build-essential dpkg-dev fakeroot libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libexpat1-dev libfakeroot libpython3-dev libpython3.8-dev make python-pip-whl
+  python3-dev python3-pip python3-wheel python3.8-dev zlib1g-dev
+The following packages will be upgraded:
+  libpython3.8 libpython3.8-minimal libpython3.8-stdlib python3.8 python3.8-minimal zlib1g
+6 upgraded, 17 newly installed, 0 to remove and 128 not upgraded.
+Need to get 14.2 MB of archives.
+After this operation, 28.7 MB of additional disk space will be used.
+Get:1 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 python3.8 amd64 3.8.10-0ubuntu1~20.04.5 [387 kB]
+Get:2 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libpython3.8 amd64 3.8.10-0ubuntu1~20.04.5 [1,625 kB]
+Get:3 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libpython3.8-stdlib amd64 3.8.10-0ubuntu1~20.04.5 [1,675 kB]
+Get:4 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 python3.8-minimal amd64 3.8.10-0ubuntu1~20.04.5 [1,905 kB]
+Get:5 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libpython3.8-minimal amd64 3.8.10-0ubuntu1~20.04.5 [717 kB]
+Get:6 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 zlib1g amd64 1:1.2.11.dfsg-2ubuntu1.5 [54.2 kB]
+Get:7 http://id.archive.ubuntu.com/ubuntu focal/main amd64 make amd64 4.2.1-1.2 [162 kB]
+Get:8 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 dpkg-dev all 1.19.7ubuntu3.2 [679 kB]
+Get:9 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 build-essential amd64 12.8ubuntu1.1 [4,664 B]
+Get:10 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libfakeroot amd64 1.24-1 [25.7 kB]
+Get:11 http://id.archive.ubuntu.com/ubuntu focal/main amd64 fakeroot amd64 1.24-1 [62.6 kB]
+Get:12 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-diff-perl all 1.19.03-2 [46.6 kB]
+Get:13 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-diff-xs-perl amd64 0.04-6 [11.3 kB]
+Get:14 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libalgorithm-merge-perl all 0.08-3 [12.0 kB]
+Get:15 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libexpat1-dev amd64 2.2.9-1ubuntu0.4 [117 kB]
+Get:16 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 libpython3.8-dev amd64 3.8.10-0ubuntu1~20.04.5 [3,951 kB]
+Get:17 http://id.archive.ubuntu.com/ubuntu focal/main amd64 libpython3-dev amd64 3.8.2-0ubuntu2 [7,236 B]
+Get:18 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python-pip-whl all 20.0.2-5ubuntu1.6 [1,805 kB]
+Get:19 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 zlib1g-dev amd64 1:1.2.11.dfsg-2ubuntu1.5 [155 kB]
+Get:20 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 python3.8-dev amd64 3.8.10-0ubuntu1~20.04.5 [514 kB]
+Get:21 http://id.archive.ubuntu.com/ubuntu focal/main amd64 python3-dev amd64 3.8.2-0ubuntu2 [1,212 B]
+Get:22 http://id.archive.ubuntu.com/ubuntu focal/universe amd64 python3-wheel all 0.34.2-1 [23.8 kB]
+Get:23 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 python3-pip all 20.0.2-5ubuntu1.6 [231 kB]
+Fetched 14.2 MB in 15s (965 kB/s)
+(Reading database ... 91050 files and directories currently installed.)
+Preparing to unpack .../0-python3.8_3.8.10-0ubuntu1~20.04.5_amd64.deb ...
+Unpacking python3.8 (3.8.10-0ubuntu1~20.04.5) over (3.8.10-0ubuntu1~20.04.4) ...
+Preparing to unpack .../1-libpython3.8_3.8.10-0ubuntu1~20.04.5_amd64.deb ...
+Unpacking libpython3.8:amd64 (3.8.10-0ubuntu1~20.04.5) over (3.8.10-0ubuntu1~20.04.4) ...
+Preparing to unpack .../2-libpython3.8-stdlib_3.8.10-0ubuntu1~20.04.5_amd64.deb ...
+Unpacking libpython3.8-stdlib:amd64 (3.8.10-0ubuntu1~20.04.5) over (3.8.10-0ubuntu1~20.04.4) ...
+Preparing to unpack .../3-python3.8-minimal_3.8.10-0ubuntu1~20.04.5_amd64.deb ...
+Unpacking python3.8-minimal (3.8.10-0ubuntu1~20.04.5) over (3.8.10-0ubuntu1~20.04.4) ...
+Preparing to unpack .../4-libpython3.8-minimal_3.8.10-0ubuntu1~20.04.5_amd64.deb ...
+Unpacking libpython3.8-minimal:amd64 (3.8.10-0ubuntu1~20.04.5) over (3.8.10-0ubuntu1~20.04.4) ...
+Preparing to unpack .../5-zlib1g_1%3a1.2.11.dfsg-2ubuntu1.5_amd64.deb ...
+Unpacking zlib1g:amd64 (1:1.2.11.dfsg-2ubuntu1.5) over (1:1.2.11.dfsg-2ubuntu1.3) ...
+Setting up zlib1g:amd64 (1:1.2.11.dfsg-2ubuntu1.5) ...
+Selecting previously unselected package make.
+(Reading database ... 91050 files and directories currently installed.)
+Preparing to unpack .../00-make_4.2.1-1.2_amd64.deb ...
+Unpacking make (4.2.1-1.2) ...
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../01-dpkg-dev_1.19.7ubuntu3.2_all.deb ...
+Unpacking dpkg-dev (1.19.7ubuntu3.2) ...
+Selecting previously unselected package build-essential.
+Preparing to unpack .../02-build-essential_12.8ubuntu1.1_amd64.deb ...
+Unpacking build-essential (12.8ubuntu1.1) ...
+Selecting previously unselected package libfakeroot:amd64.
+Preparing to unpack .../03-libfakeroot_1.24-1_amd64.deb ...
+Unpacking libfakeroot:amd64 (1.24-1) ...
+Selecting previously unselected package fakeroot.
+Preparing to unpack .../04-fakeroot_1.24-1_amd64.deb ...
+Unpacking fakeroot (1.24-1) ...
+Selecting previously unselected package libalgorithm-diff-perl.
+Preparing to unpack .../05-libalgorithm-diff-perl_1.19.03-2_all.deb ...
+Unpacking libalgorithm-diff-perl (1.19.03-2) ...
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+Preparing to unpack .../06-libalgorithm-diff-xs-perl_0.04-6_amd64.deb ...
+Unpacking libalgorithm-diff-xs-perl (0.04-6) ...
+Selecting previously unselected package libalgorithm-merge-perl.
+Preparing to unpack .../07-libalgorithm-merge-perl_0.08-3_all.deb ...
+Unpacking libalgorithm-merge-perl (0.08-3) ...
+Selecting previously unselected package libexpat1-dev:amd64.
+Preparing to unpack .../08-libexpat1-dev_2.2.9-1ubuntu0.4_amd64.deb ...
+Unpacking libexpat1-dev:amd64 (2.2.9-1ubuntu0.4) ...
+Selecting previously unselected package libpython3.8-dev:amd64.
+Preparing to unpack .../09-libpython3.8-dev_3.8.10-0ubuntu1~20.04.5_amd64.deb ...
+Unpacking libpython3.8-dev:amd64 (3.8.10-0ubuntu1~20.04.5) ...
+Selecting previously unselected package libpython3-dev:amd64.
+Preparing to unpack .../10-libpython3-dev_3.8.2-0ubuntu2_amd64.deb ...
+Unpacking libpython3-dev:amd64 (3.8.2-0ubuntu2) ...
+Selecting previously unselected package python-pip-whl.
+Preparing to unpack .../11-python-pip-whl_20.0.2-5ubuntu1.6_all.deb ...
+Unpacking python-pip-whl (20.0.2-5ubuntu1.6) ...
+Selecting previously unselected package zlib1g-dev:amd64.
+Preparing to unpack .../12-zlib1g-dev_1%3a1.2.11.dfsg-2ubuntu1.5_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu1.5) ...
+Selecting previously unselected package python3.8-dev.
+Preparing to unpack .../13-python3.8-dev_3.8.10-0ubuntu1~20.04.5_amd64.deb ...
+Unpacking python3.8-dev (3.8.10-0ubuntu1~20.04.5) ...
+Selecting previously unselected package python3-dev.
+Preparing to unpack .../14-python3-dev_3.8.2-0ubuntu2_amd64.deb ...
+Unpacking python3-dev (3.8.2-0ubuntu2) ...
+Selecting previously unselected package python3-wheel.
+Preparing to unpack .../15-python3-wheel_0.34.2-1_all.deb ...
+Unpacking python3-wheel (0.34.2-1) ...
+Selecting previously unselected package python3-pip.
+Preparing to unpack .../16-python3-pip_20.0.2-5ubuntu1.6_all.deb ...
+Unpacking python3-pip (20.0.2-5ubuntu1.6) ...
+Setting up libpython3.8-minimal:amd64 (3.8.10-0ubuntu1~20.04.5) ...
+Setting up libalgorithm-diff-perl (1.19.03-2) ...
+Setting up python3-wheel (0.34.2-1) ...
+Setting up libfakeroot:amd64 (1.24-1) ...
+Setting up fakeroot (1.24-1) ...
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+Setting up libexpat1-dev:amd64 (2.2.9-1ubuntu0.4) ...
+Setting up make (4.2.1-1.2) ...
+Setting up zlib1g-dev:amd64 (1:1.2.11.dfsg-2ubuntu1.5) ...
+Setting up python3.8-minimal (3.8.10-0ubuntu1~20.04.5) ...
+Setting up python-pip-whl (20.0.2-5ubuntu1.6) ...
+Setting up libpython3.8-stdlib:amd64 (3.8.10-0ubuntu1~20.04.5) ...
+Setting up python3.8 (3.8.10-0ubuntu1~20.04.5) ...
+Setting up libalgorithm-diff-xs-perl (0.04-6) ...
+Setting up libalgorithm-merge-perl (0.08-3) ...
+Setting up dpkg-dev (1.19.7ubuntu3.2) ...
+Setting up libpython3.8:amd64 (3.8.10-0ubuntu1~20.04.5) ...
+Setting up python3-pip (20.0.2-5ubuntu1.6) ...
+Setting up build-essential (12.8ubuntu1.1) ...
+Setting up libpython3.8-dev:amd64 (3.8.10-0ubuntu1~20.04.5) ...
+Setting up python3.8-dev (3.8.10-0ubuntu1~20.04.5) ...
+Setting up libpython3-dev:amd64 (3.8.2-0ubuntu2) ...
+Setting up python3-dev (3.8.2-0ubuntu2) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Collecting flask
+  Downloading Flask-2.2.2-py3-none-any.whl (101 kB)
+     |████████████████████████████████| 101 kB 3.0 MB/s
+Collecting Jinja2>=3.0
+  Downloading Jinja2-3.1.2-py3-none-any.whl (133 kB)
+     |████████████████████████████████| 133 kB 4.5 MB/s
+Collecting click>=8.0
+  Downloading click-8.1.3-py3-none-any.whl (96 kB)
+     |████████████████████████████████| 96 kB 8.0 MB/s
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.1.2-py3-none-any.whl (15 kB)
+Collecting importlib-metadata>=3.6.0; python_version < "3.10"
+  Downloading importlib_metadata-5.0.0-py3-none-any.whl (21 kB)
+Collecting Werkzeug>=2.2.2
+  Downloading Werkzeug-2.2.2-py3-none-any.whl (232 kB)
+     |████████████████████████████████| 232 kB 12.0 MB/s
+Collecting MarkupSafe>=2.0
+  Downloading MarkupSafe-2.1.1-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Requirement already satisfied: zipp>=0.5 in /usr/lib/python3/dist-packages (from importlib-metadata>=3.6.0; python_version < "3.10"->flask) (1.0.0)
+Installing collected packages: MarkupSafe, Jinja2, click, itsdangerous, importlib-metadata, Werkzeug, flask
+  Attempting uninstall: MarkupSafe
+    Found existing installation: MarkupSafe 1.1.0
+    Not uninstalling markupsafe at /usr/lib/python3/dist-packages, outside environment /usr
+    Can't uninstall 'MarkupSafe'. No files were found to uninstall.
+  Attempting uninstall: Jinja2
+    Found existing installation: Jinja2 2.10.1
+    Not uninstalling jinja2 at /usr/lib/python3/dist-packages, outside environment /usr
+    Can't uninstall 'Jinja2'. No files were found to uninstall.
+  Attempting uninstall: click
+    Found existing installation: Click 7.0
+    Not uninstalling click at /usr/lib/python3/dist-packages, outside environment /usr
+    Can't uninstall 'Click'. No files were found to uninstall.
+  Attempting uninstall: importlib-metadata
+    Found existing installation: importlib-metadata 1.5.0
+    Not uninstalling importlib-metadata at /usr/lib/python3/dist-packages, outside environment /usr
+    Can't uninstall 'importlib-metadata'. No files were found to uninstall.
+Successfully installed Jinja2-3.1.2 MarkupSafe-2.1.1 Werkzeug-2.2.2 click-8.1.3 flask-2.2.2 importlib-metadata-5.0.0 itsdangerous-2.1.2
+Collecting flasgger
+  Downloading flasgger-0.9.5-py2.py3-none-any.whl (3.8 MB)
+     |████████████████████████████████| 3.8 MB 2.5 MB/s
+Requirement already satisfied: six>=1.10.0 in /usr/lib/python3/dist-packages (from flasgger) (1.14.0)
+Requirement already satisfied: PyYAML>=3.0 in /usr/lib/python3/dist-packages (from flasgger) (5.3.1)
+Requirement already satisfied: Flask>=0.10 in /usr/local/lib/python3.8/dist-packages (from flasgger) (2.2.2)
+Requirement already satisfied: jsonschema>=3.0.1 in /usr/lib/python3/dist-packages (from flasgger) (3.2.0)
+Collecting mistune
+  Downloading mistune-2.0.4-py2.py3-none-any.whl (24 kB)
+Requirement already satisfied: importlib-metadata>=3.6.0; python_version < "3.10" in /usr/local/lib/python3.8/dist-packages (from Flask>=0.10->flasgger) (5.0.0)
+Requirement already satisfied: Jinja2>=3.0 in /usr/local/lib/python3.8/dist-packages (from Flask>=0.10->flasgger) (3.1.2)
+Requirement already satisfied: Werkzeug>=2.2.2 in /usr/local/lib/python3.8/dist-packages (from Flask>=0.10->flasgger) (2.2.2)
+Requirement already satisfied: itsdangerous>=2.0 in /usr/local/lib/python3.8/dist-packages (from Flask>=0.10->flasgger) (2.1.2)
+Requirement already satisfied: click>=8.0 in /usr/local/lib/python3.8/dist-packages (from Flask>=0.10->flasgger) (8.1.3)
+Requirement already satisfied: zipp>=0.5 in /usr/lib/python3/dist-packages (from importlib-metadata>=3.6.0; python_version < "3.10"->Flask>=0.10->flasgger) (1.0.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.8/dist-packages (from Jinja2>=3.0->Flask>=0.10->flasgger) (2.1.1)
+Installing collected packages: mistune, flasgger
+Successfully installed flasgger-0.9.5 mistune-2.0.4
+Collecting gitpython
+  Downloading GitPython-3.1.29-py3-none-any.whl (182 kB)
+     |████████████████████████████████| 182 kB 3.3 MB/s
+Collecting gitdb<5,>=4.0.1
+  Downloading gitdb-4.0.9-py3-none-any.whl (63 kB)
+     |████████████████████████████████| 63 kB 5.1 MB/s
+Collecting smmap<6,>=3.0.1
+  Downloading smmap-5.0.0-py3-none-any.whl (24 kB)
+Installing collected packages: smmap, gitdb, gitpython
+Successfully installed gitdb-4.0.9 gitpython-3.1.29 smmap-5.0.0
+Cloning into '/www/git-pull-api'...
+remote: Enumerating objects: 48, done.
+remote: Counting objects: 100% (48/48), done.
+remote: Compressing objects: 100% (35/35), done.
+remote: Total 48 (delta 24), reused 33 (delta 12), pack-reused 0
+Unpacking objects: 100% (48/48), 19.14 KiB | 1.59 MiB/s, done.
+{
+        "success": "Reconfiguration done."
+}
+{
+        "success": "Reconfiguration done."
+}
+{"branch":"main","dest":"/www/pacman-unit","repo":"https://github.com/gjwdyk/pacman-unit"}
+{
+        "success": "Reconfiguration done."
+}
+{
+        "success": "Reconfiguration done."
+}
+{
+        "success": "Reconfiguration done."
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  4606  100  4606    0     0  38705      0 --:--:-- --:--:-- --:--:-- 38705
+{
+        "success": "Reconfiguration done."
+}
+{
+        "success": "Reconfiguration done."
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  8618  100  8618    0     0  67328      0 --:--:-- --:--:-- --:--:-- 67328
+{
+        "success": "Reconfiguration done."
+}
+{
+        "success": "Reconfiguration done."
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 74333  100 74333    0     0   398k      0 --:--:-- --:--:-- --:--:--  396k
+{
+        "success": "Reconfiguration done."
+}
+{
+        "success": "Reconfiguration done."
+}
+{
+        "success": "Reconfiguration done."
+}
+{
+        "success": "Reconfiguration done."
+}
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 09:57:06 UTC. --
+Oct 25 09:46:01 Server1.Ubuntu systemd[1]: Starting NGINX Unit...
+Oct 25 09:46:01 Server1.Ubuntu unitd[2212]: 2022/10/25 09:46:01 [info] 2212#2212 unit 1.28.0 started
+Oct 25 09:46:01 Server1.Ubuntu systemd[1]: Started NGINX Unit.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Stopping NGINX Unit...
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: unit.service: Succeeded.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Stopped NGINX Unit.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Starting NGINX Unit...
+Oct 25 09:56:21 Server1.Ubuntu unitd[17240]: 2022/10/25 09:56:21 [info] 17240#17240 unit 1.28.0 started
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Started NGINX Unit.
+2022/10/25 09:46:01 [info] 2219#2219 discovery started
+2022/10/25 09:46:01 [notice] 2219#2219 no modules matching: "/usr/lib/unit/modules/*.unit.so" found
+2022/10/25 09:46:01 [info] 2218#2218 controller started
+2022/10/25 09:46:01 [notice] 2218#2218 process 2219 exited with code 0
+2022/10/25 09:46:01 [info] 2228#2228 router started
+2022/10/25 09:46:01 [info] 2228#2228 OpenSSL 1.1.1f  31 Mar 2020, 1010106f
+2022/10/25 09:56:21 [notice] 2218#2218 process 2227 exited with code 0
+2022/10/25 09:56:21 [notice] 2218#2218 process 2228 exited with code 0
+2022/10/25 09:56:21 [info] 17242#17242 discovery started
+2022/10/25 09:56:21 [notice] 17242#17242 module: java 11.0.8 "/usr/lib/unit/modules/java11.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: perl 5.30.0 "/usr/lib/unit/modules/perl.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: php 7.4.3 "/usr/lib/unit/modules/php.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: python 2.7.18rc1 "/usr/lib/unit/modules/python2.7.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: python 3.8.2 "/usr/lib/unit/modules/python3.8.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: ruby 2.7.0 "/usr/lib/unit/modules/ruby.unit.so"
+2022/10/25 09:56:21 [info] 17241#17241 controller started
+2022/10/25 09:56:21 [notice] 17241#17241 process 17242 exited with code 0
+2022/10/25 09:56:21 [info] 17250#17250 router started
+2022/10/25 09:56:21 [info] 17250#17250 OpenSSL 1.1.1f  31 Mar 2020, 1010106f
+2022/10/25 09:56:23 [info] 17300#17300 "example_java11" prototype started
+2022/10/25 09:56:23 [info] 17301#17301 "example_java11" application started
+2022/10/25 09:56:23 [info] 17326#17326 "example_perl" prototype started
+2022/10/25 09:56:23 [info] 17327#17327 "example_perl" application started
+2022/10/25 09:56:23 [info] 17328#17328 "example_php" prototype started
+2022/10/25 09:56:23 [info] 17329#17329 "example_php" application started
+2022/10/25 09:56:23 [info] 17330#17330 "example_php" application started
+2022/10/25 09:56:23 [info] 17331#17331 "example_python2" prototype started
+2022/10/25 09:56:23 [info] 17332#17332 "example_python2" application started
+2022/10/25 09:56:23 [info] 17333#17333 "example_python2" application started
+2022/10/25 09:56:23 [info] 17334#17334 "example_python3" prototype started
+2022/10/25 09:56:23 [info] 17335#17335 "example_python3" application started
+2022/10/25 09:56:23 [info] 17336#17336 "example_python3" application started
+2022/10/25 09:56:23 [info] 17337#17337 "example_ruby" prototype started
+2022/10/25 09:56:23 [info] 17338#17338 "example_ruby" application started
+2022/10/25 09:56:23 [info] 17339#17339 "example_ruby" application started
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:56:26 [info] 17301#17301 [unit] Context.Warning: No org.apache.tomcat.JarScanner set in ServletContext. Falling back to default JarScanner implementation.
+Oct 25, 2022 9:56:26 AM org.apache.jasper.servlet.TldScanner scanJars
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022/10/25 09:56:27 [info] 17301#17301 [unit] Context.getEffectiveMajorVersion
+2022/10/25 09:56:27 [info] 17301#17301 [unit] Context.getEffectiveMajorVersion
+2022-10-25 09:56:27.850:INFO::main: Logging initialized @4745ms to org.eclipse.jetty.util.log.StdErrLog
+2022/10/25 09:56:27 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:56:27 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:56:36 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:56:36 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:56:45 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:56:45 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:56:54 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:56:54 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+2022/10/25 09:56:59 [info] 18949#18949 "python" prototype started
+2022/10/25 09:56:59 [info] 18950#18950 "python" application started
+2022/10/25 09:57:01 [info] 18992#18992 "javahelloworld1" prototype started
+2022/10/25 09:57:01 [info] 18993#18993 "javahelloworld1" application started
+2022/10/25 09:57:02 [info] 19024#19024 "javahelloworld2" prototype started
+2022/10/25 09:57:02 [info] 19025#19025 "javahelloworld2" application started
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:57:03 [info] 18993#18993 [unit] Context.getMimeType for index.html
+2022-10-25 09:57:03.080:INFO::main: Logging initialized @1393ms to org.eclipse.jetty.util.log.StdErrLog
+2022/10/25 09:57:03 [info] 19056#19056 "javahelloworld3" prototype started
+2022/10/25 09:57:03 [info] 19057#19057 "javahelloworld3" application started
+2022/10/25 09:57:03 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:57:03 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+2022/10/25 09:57:06 [info] 19248#19248 "example_go" prototype started
+2022/10/25 09:57:06 [info] 19249#19249 "example_go" application started
+{
+        "certificates": {},
+        "config": {
+                "applications": {
+                        "example_java11": {
+                                "processes": 1,
+                                "type": "java 11",
+                                "webapp": "/usr/share/doc/unit-jsc11/examples/jsc-app"
+                        },
+
+                        "example_perl": {
+                                "type": "perl",
+                                "processes": 1,
+                                "working_directory": "/usr/share/doc/unit-perl/examples/perl-app",
+                                "script": "/usr/share/doc/unit-perl/examples/perl-app/index.pl"
+                        },
+
+                        "example_php": {
+                                "type": "php",
+                                "processes": 2,
+                                "root": "/usr/share/doc/unit-php/examples/phpinfo-app",
+                                "index": "index.php"
+                        },
+
+                        "example_python2": {
+                                "type": "python 2.7",
+                                "processes": 2,
+                                "path": "/usr/share/doc/unit-python2.7/examples/python-app",
+                                "module": "wsgi"
+                        },
+
+                        "example_python3": {
+                                "type": "python 3.8",
+                                "processes": 2,
+                                "path": "/usr/share/doc/unit-python3.8/examples/python-app",
+                                "module": "wsgi"
+                        },
+
+                        "example_ruby": {
+                                "type": "ruby",
+                                "processes": 2,
+                                "script": "/usr/share/doc/unit-ruby/examples/ruby-app.ru"
+                        },
+
+                        "python": {
+                                "type": "python",
+                                "path": "/www/git-pull-api/",
+                                "module": "wsgi",
+                                "callable": "app",
+                                "environment": {
+                                        "version": "2.0",
+                                        "git_repo": "https://github.com/gjwdyk/git-pull-api"
+                                }
+                        },
+
+                        "javahelloworld1": {
+                                "type": "java",
+                                "webapp": "/www/Java/sample.war",
+                                "environment": {
+                                        "version": "3.0",
+                                        "git_repo": "https://github.com/gjwdyk/NGINX-Notes/tree/main/NMS-Instance-Manager/Unit-Sample/Java"
+                                }
+                        },
+
+                        "javahelloworld2": {
+                                "type": "java",
+                                "webapp": "/www/Java/SampleWebApp.war",
+                                "environment": {
+                                        "version": "3.0",
+                                        "git_repo": "https://github.com/gjwdyk/NGINX-Notes/tree/main/NMS-Instance-Manager/Unit-Sample/Java"
+                                }
+                        },
+
+                        "javahelloworld3": {
+                                "type": "java",
+                                "webapp": "/www/Java/helloworld.war",
+                                "environment": {
+                                        "version": "3.0",
+                                        "git_repo": "https://github.com/gjwdyk/NGINX-Notes/tree/main/NMS-Instance-Manager/Unit-Sample/Java"
+                                }
+                        },
+
+                        "example_go": {
+                                "type": "external",
+                                "executable": "/usr/share/doc/unit-go/examples/go-app/go-app"
+                        }
+                },
+
+                "listeners": {
+                        "*:8100": {
+                                "pass": "applications/example_java11"
+                        },
+
+                        "*:8200": {
+                                "pass": "applications/example_perl"
+                        },
+
+                        "*:8300": {
+                                "pass": "applications/example_php"
+                        },
+
+                        "*:8401": {
+                                "pass": "applications/example_python2"
+                        },
+
+                        "*:8400": {
+                                "pass": "applications/example_python3"
+                        },
+
+                        "*:8500": {
+                                "pass": "applications/example_ruby"
+                        },
+
+                        "*:12345": {
+                                "pass": "applications/python"
+                        },
+
+                        "*:8080": {
+                                "pass": "routes/pacman"
+                        },
+
+                        "*:8101": {
+                                "pass": "applications/javahelloworld1"
+                        },
+
+                        "*:8102": {
+                                "pass": "applications/javahelloworld2"
+                        },
+
+                        "*:8103": {
+                                "pass": "applications/javahelloworld3"
+                        },
+
+                        "*:8600": {
+                                "pass": "applications/example_go"
+                        }
+                },
+
+                "routes": {
+                        "pacman": [
+                                {
+                                        "action": {
+                                                "share": "/www/pacman-unit/$uri"
+                                        }
+                                }
+                        ]
+                }
+        },
+
+        "status": {
+                "connections": {
+                        "accepted": 33,
+                        "active": 0,
+                        "idle": 0,
+                        "closed": 33
+                },
+
+                "requests": {
+                        "total": 33
+                },
+
+                "applications": {
+                        "python": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_python2": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_python3": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "javahelloworld1": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_perl": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_php": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "javahelloworld3": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_go": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "javahelloworld2": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_java11": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_ruby": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        }
+                }
+        }
+}
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 09:57:06 UTC. --
+Oct 25 09:46:01 Server1.Ubuntu systemd[1]: Starting NGINX Unit...
+Oct 25 09:46:01 Server1.Ubuntu unitd[2212]: 2022/10/25 09:46:01 [info] 2212#2212 unit 1.28.0 started
+Oct 25 09:46:01 Server1.Ubuntu systemd[1]: Started NGINX Unit.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Stopping NGINX Unit...
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: unit.service: Succeeded.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Stopped NGINX Unit.
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Starting NGINX Unit...
+Oct 25 09:56:21 Server1.Ubuntu unitd[17240]: 2022/10/25 09:56:21 [info] 17240#17240 unit 1.28.0 started
+Oct 25 09:56:21 Server1.Ubuntu systemd[1]: Started NGINX Unit.
+root       17241       1  0 09:56 ?        00:00:00 unit: main v1.28.0 [/usr/sbin/unitd --control *:43210]
+unit       17249   17241  0 09:56 ?        00:00:00 unit: controller
+unit       17250   17241  0 09:56 ?        00:00:00 unit: router
+unit       17300   17241  0 09:56 ?        00:00:00 unit: "example_java11" prototype
+unit       17301   17300  5 09:56 ?        00:00:02 unit: "example_java11" application
+unit       17326   17241  0 09:56 ?        00:00:00 unit: "example_perl" prototype
+unit       17327   17326  0 09:56 ?        00:00:00 unit: "example_perl" application
+unit       17328   17241  0 09:56 ?        00:00:00 unit: "example_php" prototype
+unit       17329   17328  0 09:56 ?        00:00:00 unit: "example_php" application
+unit       17330   17328  0 09:56 ?        00:00:00 unit: "example_php" application
+unit       17331   17241  0 09:56 ?        00:00:00 unit: "example_python2" prototype
+unit       17332   17331  0 09:56 ?        00:00:00 unit: "example_python2" application
+unit       17333   17331  0 09:56 ?        00:00:00 unit: "example_python2" application
+unit       17334   17241  0 09:56 ?        00:00:00 unit: "example_python3" prototype
+unit       17335   17334  0 09:56 ?        00:00:00 unit: "example_python3" application
+unit       17336   17334  0 09:56 ?        00:00:00 unit: "example_python3" application
+unit       17337   17241  0 09:56 ?        00:00:00 unit: "example_ruby" prototype
+unit       17338   17337  0 09:56 ?        00:00:00 unit: "example_ruby" application
+unit       17339   17337  0 09:56 ?        00:00:00 unit: "example_ruby" application
+unit       18949   17241  0 09:56 ?        00:00:00 unit: "python" prototype
+unit       18950   18949  2 09:56 ?        00:00:00 unit: "python" application
+unit       18992   17241  0 09:57 ?        00:00:00 unit: "javahelloworld1" prototype
+unit       18993   18992 27 09:57 ?        00:00:01 unit: "javahelloworld1" application
+unit       19024   17241  0 09:57 ?        00:00:00 unit: "javahelloworld2" prototype
+unit       19025   19024 28 09:57 ?        00:00:01 unit: "javahelloworld2" application
+unit       19056   17241  0 09:57 ?        00:00:00 unit: "javahelloworld3" prototype
+unit       19057   19056 47 09:57 ?        00:00:01 unit: "javahelloworld3" application
+unit       19248   17241  0 09:57 ?        00:00:00 unit: "example_go" prototype
+unit       19249   19248  0 09:57 ?        00:00:00 /usr/share/doc/unit-go/examples/go-app/go-app
+ubuntu     19265    1337  0 09:57 pts/0    00:00:00 grep unit
+2022/10/25 09:46:01 [info] 2219#2219 discovery started
+2022/10/25 09:46:01 [notice] 2219#2219 no modules matching: "/usr/lib/unit/modules/*.unit.so" found
+2022/10/25 09:46:01 [info] 2218#2218 controller started
+2022/10/25 09:46:01 [notice] 2218#2218 process 2219 exited with code 0
+2022/10/25 09:46:01 [info] 2228#2228 router started
+2022/10/25 09:46:01 [info] 2228#2228 OpenSSL 1.1.1f  31 Mar 2020, 1010106f
+2022/10/25 09:56:21 [notice] 2218#2218 process 2227 exited with code 0
+2022/10/25 09:56:21 [notice] 2218#2218 process 2228 exited with code 0
+2022/10/25 09:56:21 [info] 17242#17242 discovery started
+2022/10/25 09:56:21 [notice] 17242#17242 module: java 11.0.8 "/usr/lib/unit/modules/java11.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: perl 5.30.0 "/usr/lib/unit/modules/perl.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: php 7.4.3 "/usr/lib/unit/modules/php.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: python 2.7.18rc1 "/usr/lib/unit/modules/python2.7.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: python 3.8.2 "/usr/lib/unit/modules/python3.8.unit.so"
+2022/10/25 09:56:21 [notice] 17242#17242 module: ruby 2.7.0 "/usr/lib/unit/modules/ruby.unit.so"
+2022/10/25 09:56:21 [info] 17241#17241 controller started
+2022/10/25 09:56:21 [notice] 17241#17241 process 17242 exited with code 0
+2022/10/25 09:56:21 [info] 17250#17250 router started
+2022/10/25 09:56:21 [info] 17250#17250 OpenSSL 1.1.1f  31 Mar 2020, 1010106f
+2022/10/25 09:56:23 [info] 17300#17300 "example_java11" prototype started
+2022/10/25 09:56:23 [info] 17301#17301 "example_java11" application started
+2022/10/25 09:56:23 [info] 17326#17326 "example_perl" prototype started
+2022/10/25 09:56:23 [info] 17327#17327 "example_perl" application started
+2022/10/25 09:56:23 [info] 17328#17328 "example_php" prototype started
+2022/10/25 09:56:23 [info] 17329#17329 "example_php" application started
+2022/10/25 09:56:23 [info] 17330#17330 "example_php" application started
+2022/10/25 09:56:23 [info] 17331#17331 "example_python2" prototype started
+2022/10/25 09:56:23 [info] 17332#17332 "example_python2" application started
+2022/10/25 09:56:23 [info] 17333#17333 "example_python2" application started
+2022/10/25 09:56:23 [info] 17334#17334 "example_python3" prototype started
+2022/10/25 09:56:23 [info] 17335#17335 "example_python3" application started
+2022/10/25 09:56:23 [info] 17336#17336 "example_python3" application started
+2022/10/25 09:56:23 [info] 17337#17337 "example_ruby" prototype started
+2022/10/25 09:56:23 [info] 17338#17338 "example_ruby" application started
+2022/10/25 09:56:23 [info] 17339#17339 "example_ruby" application started
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:56:26 [info] 17301#17301 [unit] Context.Warning: No org.apache.tomcat.JarScanner set in ServletContext. Falling back to default JarScanner implementation.
+Oct 25, 2022 9:56:26 AM org.apache.jasper.servlet.TldScanner scanJars
+INFO: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2022/10/25 09:56:27 [info] 17301#17301 [unit] Context.getEffectiveMajorVersion
+2022/10/25 09:56:27 [info] 17301#17301 [unit] Context.getEffectiveMajorVersion
+2022-10-25 09:56:27.850:INFO::main: Logging initialized @4745ms to org.eclipse.jetty.util.log.StdErrLog
+2022/10/25 09:56:27 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:56:27 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:56:36 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:56:36 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:56:45 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:56:45 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:56:54 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:56:54 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+2022/10/25 09:56:59 [info] 18949#18949 "python" prototype started
+2022/10/25 09:56:59 [info] 18950#18950 "python" application started
+2022/10/25 09:57:01 [info] 18992#18992 "javahelloworld1" prototype started
+2022/10/25 09:57:01 [info] 18993#18993 "javahelloworld1" application started
+2022/10/25 09:57:02 [info] 19024#19024 "javahelloworld2" prototype started
+2022/10/25 09:57:02 [info] 19025#19025 "javahelloworld2" application started
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+cannot handle ref type 15 at /usr/lib/x86_64-linux-gnu/perl/5.30/Data/Dumper.pm line 232.
+2022/10/25 09:57:03 [info] 18993#18993 [unit] Context.getMimeType for index.html
+2022-10-25 09:57:03.080:INFO::main: Logging initialized @1393ms to org.eclipse.jetty.util.log.StdErrLog
+2022/10/25 09:57:03 [info] 19056#19056 "javahelloworld3" prototype started
+2022/10/25 09:57:03 [info] 19057#19057 "javahelloworld3" application started
+2022/10/25 09:57:03 [info] 17301#17301 [unit] Context.getEffectiveSessionTrackingModes
+2022/10/25 09:57:03 [info] 17301#17301 [unit] Context.getSessionCookieConfig
+2022/10/25 09:57:06 [info] 19248#19248 "example_go" prototype started
+2022/10/25 09:57:06 [info] 19249#19249 "example_go" application started
+{
+        "certificates": {},
+        "config": {
+                "applications": {
+                        "example_java11": {
+                                "processes": 1,
+                                "type": "java 11",
+                                "webapp": "/usr/share/doc/unit-jsc11/examples/jsc-app"
+                        },
+
+                        "example_perl": {
+                                "type": "perl",
+                                "processes": 1,
+                                "working_directory": "/usr/share/doc/unit-perl/examples/perl-app",
+                                "script": "/usr/share/doc/unit-perl/examples/perl-app/index.pl"
+                        },
+
+                        "example_php": {
+                                "type": "php",
+                                "processes": 2,
+                                "root": "/usr/share/doc/unit-php/examples/phpinfo-app",
+                                "index": "index.php"
+                        },
+
+                        "example_python2": {
+                                "type": "python 2.7",
+                                "processes": 2,
+                                "path": "/usr/share/doc/unit-python2.7/examples/python-app",
+                                "module": "wsgi"
+                        },
+
+                        "example_python3": {
+                                "type": "python 3.8",
+                                "processes": 2,
+                                "path": "/usr/share/doc/unit-python3.8/examples/python-app",
+                                "module": "wsgi"
+                        },
+
+                        "example_ruby": {
+                                "type": "ruby",
+                                "processes": 2,
+                                "script": "/usr/share/doc/unit-ruby/examples/ruby-app.ru"
+                        },
+
+                        "python": {
+                                "type": "python",
+                                "path": "/www/git-pull-api/",
+                                "module": "wsgi",
+                                "callable": "app",
+                                "environment": {
+                                        "version": "2.0",
+                                        "git_repo": "https://github.com/gjwdyk/git-pull-api"
+                                }
+                        },
+
+                        "javahelloworld1": {
+                                "type": "java",
+                                "webapp": "/www/Java/sample.war",
+                                "environment": {
+                                        "version": "3.0",
+                                        "git_repo": "https://github.com/gjwdyk/NGINX-Notes/tree/main/NMS-Instance-Manager/Unit-Sample/Java"
+                                }
+                        },
+
+                        "javahelloworld2": {
+                                "type": "java",
+                                "webapp": "/www/Java/SampleWebApp.war",
+                                "environment": {
+                                        "version": "3.0",
+                                        "git_repo": "https://github.com/gjwdyk/NGINX-Notes/tree/main/NMS-Instance-Manager/Unit-Sample/Java"
+                                }
+                        },
+
+                        "javahelloworld3": {
+                                "type": "java",
+                                "webapp": "/www/Java/helloworld.war",
+                                "environment": {
+                                        "version": "3.0",
+                                        "git_repo": "https://github.com/gjwdyk/NGINX-Notes/tree/main/NMS-Instance-Manager/Unit-Sample/Java"
+                                }
+                        },
+
+                        "example_go": {
+                                "type": "external",
+                                "executable": "/usr/share/doc/unit-go/examples/go-app/go-app"
+                        }
+                },
+
+                "listeners": {
+                        "*:8100": {
+                                "pass": "applications/example_java11"
+                        },
+
+                        "*:8200": {
+                                "pass": "applications/example_perl"
+                        },
+
+                        "*:8300": {
+                                "pass": "applications/example_php"
+                        },
+
+                        "*:8401": {
+                                "pass": "applications/example_python2"
+                        },
+
+                        "*:8400": {
+                                "pass": "applications/example_python3"
+                        },
+
+                        "*:8500": {
+                                "pass": "applications/example_ruby"
+                        },
+
+                        "*:12345": {
+                                "pass": "applications/python"
+                        },
+
+                        "*:8080": {
+                                "pass": "routes/pacman"
+                        },
+
+                        "*:8101": {
+                                "pass": "applications/javahelloworld1"
+                        },
+
+                        "*:8102": {
+                                "pass": "applications/javahelloworld2"
+                        },
+
+                        "*:8103": {
+                                "pass": "applications/javahelloworld3"
+                        },
+
+                        "*:8600": {
+                                "pass": "applications/example_go"
+                        }
+                },
+
+                "routes": {
+                        "pacman": [
+                                {
+                                        "action": {
+                                                "share": "/www/pacman-unit/$uri"
+                                        }
+                                }
+                        ]
+                }
+        },
+
+        "status": {
+                "connections": {
+                        "accepted": 33,
+                        "active": 0,
+                        "idle": 0,
+                        "closed": 33
+                },
+
+                "requests": {
+                        "total": 33
+                },
+
+                "applications": {
+                        "python": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_python2": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_python3": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "javahelloworld1": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_perl": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_php": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "javahelloworld3": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_go": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "javahelloworld2": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_java11": {
+                                "processes": {
+                                        "running": 1,
+                                        "starting": 0,
+                                        "idle": 1
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        },
+
+                        "example_ruby": {
+                                "processes": {
+                                        "running": 2,
+                                        "starting": 0,
+                                        "idle": 2
+                                },
+
+                                "requests": {
+                                        "active": 0
+                                }
+                        }
+                }
+        }
+}
+ubuntu@Server1:~$

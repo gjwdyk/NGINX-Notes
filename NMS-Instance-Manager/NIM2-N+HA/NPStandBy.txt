@@ -1,0 +1,1208 @@
+login as: ubuntu
+ubuntu@192.168.123.102's password:
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue 25 Oct 2022 10:51:27 AM UTC
+
+  System load:  0.64               Processes:              261
+  Usage of /:   18.6% of 32.97GB   Users logged in:        0
+  Memory usage: 8%                 IPv4 address for ens33: 192.168.101.102
+  Swap usage:   0%                 IPv4 address for ens34: 192.168.123.102
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Tue Apr 19 16:12:18 2022 from 192.168.123.245
+ubuntu@Worker2:~$ ls -lap
+total 44
+drwxr-xr-x 4 ubuntu ubuntu 4096 Oct 25 10:52 ./
+drwxr-xr-x 3 root   root   4096 Apr 19  2022 ../
+-rw------- 1 ubuntu ubuntu  463 Apr 19  2022 .bash_history
+-rw-r--r-- 1 ubuntu ubuntu  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Feb 25  2020 .bashrc
+drwx------ 2 ubuntu ubuntu 4096 Apr 19  2022 .cache/
+-rw-r--r-- 1 ubuntu ubuntu 1224 Aug 26 01:36 nginx-repo.crt
+-rw-r--r-- 1 ubuntu ubuntu  687 Aug 26 01:36 nginx-repo.jwt
+-rw-r--r-- 1 ubuntu ubuntu 1704 Aug 26 01:36 nginx-repo.key
+-rw-r--r-- 1 ubuntu ubuntu  807 Feb 25  2020 .profile
+drwx------ 2 ubuntu ubuntu 4096 Apr 19  2022 .ssh/
+-rw-r--r-- 1 ubuntu ubuntu    0 Apr 19  2022 .sudo_as_admin_successful
+ubuntu@Worker2:~$ cd $HOME;sudo curl -k -L -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/NIM2-N%2BHA/NPStandByLB.sh;sudo chmod 777 $HOME/NPStandByLB.sh;/bin/bash $HOME/NPStandByLB.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  3555  100  3555    0     0   5651      0 --:--:-- --:--:-- --:--:--  5642
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1963  100  1963    0     0   4673      0 --:--:-- --:--:-- --:--:--  4673
+/home/ubuntu/NPStandByLB.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2460  100  2460    0     0   5491      0 --:--:-- --:--:-- --:--:--  5491
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  5796  100  5796    0     0  12995      0 --:--:-- --:--:-- --:--:-- 12995
+total 16
+drwxr-xr-x 2 root root 4096 Oct 25 11:03 ./
+drwxr-xr-x 5 root root 4096 Oct 25 11:03 ../
+-rw-r--r-- 1 root root 1224 Oct 25 11:03 nginx-repo.crt
+-rw-r--r-- 1 root root 1704 Oct 25 11:03 nginx-repo.key
+--2022-10-25 11:03:22--  https://cs.nginx.com/static/keys/nginx_signing.key
+Resolving cs.nginx.com (cs.nginx.com)... 3.126.134.177, 52.59.52.27
+Connecting to cs.nginx.com (cs.nginx.com)|3.126.134.177|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1561 (1.5K)
+Saving to: ‘nginx_signing.key’
+
+nginx_signing.key                                 100%[============================================================================================================>]   1.52K  --.-KB/s    in 0s
+
+2022-10-25 11:03:24 (654 MB/s) - ‘nginx_signing.key’ saved [1561/1561]
+
+OK
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+lsb-release is already the newest version (11.1.0ubuntu2).
+lsb-release set to manually installed.
+ca-certificates is already the newest version (20210119~20.04.2).
+ca-certificates set to manually installed.
+The following NEW packages will be installed:
+  apt-transport-https
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 4,680 B of archives.
+After this operation, 162 kB of additional disk space will be used.
+Err:1 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 apt-transport-https all 2.0.6
+  404  Not Found [IP: 202.79.184.254 80]
+E: Failed to fetch http://id.archive.ubuntu.com/ubuntu/pool/universe/a/apt/apt-transport-https_2.0.6_all.deb  404  Not Found [IP: 202.79.184.254 80]
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+deb https://pkgs.nginx.com/plus/ubuntu focal nginx-plus
+--2022-10-25 11:03:26--  https://cs.nginx.com/static/files/90pkgs-nginx
+Resolving cs.nginx.com (cs.nginx.com)... 3.126.134.177, 52.59.52.27
+Connecting to cs.nginx.com (cs.nginx.com)|3.126.134.177|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 258
+Saving to: ‘/etc/apt/apt.conf.d/90pkgs-nginx’
+
+90pkgs-nginx                                      100%[============================================================================================================>]     258  --.-KB/s    in 0s
+
+2022-10-25 11:03:27 (92.0 MB/s) - ‘/etc/apt/apt.conf.d/90pkgs-nginx’ saved [258/258]
+
+Hit:1 http://id.archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://id.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:3 http://id.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:4 http://id.archive.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:5 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2,191 kB]
+Get:6 http://id.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [385 kB]
+Get:7 https://pkgs.nginx.com/plus/ubuntu focal InRelease [3,755 B]
+Get:8 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [16.0 kB]
+Get:9 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1,372 kB]
+Get:10 https://pkgs.nginx.com/plus/ubuntu focal/nginx-plus amd64 Packages [58.4 kB]
+Get:11 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [194 kB]
+Get:12 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 c-n-f Metadata [600 B]
+Get:13 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [970 kB]
+Get:14 http://id.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [221 kB]
+Get:15 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 c-n-f Metadata [21.8 kB]
+Get:16 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [29.9 kB]
+Get:17 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse Translation-en [7,940 B]
+Get:18 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 c-n-f Metadata [664 B]
+Get:19 http://id.archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [45.6 kB]
+Get:20 http://id.archive.ubuntu.com/ubuntu focal-backports/main Translation-en [16.3 kB]
+Get:21 http://id.archive.ubuntu.com/ubuntu focal-backports/main amd64 c-n-f Metadata [1,420 B]
+Get:22 http://id.archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [23.9 kB]
+Get:23 http://id.archive.ubuntu.com/ubuntu focal-backports/universe Translation-en [16.0 kB]
+Get:24 http://id.archive.ubuntu.com/ubuntu focal-backports/universe amd64 c-n-f Metadata [860 B]
+Get:25 http://id.archive.ubuntu.com/ubuntu focal-security/main amd64 Packages [1,818 kB]
+Get:26 http://id.archive.ubuntu.com/ubuntu focal-security/main Translation-en [300 kB]
+Get:27 http://id.archive.ubuntu.com/ubuntu focal-security/main amd64 c-n-f Metadata [11.2 kB]
+Get:28 http://id.archive.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1,282 kB]
+Get:29 http://id.archive.ubuntu.com/ubuntu focal-security/restricted Translation-en [182 kB]
+Get:30 http://id.archive.ubuntu.com/ubuntu focal-security/restricted amd64 c-n-f Metadata [596 B]
+Get:31 http://id.archive.ubuntu.com/ubuntu focal-security/universe amd64 Packages [742 kB]
+Get:32 http://id.archive.ubuntu.com/ubuntu focal-security/universe Translation-en [137 kB]
+Get:33 http://id.archive.ubuntu.com/ubuntu focal-security/universe amd64 c-n-f Metadata [15.3 kB]
+Get:34 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [22.2 kB]
+Get:35 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse Translation-en [5,376 B]
+Get:36 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse amd64 c-n-f Metadata [508 B]
+Fetched 10.4 MB in 5s (2,153 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  nginx-plus
+0 upgraded, 1 newly installed, 0 to remove and 135 not upgraded.
+Need to get 3,265 kB of archives.
+After this operation, 6,565 kB of additional disk space will be used.
+Get:1 https://pkgs.nginx.com/plus/ubuntu focal/nginx-plus amd64 nginx-plus amd64 27-2~focal [3,265 kB]
+Fetched 3,265 kB in 6s (569 kB/s)
+Selecting previously unselected package nginx-plus.
+(Reading database ... 72025 files and directories currently installed.)
+Preparing to unpack .../nginx-plus_27-2~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+Thank you for using NGINX!
+
+Please find the documentation for NGINX Plus here:
+/usr/share/nginx/html/nginx-modules-reference.pdf
+
+NGINX Plus is proprietary software. EULA and License information:
+/usr/share/doc/nginx-plus/
+
+For support information, please see:
+https://www.nginx.com/support/
+
+----------------------------------------------------------------------
+Unpacking nginx-plus (27-2~focal) ...
+Setting up nginx-plus (27-2~focal) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for systemd (245.4-4ubuntu3.16) ...
+Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:03:47 UTC. --
+Oct 25 11:03:46 Worker2.Ubuntu systemd[1]: Starting NGINX Plus - high performance web server...
+Oct 25 11:03:46 Worker2.Ubuntu systemd[1]: Started NGINX Plus - high performance web server.
+root        4038  0.0  0.0   9264   900 ?        Ss   11:03   0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+nginx       4039  0.0  0.0   9924  3460 ?        S    11:03   0:00 nginx: worker process
+nginx       4051  0.0  0.0   9924  3460 ?        S    11:03   0:00 nginx: worker process
+ubuntu      4158  0.0  0.0   6300   720 pts/0    S+   11:03   0:00 grep nginx
+nginx version: nginx/1.21.6 (nginx-plus-r27-p1)
+built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
+built with OpenSSL 1.1.1f  31 Mar 2020
+TLS SNI support enabled
+configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --build=nginx-plus-r27-p1 --with-http_auth_jwt_module --with-http_f4f_module --with-http_hls_module --with-http_session_log_module --with-cc-opt='-g -O2 -fdebug-prefix-map=/data/builder/debuild/nginx-plus-1.21.6/debian/debuild-base/nginx-plus-1.21.6=. -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fPIC' --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -pie'
+2022/10/25 11:03:46 [notice] 4026#4026: using the "epoll" event method
+2022/10/25 11:03:46 [notice] 4026#4026: nginx/1.21.6 (nginx-plus-r27-p1)
+2022/10/25 11:03:46 [notice] 4026#4026: built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
+2022/10/25 11:03:46 [notice] 4026#4026: OS: Linux 5.4.0-107-generic
+2022/10/25 11:03:46 [notice] 4026#4026: getrlimit(RLIMIT_NOFILE): 1024:524288
+2022/10/25 11:03:46 [notice] 4038#4038: start worker processes
+2022/10/25 11:03:46 [notice] 4038#4038: start worker process 4039
+2022/10/25 11:03:46 [notice] 4038#4038: start worker process 4051
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  4644  100  4644    0     0  10875      0 --:--:-- --:--:-- --:--:-- 10875
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1963  100  1963    0     0  17219      0 --:--:-- --:--:-- --:--:-- 17219
+/home/ubuntu/NPStandByHA.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2460  100  2460    0     0  21391      0 --:--:-- --:--:-- --:--:-- 21391
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  nginx-ha-keepalived
+0 upgraded, 1 newly installed, 0 to remove and 135 not upgraded.
+Need to get 269 kB of archives.
+After this operation, 680 kB of additional disk space will be used.
+Get:1 https://pkgs.nginx.com/plus/ubuntu focal/nginx-plus amd64 nginx-ha-keepalived amd64 2.2.7-4~focal [269 kB]
+Fetched 269 kB in 2s (150 kB/s)
+Selecting previously unselected package nginx-ha-keepalived.
+(Reading database ... 72064 files and directories currently installed.)
+Preparing to unpack .../nginx-ha-keepalived_2.2.7-4~focal_amd64.deb ...
+Unpacking nginx-ha-keepalived (2.2.7-4~focal) ...
+Setting up nginx-ha-keepalived (2.2.7-4~focal) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for systemd (245.4-4ubuntu3.16) ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1029  100  1029    0     0   2387      0 --:--:-- --:--:-- --:--:--  2381
+/home/ubuntu/EditVariable.sh
+20221025110353 : sourcing /home/ubuntu/EnvironmentVariable.sh .
+/home/ubuntu/EditVariable.sh
+20221025110353 : editing /home/ubuntu/StandByKeepAlived.conf .
+Synchronizing state of keepalived.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable keepalived
+Created symlink /etc/systemd/system/multi-user.target.wants/keepalived.service → /lib/systemd/system/keepalived.service.
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  nginx-sync
+0 upgraded, 1 newly installed, 0 to remove and 135 not upgraded.
+Need to get 13.1 kB of archives.
+After this operation, 57.3 kB of additional disk space will be used.
+Get:1 https://pkgs.nginx.com/plus/ubuntu focal/nginx-plus amd64 nginx-sync all 1.1 [13.1 kB]
+Fetched 13.1 kB in 1s (8,822 B/s)
+Selecting previously unselected package nginx-sync.
+(Reading database ... 72118 files and directories currently installed.)
+Preparing to unpack .../nginx-sync_1.1_all.deb ...
+Unpacking nginx-sync (1.1) ...
+Setting up nginx-sync (1.1) ...
+total 8
+drwx------ 2 root root 4096 Apr 19  2022 ./
+drwx------ 5 root root 4096 Apr 19  2022 ../
+-rw------- 1 root root    0 Apr 19  2022 authorized_keys
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   736  100   736    0     0   1756      0 --:--:-- --:--:-- --:--:--  1756
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCsIzXutWUle7gOLsW+lNJyLH7cAQCZtGQv9V+w0EUuYUzyoKsB+T1X43sT8/whORYUD0gnk1KNpWFCmAsd1F7RwfExcP0btGZi43UThQDkeRrave3/sxiyZlF39P/zdX7DOlQ2k38vs62i33MbNiCmA2VtVoOifV094T/LuN2gVhaMDrqbLekTTUf7Bw7utTQbNt25kAMRmSrVK8ZDlHEVQpi9hU3NUErhd1p1yPW+JtN1tZz60bgEBihr5K/BGfUQ8t9FPyKuhe3haYmgalVWm+odrRTVez1FcHXN25jmNoWJT8jUNMOhD7Gkxa5zoii4vRDEFpXnVAa3D6n2f1qZjdHcG98waQ3Y+bb2OLUOu+HN0NFLOr7iTmV12MzjIl25KBWK+Ir+PRFdbq+CgeCC0OzTxIeujejYclB5pAaZ65tlnDx5FYOuRz/0mkWjKJcIYg8GjrOL3xRdCVEHClRHuhjk5BvjC7YtBGMlIDoxQEVtx0Yul+aYdjMJ1LGXoP83tYtDt69FvuWXHO5fnC/Mnowm4Hdk46e7cYYfmNT6UMIpejKvfJ6cdhgys+wg8SFhwIbGT/sn+B7E7cbX+MU3UdmlS+jrA7PuOKBOTRBfUmekWaTSWWrh3REldiRTm/FhlWyOcqUBxeRPwJdedE5A+o8H6Q/q/PfurnSglvt3VQ== root@Ubuntu
+total 12
+drwx------ 2 root root 4096 Apr 19  2022 ./
+drwx------ 5 root root 4096 Apr 19  2022 ../
+-rw------- 1 root root  737 Oct 25 11:03 authorized_keys
+total 12
+drwx------ 2 root root 4096 Apr 19  2022 ./
+drwx------ 5 root root 4096 Apr 19  2022 ../
+-rw------- 1 root root  737 Oct 25 11:03 authorized_keys
+global_defs {
+  vrrp_version 3
+}
+
+vrrp_script chk_manual_failover {
+  script "/usr/lib/keepalived/nginx-ha-manual-failover"
+  interval 10
+  weight 50
+}
+
+vrrp_script chk_nginx_service {
+  script "/usr/lib/keepalived/nginx-ha-check"
+  interval 3
+  weight 50
+}
+
+vrrp_instance VI_1 {
+  interface ens34
+  priority 100
+  virtual_router_id 51
+  advert_int 1
+  accept
+  garp_master_refresh 5
+  garp_master_refresh_repeat 1
+  unicast_src_ip 192.168.123.102/24
+  unicast_peer {
+    192.168.123.101/24
+  }
+  virtual_ipaddress {
+    192.168.123.111/24
+  }
+  track_script {
+    chk_nginx_service
+    chk_manual_failover
+  }
+  notify "/usr/lib/keepalived/nginx-ha-notify"
+}
+
+vrrp_instance VI_2 {
+  interface ens33
+  priority 100
+  virtual_router_id 51
+  advert_int 1
+  accept
+  garp_master_refresh 5
+  garp_master_refresh_repeat 1
+  unicast_src_ip 192.168.101.102/24
+  unicast_peer {
+    192.168.101.101/24
+  }
+  virtual_ipaddress {
+    192.168.101.111/24
+  }
+  track_script {
+    chk_nginx_service
+    chk_manual_failover
+  }
+  notify "/usr/lib/keepalived/nginx-ha-notify"
+}
+STATE=MASTER
+Dumping VRRP stats (/tmp/keepalived.stats) and data (/tmp/keepalived.data)
+------< Global definitions >------
+ Network namespace = (default)
+ Network namespace ipvs = (main namespace)
+ Router ID = Worker2
+ Default smtp_alert = unset
+ Default smtp_alert_vrrp = unset
+ No test config before reload
+ Dynamic interfaces = false
+ FIFO write vrrp states on reload = false
+ VRRP notify priority changes = false
+ VRRP IPv4 mcast group = 224.0.0.18
+ VRRP IPv6 mcast group = ff02::12
+ Gratuitous ARP delay = 5
+ Gratuitous ARP repeat = 5
+ Gratuitous ARP refresh timer = 0
+ Gratuitous ARP refresh repeat = 1
+ Gratuitous ARP lower priority delay = 5
+ Gratuitous ARP lower priority repeat = 5
+ Num adverts before down = 3
+ Gratuitous ARP for each secondary VMAC = 0s
+ Send advert after receive lower priority advert = true
+ Send advert after receive higher priority advert = false
+ Gratuitous ARP interval = 0.000000
+ Gratuitous NA interval = 0.000000
+ VRRP default protocol version = 3
+ VRRP check unicast_src = false
+ VRRP skip check advert addresses = false
+ VRRP strict mode = false
+ Max auto priority = 0
+ Min auto priority delay = 1000000 usecs
+ VRRP process priority = 0
+ VRRP don't swap = false
+ VRRP realtime priority = 0
+ VRRP realtime limit = 10000
+ BFD process priority = 0
+ BFD don't swap = false
+ BFD realtime priority = 0
+ BFD realtime limit = 0
+ Script security disabled
+ Default script uid:gid 0:0
+ vrrp_netlink_cmd_rcv_bufs = 0
+ vrrp_netlink_cmd_rcv_bufs_force = 0
+ vrrp_netlink_monitor_rcv_bufs = 0
+ vrrp_netlink_monitor_rcv_bufs_force = 0
+ process_monitor_rcv_bufs = 0
+ process_monitor_rcv_bufs_force = 0
+ rx_bufs_multiples = 3
+ umask = 0177
+------< VRRP Topology >------
+ VRRP Instance = VI_1
+   VRRP Version = 3
+   State = MASTER
+   Flags:
+     Using unicast
+   Wantstate = MASTER
+   Number of config faults = 0
+   Number of interface and track script faults = 0
+   Number of track scripts init = 0
+   Last transition = 1666695836.784567 (Tue Oct 25 11:03:56.784567 2022)
+   Read timeout = 1666695838.785636 (Tue Oct 25 11:03:58.785636 2022)
+   Master down timer = 3218750 usecs
+   Interface = ens34
+   Using src_ip = 192.168.123.102 (from configuration)
+   Gratuitous ARP delay = 5
+   Gratuitous ARP repeat = 5
+   Gratuitous ARP refresh = 5
+   Gratuitous ARP refresh repeat = 1
+   Gratuitous ARP lower priority delay = 5
+   Gratuitous ARP lower priority repeat = 5
+   Down timer adverts = 3
+   Send advert after receive lower priority advert = true
+   Send advert after receive higher priority advert = false
+   Virtual Router ID = 51
+   Priority = 100
+   Effective priority = 200
+   Total priority = 200
+   Advert interval = 1000 milli-sec
+   Preempt = enabled
+   Promote_secondaries = disabled
+   Virtual IP (1):
+     192.168.123.111/24 dev ens34 scope global set
+   Unicast TTL = 255
+   Check unicast src : no
+   Unicast Peer :
+     192.168.123.101 min_ttl 0 max_ttl 255
+   Unicast checksum compatibility = no
+   fd_in 13, fd_out 14
+   Tracked scripts :
+     chk_nginx_service weight 50
+     chk_manual_failover weight 50
+   Using smtp notification = no
+   Notify deleted = Fault
+   Generic state transition script = '/usr/lib/keepalived/nginx-ha-notify', uid:gid 0:0
+   Notify priority changes = false
+ VRRP Instance = VI_2
+   VRRP Version = 3
+   State = MASTER
+   Flags:
+     Using unicast
+   Wantstate = MASTER
+   Number of config faults = 0
+   Number of interface and track script faults = 0
+   Number of track scripts init = 0
+   Last transition = 1666695836.785573 (Tue Oct 25 11:03:56.785573 2022)
+   Read timeout = 1666695838.785673 (Tue Oct 25 11:03:58.785673 2022)
+   Master down timer = 3218750 usecs
+   Interface = ens33
+   Using src_ip = 192.168.101.102 (from configuration)
+   Gratuitous ARP delay = 5
+   Gratuitous ARP repeat = 5
+   Gratuitous ARP refresh = 5
+   Gratuitous ARP refresh repeat = 1
+   Gratuitous ARP lower priority delay = 5
+   Gratuitous ARP lower priority repeat = 5
+   Down timer adverts = 3
+   Send advert after receive lower priority advert = true
+   Send advert after receive higher priority advert = false
+   Virtual Router ID = 51
+   Priority = 100
+   Effective priority = 200
+   Total priority = 200
+   Advert interval = 1000 milli-sec
+   Preempt = enabled
+   Promote_secondaries = disabled
+   Virtual IP (1):
+     192.168.101.111/24 dev ens33 scope global set
+   Unicast TTL = 255
+   Check unicast src : no
+   Unicast Peer :
+     192.168.101.101 min_ttl 0 max_ttl 255
+   Unicast checksum compatibility = no
+   fd_in 15, fd_out 16
+   Tracked scripts :
+     chk_nginx_service weight 50
+     chk_manual_failover weight 50
+   Using smtp notification = no
+   Notify deleted = Fault
+   Generic state transition script = '/usr/lib/keepalived/nginx-ha-notify', uid:gid 0:0
+   Notify priority changes = false
+------< VRRP Sockpool >------
+ fd_in 13 fd_out = 14
+   Interface = ens34
+   Family = IPv4
+   Protocol = VRRP
+   Type = Unicast
+   Address = 192.168.123.102
+   Rx buf size = 0
+   VRRP instances
+     VI_1 vrid 51
+ fd_in 15 fd_out = 16
+   Interface = ens33
+   Family = IPv4
+   Protocol = VRRP
+   Type = Unicast
+   Address = 192.168.101.102
+   Rx buf size = 0
+   VRRP instances
+     VI_2 vrid 51
+------< VRRP Scripts >------
+ VRRP Script = chk_manual_failover
+   Command = '/usr/lib/keepalived/nginx-ha-manual-failover'
+   Interval = 10 sec
+   Timeout = 0 sec
+   Weight = 50
+   Rise = 1
+   Fall = 1
+   Result = 1
+   Insecure = no
+   Init state = unknown
+   Status = GOOD
+   Script uid:gid = 0:0
+   VRRP instances :
+   Tracking instances :
+     VI_1, weight 50
+     VI_2, weight 50
+   State = idle
+ VRRP Script = chk_nginx_service
+   Command = '/usr/lib/keepalived/nginx-ha-check'
+   Interval = 3 sec
+   Timeout = 0 sec
+   Weight = 50
+   Rise = 1
+   Fall = 1
+   Result = 1
+   Insecure = no
+   Init state = unknown
+   Status = GOOD
+   Script uid:gid = 0:0
+   VRRP instances :
+   Tracking instances :
+     VI_1, weight 50
+     VI_2, weight 50
+   State = idle
+------< Interfaces >------
+ Name = lo
+   index = 1
+   IPv4 address = 127.0.0.1
+   IPv6 address = (none)
+   State = UP, RUNNING, no broadcast, loopback, no multicast
+   Seen up = 1
+   Delayed state change running = false
+   Up debounce timer = 0us
+   Down debounce timer = 0us
+   MTU = 65536
+   HW Type = LOOPBACK
+   NIC netlink status update
+   Reset ARP config counter 0
+   Original arp_ignore 0
+   Original arp_filter 0
+   Original promote_secondaries 1
+   Reset promote_secondaries counter 0
+ Name = ens33
+   index = 2
+   IPv4 address = 192.168.101.102
+   IPv6 address = fe80::20c:29ff:fe3a:9e7f
+   MAC = 00:0c:29:3a:9e:7f
+   MAC broadcast = ff:ff:ff:ff:ff:ff
+   State = UP, RUNNING
+   Seen up = 1
+   Delayed state change running = false
+   Up debounce timer = 0us
+   Down debounce timer = 0us
+   MTU = 1500
+   HW Type = ETHERNET
+   NIC netlink status update
+   Reset ARP config counter 0
+   Original arp_ignore 0
+   Original arp_filter 0
+   Original promote_secondaries 1
+   Reset promote_secondaries counter 0
+   Tracking VRRP instances :
+     VI_2, weight 0
+ Name = ens34
+   index = 3
+   IPv4 address = 192.168.123.102
+   IPv6 address = fe80::20c:29ff:fe3a:9e89
+   MAC = 00:0c:29:3a:9e:89
+   MAC broadcast = ff:ff:ff:ff:ff:ff
+   State = UP, RUNNING
+   Seen up = 1
+   Delayed state change running = false
+   Up debounce timer = 0us
+   Down debounce timer = 0us
+   MTU = 1500
+   HW Type = ETHERNET
+   NIC netlink status update
+   Reset ARP config counter 0
+   Original arp_ignore 0
+   Original arp_filter 0
+   Original promote_secondaries 1
+   Reset promote_secondaries counter 0
+   Tracking VRRP instances :
+     VI_1, weight 0
+VRRP Instance: VI_1
+  Advertisements:
+    Received: 0
+    Sent: 2
+  Became master: 1
+  Released master: 0
+  Packet Errors:
+    Length: 0
+    TTL: 0
+    Invalid Type: 0
+    Advertisement Interval: 0
+    Address List: 0
+  Authentication Errors:
+    Invalid Type: 0
+    Type Mismatch: 0
+    Failure: 0
+  Priority Zero:
+    Received: 0
+    Sent: 0
+VRRP Instance: VI_2
+  Advertisements:
+    Received: 0
+    Sent: 2
+  Became master: 1
+  Released master: 0
+  Packet Errors:
+    Length: 0
+    TTL: 0
+    Invalid Type: 0
+    Advertisement Interval: 0
+    Address List: 0
+  Authentication Errors:
+    Invalid Type: 0
+    Type Mismatch: 0
+    Failure: 0
+  Priority Zero:
+    Received: 0
+    Sent: 0
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+2: ens33: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:3a:9e:7f brd ff:ff:ff:ff:ff:ff
+    inet 192.168.101.102/24 brd 192.168.101.255 scope global ens33
+       valid_lft forever preferred_lft forever
+    inet 192.168.101.111/24 scope global secondary ens33
+       valid_lft forever preferred_lft forever
+    inet6 fe80::20c:29ff:fe3a:9e7f/64 scope link
+       valid_lft forever preferred_lft forever
+3: ens34: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:3a:9e:89 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.123.102/24 brd 192.168.123.255 scope global ens34
+       valid_lft forever preferred_lft forever
+    inet 192.168.123.111/24 scope global secondary ens34
+       valid_lft forever preferred_lft forever
+    inet6 fe80::20c:29ff:fe3a:9e89/64 scope link
+       valid_lft forever preferred_lft forever
+Oct 25 11:03:53 Worker2 Keepalived[4623]: WARNING - keepalived was built for newer Linux 5.4.60, running on Linux 5.4.0-107-generic #121-Ubuntu SMP Thu Mar 24 16:04:27 UTC 2022
+Oct 25 11:03:53 Worker2 systemd[1]: keepalived.service: Can't open PID file /run/keepalived.pid (yet?) after start: Operation not permitted
+Oct 25 11:03:53 Worker2 Keepalived[4623]: Command line: '/usr/sbin/keepalived'
+Oct 25 11:03:53 Worker2 Keepalived[4623]: Configuration file /etc/keepalived/keepalived.conf
+Oct 25 11:03:53 Worker2 Keepalived[4624]: NOTICE: setting config option max_auto_priority should result in better keepalived performance
+Oct 25 11:03:53 Worker2 Keepalived_vrrp[4625]: Script user 'keepalived_script' does not exist
+Oct 25 11:03:53 Worker2 nginx-ha-keepalived: Transition to state 'BACKUP' on VRRP instance 'VI_2'.
+Oct 25 11:03:53 Worker2 nginx-ha-keepalived: Transition to state 'BACKUP' on VRRP instance 'VI_1'.
+Oct 25 11:03:56 Worker2 nginx-ha-keepalived: Transition to state 'MASTER' on VRRP instance 'VI_1'.
+Oct 25 11:03:56 Worker2 nginx-ha-keepalived: Transition to state 'MASTER' on VRRP instance 'VI_2'.
+Oct 25 11:03:58 Worker2 Keepalived[4624]: Script user 'keepalived_script' does not exist
+
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}
+
+
+# TCP/UDP proxy and load balancing block
+#
+#stream {
+    # Example configuration for TCP load balancing
+
+    #upstream stream_backend {
+    #    zone tcp_servers 64k;
+    #    server backend1.example.com:12345;
+    #    server backend2.example.com:12345;
+    #}
+
+    #server {
+    #    listen 12345;
+    #    status_zone tcp_server;
+    #    proxy_pass stream_backend;
+    #}
+#}
+server {
+    listen       80 default_server;
+    server_name  localhost;
+
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+
+    # enable /api/ location with appropriate access control in order
+    # to make use of NGINX Plus API
+    #
+    #location /api/ {
+    #    api write=on;
+    #    allow 127.0.0.1;
+    #    deny all;
+    #}
+
+    # enable NGINX Plus Dashboard; requires /api/ location to be
+    # enabled and appropriate access control for remote access
+    #
+    #location = /dashboard.html {
+    #    root /usr/share/nginx/html;
+    #}
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   588  100   588    0     0   1361      0 --:--:-- --:--:-- --:--:--  1361
+Waiting for other nodes to sync-up.
+printf "q\n" | nc 192.168.123.11 12345 | grep -E "^[a-zA-Z0-9]{30}$"
+uU9BHcPffsrFplulAyB4TYJcjqJSEz
+20221025110459 queryResult : uU9BHcPffsrFplulAyB4TYJcjqJSEz
+uU9BHcPffsrFplulAyB4TYJcjqJSEz
+20221025110459 initialPassword : uU9BHcPffsrFplulAyB4TYJcjqJSEz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2322  100  2322    0     0  18140      0 --:--:-- --:--:-- --:--:-- 18140
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1963  100  1963    0     0  16223      0 --:--:-- --:--:-- --:--:-- 16090
+/home/ubuntu/NIM2AgentInstall.sh
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  libjq1 libonig5
+The following NEW packages will be installed:
+  jq libjq1 libonig5
+0 upgraded, 3 newly installed, 0 to remove and 135 not upgraded.
+Need to get 313 kB of archives.
+After this operation, 1,062 kB of additional disk space will be used.
+Get:1 http://id.archive.ubuntu.com/ubuntu focal/universe amd64 libonig5 amd64 6.9.4-1 [142 kB]
+Get:2 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libjq1 amd64 1.6-1ubuntu0.20.04.1 [121 kB]
+Get:3 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 jq amd64 1.6-1ubuntu0.20.04.1 [50.2 kB]
+Fetched 313 kB in 0s (1,229 kB/s)
+Selecting previously unselected package libonig5:amd64.
+(Reading database ... 72124 files and directories currently installed.)
+Preparing to unpack .../libonig5_6.9.4-1_amd64.deb ...
+Unpacking libonig5:amd64 (6.9.4-1) ...
+Selecting previously unselected package libjq1:amd64.
+Preparing to unpack .../libjq1_1.6-1ubuntu0.20.04.1_amd64.deb ...
+Unpacking libjq1:amd64 (1.6-1ubuntu0.20.04.1) ...
+Selecting previously unselected package jq.
+Preparing to unpack .../jq_1.6-1ubuntu0.20.04.1_amd64.deb ...
+Unpacking jq (1.6-1ubuntu0.20.04.1) ...
+Setting up libonig5:amd64 (6.9.4-1) ...
+Setting up libjq1:amd64 (1.6-1ubuntu0.20.04.1) ...
+Setting up jq (1.6-1ubuntu0.20.04.1) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 22062    0 22062    0     0  2693k      0 --:--:-- --:--:-- --:--:-- 2693k
+
+ --- NGINX Agent Package Installer ---
+
+ --- Will install the NGINX Agent in 5 seconds ---
+ --- Install log is outputted to: /tmp/agent-install.log
+Sudo permissions detected
+curl is /usr/bin/curl
+
+********
+Warning: An insecure connection will be used during this nginx-agent installation
+********
+
+ubuntu-20
+
+Adding public key https://192.168.123.11/packages-repository/nginx-signing.key...
+Warning: apt-key output should not be parsed (stdout is not a terminal)
+Finished adding public key.
+Adding NGINX public key to repository...
+Setting /etc/apt/apt.conf.d/80agent
+Updating apt_config with host and peer information
+Adding nginx-agent.list to /etc/apt/sources.list.d
+Adding packages URL to /etc/apt/sources.list.d/nginx-agent.list
+Updating permissions for /etc/apt/sources.list.d/nginx-agent.list to 644
+Public key to repository added.
+
+Updating repository ...
+Get:1 https://192.168.123.11/packages-repository/deb/ubuntu focal InRelease [4,134 B]
+Get:2 https://192.168.123.11/packages-repository/deb/ubuntu focal/agent amd64 Packages [474 B]
+Hit:3 http://id.archive.ubuntu.com/ubuntu focal InRelease
+Hit:4 http://id.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:5 http://id.archive.ubuntu.com/ubuntu focal-backports InRelease
+Hit:6 http://id.archive.ubuntu.com/ubuntu focal-security InRelease
+Hit:7 https://pkgs.nginx.com/plus/ubuntu focal InRelease
+Fetched 4,608 B in 1s (5,227 B/s)
+Reading package lists...
+
+Updating repository ... done.
+Installing nginx-agent package ...
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  nginx-agent
+0 upgraded, 1 newly installed, 0 to remove and 135 not upgraded.
+Need to get 6,679 kB of archives.
+After this operation, 17.8 MB of additional disk space will be used.
+Get:1 https://192.168.123.11/packages-repository/deb/ubuntu focal/agent amd64 nginx-agent amd64 2.16.21~jammy [6,679 kB]
+Fetched 6,679 kB in 0s (91.8 MB/s)
+Selecting previously unselected package nginx-agent.
+(Reading database ... 72141 files and directories currently installed.)
+Preparing to unpack .../nginx-agent_2.16.21~jammy_amd64.deb ...
+
+ --- NGINX Agent Package Installer ---
+
+ --- Will install the NGINX Agent in 5 seconds ---
+ --- Install log is outputted to: /tmp/agent-install.log
+Sudo permissions detected
+Could not find /etc/nginx-agent/agent-dynamic.conf ... Creating file
+Successfully created /etc/nginx-agent/agent-dynamic.conf
+Updating /etc/nginx-agent/agent-dynamic.conf ...
+
+/etc/nginx-agent/nginx-agent.conf does not exist exiting.
+Unpacking nginx-agent (2.16.21~jammy) ...
+Setting up nginx-agent (2.16.21~jammy) ...
+/usr/bin/systemctl
+PostInstall: Reading NGINX systemctl unit file for user information
+NGINX processes running as user 'root'. nginx-agent will be configured to run as same user
+PostInstall: Reading NGINX process information to determine NGINX user
+NGINX processes running as user 'nginx'. nginx-agent will try add that user to 'nginx-agent'
+Sudo permissions detected
+Found nginx-agent /usr/bin/nginx-agent
+/usr/bin/systemctl
+PostInstall: Adding nginx-agent group nginx-agent
+PostInstall: Adding NGINX / agent user root to group nginx-agent
+PostInstall: Adding NGINX Worker user nginx to group nginx-agent
+PostInstall: Creating NGINX Agent run directory
+PostInstall: Modifying group ownership of NGINX Agent run directory
+PostInstall: Modifying NGINX Agent unit file with correct locations and user information
+PostInstall: Reload the service unit from disk
+PostInstall: Unmask the service unit from disk
+PostInstall: Set the preset flag for the service unit
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx-agent.service → /etc/systemd/system/nginx-agent.service.
+PostInstall: Set the enabled flag for the service unit
+----------------------------------------------------------------------
+ NGINX Agent package has been successfully installed.
+
+ Please follow the next steps to start the software:
+    sudo systemctl start nginx-agent
+
+ Configuration settings can be adjusted here:
+    /etc/nginx-agent/nginx-agent.conf
+
+----------------------------------------------------------------------
+
+Installing nginx-agent package ... done.
+Updating /etc/nginx-agent/agent-dynamic.conf ...
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 11:05:16 Worker2.Ubuntu systemd[1]: /etc/systemd/system/nginx-agent.service:23: PIDFile= references a path below legacy directory /var/run/, updating /var/run/nginx-agent/nginx-agent.pid → /run/nginx-agent/nginx-agent.pid; please update the unit file accordingly.
+Oct 25 11:05:16 Worker2.Ubuntu systemd[1]: /etc/systemd/system/nginx-agent.service:23: PIDFile= references a path below legacy directory /var/run/, updating /var/run/nginx-agent/nginx-agent.pid → /run/nginx-agent/nginx-agent.pid; please update the unit file accordingly.
+Oct 25 11:05:17 Worker2.Ubuntu systemd[1]: /etc/systemd/system/nginx-agent.service:23: PIDFile= references a path below legacy directory /var/run/, updating /var/run/nginx-agent/nginx-agent.pid → /run/nginx-agent/nginx-agent.pid; please update the unit file accordingly.
+Oct 25 11:05:18 Worker2.Ubuntu systemd[1]: Starting NGINX Agent...
+Oct 25 11:05:18 Worker2.Ubuntu systemd[1]: Started NGINX Agent.
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=warning msg="Log level is info"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="setting displayName to Worker2.Ubuntu"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="NGINX Agent v2.16.21 at 006e70b with pid 8294, clientID=46708a55-1db6-3927-914b-b00d6118c270 name=Worker2.Ubuntu"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=warning msg="Error getting default network interface, interface with default destination not found"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="Attempting to run command: /usr/sbin/nginx with args -V"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="NginxBinary initializing"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="Commander initializing"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="Comms initializing"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="OneTimeRegistration initializing"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="Registering 46708a55-1db6-3927-914b-b00d6118c270"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="Metrics initializing"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="MetricsThrottle initializing"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="DataPlaneStatus initializing"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="Metrics waiting for handshake to be completed"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=warning msg="Error getting default network interface, interface with default destination not found"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="MetricsThrottle waiting for report ready"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="NGINX status API updated.  Old status API: , new status API: http://localhost:8080/api"
+Oct 25 11:05:18 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:18Z" level=info msg="ProcessWatcher initializing"
+Oct 25 11:05:18 Worker2.Ubuntu systemd[1]: /etc/systemd/system/nginx-agent.service:23: PIDFile= references a path below legacy directory /var/run/, updating /var/run/nginx-agent/nginx-agent.pid → /run/nginx-agent/nginx-agent.pid; please update the unit file accordingly.
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="Extensions initializing"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="FileWatcher initializing"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="FileWatchThrottle initializing"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="Events initializing"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="NGINX Counter initializing { false unix:/var/run/nginx-agent/nginx.sock 6}"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="Advanced Metrics Plugin initializing"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="OneTimeRegistration completed"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="Commander received meta:<timestamp:<seconds:1666695919 nanos:78254832 > client_id:\"46708a55-1db6-3927-914b-b00d6118c270\" message_id:\"45a3ade9-3861-467d-947a-1976bcaccf12\" > agent_connect_response:<agent_config:<details:<features:\"features_registration\" features:\"features_nginx-config\" features:\"features_nginx-ssl-config\" features:\"features_nginx-counting\" features:\"features_metrics\" features:\"features_metrics-throttle\" features:\"features_dataplane-status\" features:\"features_process-watcher\" features:\"features_file-watcher\" features:\"features_activity-events\" > configs:<configs:<system_id:\"46708a55-1db6-3927-914b-b00d6118c270\" nginx_id:\"b636d4376dea15405589692d3c5d3869ff3a9b26b0e7bb4bb1aa7e658ace1437\" > > > status:<statusCode:CONNECT_OK > > , <nil>"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="Checking availability of unix socket"
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="Ingester worker starts processing data."
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="Ingester worker starts processing data."
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="Ingester worker starts processing data."
+Oct 25 11:05:19 Worker2.Ubuntu nginx-agent[8294]: time="2022-10-25T11:05:19Z" level=info msg="config command &{agent_config:<details:<features:\"features_registration\" features:\"features_nginx-config\" features:\"features_nginx-ssl-config\" features:\"features_nginx-counting\" features:\"features_metrics\" features:\"features_metrics-throttle\" features:\"features_dataplane-status\" features:\"features_process-watcher\" features:\"features_file-watcher\" features:\"features_activity-events\" > configs:<configs:<system_id:\"46708a55-1db6-3927-914b-b00d6118c270\" nginx_id:\"b636d4376dea15405589692d3c5d3869ff3a9b26b0e7bb4bb1aa7e658ace1437\" > > > status:<statusCode:CONNECT_OK > }"
+time="2022-10-25T11:05:18Z" level=info msg="setting displayName to Worker2.Ubuntu"
+time="2022-10-25T11:05:18Z" level=info msg="NGINX Agent v2.16.21 at 006e70b with pid 8294, clientID=46708a55-1db6-3927-914b-b00d6118c270 name=Worker2.Ubuntu"
+time="2022-10-25T11:05:18Z" level=warning msg="Error getting default network interface, interface with default destination not found"
+time="2022-10-25T11:05:18Z" level=info msg="Attempting to run command: /usr/sbin/nginx with args -V"
+time="2022-10-25T11:05:18Z" level=info msg="NginxBinary initializing"
+time="2022-10-25T11:05:18Z" level=info msg="Commander initializing"
+time="2022-10-25T11:05:18Z" level=info msg="Comms initializing"
+time="2022-10-25T11:05:18Z" level=info msg="OneTimeRegistration initializing"
+time="2022-10-25T11:05:18Z" level=info msg="Registering 46708a55-1db6-3927-914b-b00d6118c270"
+time="2022-10-25T11:05:18Z" level=info msg="Metrics initializing"
+time="2022-10-25T11:05:18Z" level=info msg="MetricsThrottle initializing"
+time="2022-10-25T11:05:18Z" level=info msg="DataPlaneStatus initializing"
+time="2022-10-25T11:05:18Z" level=info msg="Metrics waiting for handshake to be completed"
+time="2022-10-25T11:05:18Z" level=warning msg="Error getting default network interface, interface with default destination not found"
+time="2022-10-25T11:05:18Z" level=info msg="MetricsThrottle waiting for report ready"
+time="2022-10-25T11:05:18Z" level=info msg="NGINX status API updated.  Old status API: , new status API: http://localhost:8080/api"
+time="2022-10-25T11:05:18Z" level=info msg="ProcessWatcher initializing"
+time="2022-10-25T11:05:19Z" level=info msg="Extensions initializing"
+time="2022-10-25T11:05:19Z" level=info msg="FileWatcher initializing"
+time="2022-10-25T11:05:19Z" level=info msg="FileWatchThrottle initializing"
+time="2022-10-25T11:05:19Z" level=info msg="Events initializing"
+time="2022-10-25T11:05:19Z" level=info msg="NGINX Counter initializing { false unix:/var/run/nginx-agent/nginx.sock 6}"
+time="2022-10-25T11:05:19Z" level=info msg="Advanced Metrics Plugin initializing"
+time="2022-10-25T11:05:19Z" level=info msg="OneTimeRegistration completed"
+time="2022-10-25T11:05:19Z" level=info msg="Commander received meta:<timestamp:<seconds:1666695919 nanos:78254832 > client_id:\"46708a55-1db6-3927-914b-b00d6118c270\" message_id:\"45a3ade9-3861-467d-947a-1976bcaccf12\" > agent_connect_response:<agent_config:<details:<features:\"features_registration\" features:\"features_nginx-config\" features:\"features_nginx-ssl-config\" features:\"features_nginx-counting\" features:\"features_metrics\" features:\"features_metrics-throttle\" features:\"features_dataplane-status\" features:\"features_process-watcher\" features:\"features_file-watcher\" features:\"features_activity-events\" > configs:<configs:<system_id:\"46708a55-1db6-3927-914b-b00d6118c270\" nginx_id:\"b636d4376dea15405589692d3c5d3869ff3a9b26b0e7bb4bb1aa7e658ace1437\" > > > status:<statusCode:CONNECT_OK > > , <nil>"
+time="2022-10-25T11:05:19Z" level=info msg="Checking availability of unix socket"
+time="2022-10-25T11:05:19Z" level=info msg="Ingester worker starts processing data."
+time="2022-10-25T11:05:19Z" level=info msg="Ingester worker starts processing data."
+time="2022-10-25T11:05:19Z" level=info msg="Ingester worker starts processing data."
+time="2022-10-25T11:05:19Z" level=info msg="config command &{agent_config:<details:<features:\"features_registration\" features:\"features_nginx-config\" features:\"features_nginx-ssl-config\" features:\"features_nginx-counting\" features:\"features_metrics\" features:\"features_metrics-throttle\" features:\"features_dataplane-status\" features:\"features_process-watcher\" features:\"features_file-watcher\" features:\"features_activity-events\" > configs:<configs:<system_id:\"46708a55-1db6-3927-914b-b00d6118c270\" nginx_id:\"b636d4376dea15405589692d3c5d3869ff3a9b26b0e7bb4bb1aa7e658ace1437\" > > > status:<statusCode:CONNECT_OK > }"
+printf "b\n" | nc 192.168.123.11 12345 | grep -E "^[a-zA-Z0-9]{30}$"
+uU9BHcPffsrFplulAyB4TYJcjqJSEz
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 11:03:46 Worker2.Ubuntu systemd[1]: Starting NGINX Plus - high performance web server...
+Oct 25 11:03:46 Worker2.Ubuntu systemd[1]: Started NGINX Plus - high performance web server.
+Oct 25 11:05:07 Worker2.Ubuntu systemd[1]: Reloading NGINX Plus - high performance web server.
+Oct 25 11:05:07 Worker2.Ubuntu systemd[1]: Reloaded NGINX Plus - high performance web server.
+root        4038  0.0  0.0  10040  3980 ?        Ss   11:03   0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+nginx       6984  0.0  0.1  10968  5704 ?        S    11:05   0:00 nginx: worker process
+nginx       6985  0.0  0.1  10704  4672 ?        S    11:05   0:00 nginx: worker process
+nginx       6986  0.0  0.1  10484  4148 ?        S    11:05   0:00 nginx: cache manager process
+nginx       6987  0.0  0.1  10484  4148 ?        S    11:05   0:00 nginx: cache loader process
+root        8294  0.0  0.6 719116 27344 ?        Ssl  11:05   0:00 /usr/bin/nginx-agent
+ubuntu      8350  0.0  0.0   6300   660 pts/0    S+   11:05   0:00 grep nginx
+nginx version: nginx/1.21.6 (nginx-plus-r27-p1)
+built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
+built with OpenSSL 1.1.1f  31 Mar 2020
+TLS SNI support enabled
+configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --build=nginx-plus-r27-p1 --with-http_auth_jwt_module --with-http_f4f_module --with-http_hls_module --with-http_session_log_module --with-cc-opt='-g -O2 -fdebug-prefix-map=/data/builder/debuild/nginx-plus-1.21.6/debian/debuild-base/nginx-plus-1.21.6=. -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fPIC' --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -pie'
+2022/10/25 11:03:46 [notice] 4026#4026: using the "epoll" event method
+2022/10/25 11:03:46 [notice] 4026#4026: nginx/1.21.6 (nginx-plus-r27-p1)
+2022/10/25 11:03:46 [notice] 4026#4026: built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
+2022/10/25 11:03:46 [notice] 4026#4026: OS: Linux 5.4.0-107-generic
+2022/10/25 11:03:46 [notice] 4026#4026: getrlimit(RLIMIT_NOFILE): 1024:524288
+2022/10/25 11:03:46 [notice] 4038#4038: start worker processes
+2022/10/25 11:03:46 [notice] 4038#4038: start worker process 4039
+2022/10/25 11:03:46 [notice] 4038#4038: start worker process 4051
+2022/10/25 11:05:07 [notice] 4038#4038: signal 1 (SIGHUP) received from 6983, reconfiguring
+2022/10/25 11:05:07 [notice] 4038#4038: reconfiguring
+2022/10/25 11:05:07 [notice] 4038#4038: using the "epoll" event method
+2022/10/25 11:05:07 [notice] 4038#4038: start worker processes
+2022/10/25 11:05:07 [notice] 4038#4038: start worker process 6984
+2022/10/25 11:05:07 [notice] 4038#4038: start worker process 6985
+2022/10/25 11:05:07 [notice] 4038#4038: start cache manager process 6986
+2022/10/25 11:05:07 [notice] 4038#4038: start cache loader process 6987
+2022/10/25 11:05:07 [notice] 6984#6984: added static node while initializing node, node: 192.168.123.101
+2022/10/25 11:05:07 [notice] 6984#6984: added static node while initializing node, node: 192.168.123.102
+2022/10/25 11:05:07 [notice] 6984#6984: sync enabled for zone "requestlimit"
+2022/10/25 11:05:07 [notice] 6984#6984: *24 connected to peer "192.168.123.102", node: 192.168.123.102
+2022/10/25 11:05:07 [notice] 6984#6984: *25 accepted client 192.168.123.102, client: 192.168.123.102, server: 0.0.0.0:54321
+2022/10/25 11:05:07 [notice] 6984#6984: *24 node is online, node: 192.168.123.102
+2022/10/25 11:05:07 [notice] 6984#6984: *23 connected to peer "192.168.123.101", node: 192.168.123.101
+2022/10/25 11:05:07 [notice] 6984#6984: *25 detected local connection id, closing, client: 192.168.123.102, server: 0.0.0.0:54321
+2022/10/25 11:05:07 [notice] 6984#6984: *23 node is online, node: 192.168.123.101
+2022/10/25 11:05:07 [notice] 6984#6984: *24 node is offline: ignore self while sending snapshots, node: 192.168.123.102
+2022/10/25 11:05:07 [notice] 4039#4039: gracefully shutting down
+2022/10/25 11:05:07 [notice] 4039#4039: exiting
+2022/10/25 11:05:07 [notice] 4039#4039: exit
+2022/10/25 11:05:07 [notice] 4051#4051: gracefully shutting down
+2022/10/25 11:05:07 [notice] 4051#4051: exiting
+2022/10/25 11:05:07 [notice] 4051#4051: exit
+2022/10/25 11:05:07 [notice] 4038#4038: signal 17 (SIGCHLD) received from 4051
+2022/10/25 11:05:07 [notice] 4038#4038: worker process 4051 exited with code 0
+2022/10/25 11:05:07 [notice] 4038#4038: signal 29 (SIGIO) received
+2022/10/25 11:05:07 [notice] 4038#4038: signal 17 (SIGCHLD) received from 4039
+2022/10/25 11:05:07 [notice] 4038#4038: worker process 4039 exited with code 0
+2022/10/25 11:05:07 [notice] 4038#4038: signal 29 (SIGIO) received
+2022/10/25 11:05:07 [notice] 6984#6984: *26 accepted client 192.168.123.101, client: 192.168.123.101, server: 0.0.0.0:54321
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1027  100  1027    0     0   8630      0 --:--:-- --:--:-- --:--:--  8558
+{
+  "currentStatus": {
+    "entitlement": {
+      "features": [
+        {
+          "expiry": "2022-11-20T15:30:35.493Z",
+          "gracePeriodDays": 0,
+          "id": "APIM",
+          "limit": 0,
+          "name": "NGINX API Management",
+          "type": "EVAL",
+          "unitOfMeasure": "SUCCESSFUL_API_CALLS_IN_MILLIONS",
+          "unlimited": true
+        },
+        {
+          "expiry": "2022-11-20T15:30:35.493Z",
+          "gracePeriodDays": 0,
+          "id": "INSTANCE_MANAGER",
+          "limit": 0,
+          "name": "NGINX Management",
+          "type": "EVAL",
+          "unitOfMeasure": "INSTANCES",
+          "unlimited": true
+        }
+      ]
+    },
+    "state": {
+      "currentInstance": {
+        "configState": {
+          "selfConfigState": {
+            "configured": 1,
+            "isConfigured": true,
+            "total": 1
+          }
+        },
+        "features": [
+          {
+            "daysUntilExpiry": 27,
+            "gracePeriodRemainingDays": 0,
+            "id": "APIM",
+            "name": "NGINX API Management",
+            "unitOfMeasure": "SUCCESSFUL_API_CALLS_IN_MILLIONS"
+          },
+          {
+            "daysUntilExpiry": 27,
+            "gracePeriodRemainingDays": 0,
+            "id": "INSTANCE_MANAGER",
+            "name": "NGINX Management",
+            "nginxPlusUsed": 2,
+            "unitOfMeasure": "INSTANCES",
+            "used": 2
+          }
+        ],
+        "id": "",
+        "status": "VALID",
+        "type": "NGINX Manager",
+        "version": ""
+      }
+    },
+    "subscription": {
+      "id": "NGX-Subscription-1-TRL-085988"
+    }
+  },
+  "desiredState": {
+    "content": "********"
+  },
+  "metadata": {
+    "name": "license"
+  }
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  2146    0  2146    0     0  19870      0 --:--:-- --:--:-- --:--:-- 19870
+{
+  "count": 2,
+  "items": [
+    {
+      "agent": {
+        "accessibleDirs": "/etc/nginx:/usr/local/etc/nginx:/usr/share/nginx/modules:/etc/nms",
+        "version": "v2.16.21"
+      },
+      "displayName": "Worker2.Ubuntu",
+      "hostname": "Worker2.Ubuntu",
+      "links": [
+        {
+          "rel": "/api/platform/v1/systems/46708a55-1db6-3927-914b-b00d6118c270",
+          "name": "self"
+        }
+      ],
+      "nginxInstances": [
+        {
+          "build": {
+            "nginxPlus": true,
+            "release": "nginx-plus-r27-p1",
+            "version": "1.21.6"
+          },
+          "configPath": "/etc/nginx/nginx.conf",
+          "displayName": "Worker2.Ubuntu",
+          "links": [
+            {
+              "rel": "/api/platform/v1/systems/46708a55-1db6-3927-914b-b00d6118c270",
+              "name": "system"
+            },
+            {
+              "rel": "/api/platform/v1/systems/46708a55-1db6-3927-914b-b00d6118c270/instances/5381ddef-daab-5db8-86e3-bec26f9fac92",
+              "name": "self"
+            }
+          ],
+          "processPath": "/usr/sbin/nginx",
+          "registrationTime": "2022-10-25T11:05:19.000Z",
+          "startTime": "2022-10-25T11:03:46Z",
+          "status": {
+            "lastStatusReport": "2022-10-25T11:05:19.411106651Z",
+            "state": "unknown"
+          },
+          "uid": "5381ddef-daab-5db8-86e3-bec26f9fac92",
+          "version": "1.21.6"
+        }
+      ],
+      "status": {
+        "lastStatusReport": "2022-10-25T11:05:19.411107205Z",
+        "state": "unknown"
+      },
+      "tags": [],
+      "uid": "46708a55-1db6-3927-914b-b00d6118c270"
+    },
+    {
+      "agent": {
+        "accessibleDirs": "/etc/nginx:/usr/local/etc/nginx:/usr/share/nginx/modules:/etc/nms",
+        "version": "v2.16.21"
+      },
+      "displayName": "Worker1.Ubuntu",
+      "hostname": "Worker1.Ubuntu",
+      "links": [
+        {
+          "rel": "/api/platform/v1/systems/f340e5e7-4f2f-30cf-923f-744d0a6136cb",
+          "name": "self"
+        }
+      ],
+      "nginxInstances": [
+        {
+          "build": {
+            "nginxPlus": true,
+            "release": "nginx-plus-r27-p1",
+            "version": "1.21.6"
+          },
+          "configPath": "/etc/nginx/nginx.conf",
+          "displayName": "Worker1.Ubuntu",
+          "links": [
+            {
+              "rel": "/api/platform/v1/systems/f340e5e7-4f2f-30cf-923f-744d0a6136cb",
+              "name": "system"
+            },
+            {
+              "rel": "/api/platform/v1/systems/f340e5e7-4f2f-30cf-923f-744d0a6136cb/instances/ccd7173a-44bd-5260-90d9-339c29305397",
+              "name": "self"
+            }
+          ],
+          "processPath": "/usr/sbin/nginx",
+          "registrationTime": "2022-10-25T11:04:48.000Z",
+          "startTime": "2022-10-25T11:04:25Z",
+          "status": {
+            "lastStatusReport": "2022-10-25T11:04:48.159743975Z",
+            "state": "online"
+          },
+          "uid": "ccd7173a-44bd-5260-90d9-339c29305397",
+          "version": "1.21.6"
+        }
+      ],
+      "status": {
+        "lastStatusReport": "2022-10-25T11:04:48.159743975Z",
+        "state": "online"
+      },
+      "tags": [],
+      "uid": "f340e5e7-4f2f-30cf-923f-744d0a6136cb"
+    }
+  ]
+}
+ubuntu@Worker2:~$

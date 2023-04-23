@@ -1,0 +1,901 @@
+login as: ubuntu
+ubuntu@192.168.123.11's password:
+Welcome to Ubuntu 20.04.4 LTS (GNU/Linux 5.4.0-107-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue 25 Oct 2022 10:50:54 AM UTC
+
+  System load:  0.89               Processes:              261
+  Usage of /:   18.6% of 32.97GB   Users logged in:        0
+  Memory usage: 8%                 IPv4 address for ens33: 192.168.101.11
+  Swap usage:   0%                 IPv4 address for ens34: 192.168.123.11
+
+ * Super-optimized for small spaces - read how we shrank the memory
+   footprint of MicroK8s to make it the smallest full K8s around.
+
+   https://ubuntu.com/blog/microk8s-memory-optimisation
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+Last login: Tue Apr 19 16:29:54 2022 from 192.168.123.245
+ubuntu@Master1:~$ ls -lap
+total 44
+drwxr-xr-x 4 ubuntu ubuntu 4096 Oct 25 10:51 ./
+drwxr-xr-x 3 root   root   4096 Apr 19  2022 ../
+-rw------- 1 ubuntu ubuntu  463 Apr 19  2022 .bash_history
+-rw-r--r-- 1 ubuntu ubuntu  220 Feb 25  2020 .bash_logout
+-rw-r--r-- 1 ubuntu ubuntu 3771 Feb 25  2020 .bashrc
+drwx------ 2 ubuntu ubuntu 4096 Apr 19  2022 .cache/
+-rw-r--r-- 1 ubuntu ubuntu 1573 Oct 21 15:34 nginx-mgmt-suite-trial.crt
+-rw-r--r-- 1 ubuntu ubuntu 1732 Oct 21 15:34 nginx-mgmt-suite-trial.key
+-rw-r--r-- 1 ubuntu ubuntu 3814 Oct 21 15:34 nginx-mgmt-suite-trial.lic
+-rw-r--r-- 1 ubuntu ubuntu  807 Feb 25  2020 .profile
+drwx------ 2 ubuntu ubuntu 4096 Apr 19  2022 .ssh/
+-rw-r--r-- 1 ubuntu ubuntu    0 Apr 19  2022 .sudo_as_admin_successful
+ubuntu@Master1:~$ cd $HOME;sudo curl -k -L -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/NIM2-N%2BHA/NIM2ManagerInstall.sh;sudo chmod 777 $HOME/NIM2ManagerInstall.sh;/bin/bash $HOME/NIM2ManagerInstall.sh
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  8283  100  8283    0     0   5272      0  0:00:01  0:00:01 --:--:--  5272
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  5796  100  5796    0     0  13447      0 --:--:-- --:--:-- --:--:-- 13416
+total 16
+drwxr-xr-x 2 root root 4096 Oct 25 10:52 ./
+drwxr-xr-x 5 root root 4096 Oct 25 10:52 ../
+-rw-r--r-- 1 root root 1573 Oct 25 10:52 nginx-repo.crt
+-rw-r--r-- 1 root root 1732 Oct 25 10:52 nginx-repo.key
+--2022-10-25 10:52:52--  https://cs.nginx.com/static/keys/nginx_signing.key
+Resolving cs.nginx.com (cs.nginx.com)... 52.59.52.27, 3.126.134.177
+Connecting to cs.nginx.com (cs.nginx.com)|52.59.52.27|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1561 (1.5K)
+Saving to: ‘nginx_signing.key’
+
+nginx_signing.key                                 100%[============================================================================================================>]   1.52K  --.-KB/s    in 0s
+
+2022-10-25 10:52:53 (533 MB/s) - ‘nginx_signing.key’ saved [1561/1561]
+
+OK
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+lsb-release is already the newest version (11.1.0ubuntu2).
+lsb-release set to manually installed.
+ca-certificates is already the newest version (20210119~20.04.2).
+ca-certificates set to manually installed.
+The following NEW packages will be installed:
+  apt-transport-https
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 4,680 B of archives.
+After this operation, 162 kB of additional disk space will be used.
+Err:1 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 apt-transport-https all 2.0.6
+  404  Not Found [IP: 202.79.184.254 80]
+E: Failed to fetch http://id.archive.ubuntu.com/ubuntu/pool/universe/a/apt/apt-transport-https_2.0.6_all.deb  404  Not Found [IP: 202.79.184.254 80]
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+deb https://pkgs.nginx.com/plus/ubuntu focal nginx-plus
+--2022-10-25 10:52:56--  https://cs.nginx.com/static/files/90pkgs-nginx
+Resolving cs.nginx.com (cs.nginx.com)... 52.59.52.27, 3.126.134.177
+Connecting to cs.nginx.com (cs.nginx.com)|52.59.52.27|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 258
+Saving to: ‘/etc/apt/apt.conf.d/90pkgs-nginx’
+
+90pkgs-nginx                                      100%[============================================================================================================>]     258  --.-KB/s    in 0s
+
+2022-10-25 10:52:58 (98.8 MB/s) - ‘/etc/apt/apt.conf.d/90pkgs-nginx’ saved [258/258]
+
+Hit:1 http://id.archive.ubuntu.com/ubuntu focal InRelease
+Get:2 http://id.archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:3 http://id.archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
+Get:4 http://id.archive.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:5 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 Packages [2,191 kB]
+Get:6 https://pkgs.nginx.com/plus/ubuntu focal InRelease [3,755 B]
+Get:7 https://pkgs.nginx.com/plus/ubuntu focal/nginx-plus amd64 Packages [58.4 kB]
+Get:8 http://id.archive.ubuntu.com/ubuntu focal-updates/main Translation-en [385 kB]
+Get:9 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 c-n-f Metadata [16.0 kB]
+Get:10 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 Packages [1,372 kB]
+Get:11 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted Translation-en [194 kB]
+Get:12 http://id.archive.ubuntu.com/ubuntu focal-updates/restricted amd64 c-n-f Metadata [600 B]
+Get:13 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 Packages [970 kB]
+Get:14 http://id.archive.ubuntu.com/ubuntu focal-updates/universe Translation-en [221 kB]
+Get:15 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 c-n-f Metadata [21.8 kB]
+Get:16 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 Packages [29.9 kB]
+Get:17 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse Translation-en [7,940 B]
+Get:18 http://id.archive.ubuntu.com/ubuntu focal-updates/multiverse amd64 c-n-f Metadata [664 B]
+Get:19 http://id.archive.ubuntu.com/ubuntu focal-backports/main amd64 Packages [45.6 kB]
+Get:20 http://id.archive.ubuntu.com/ubuntu focal-backports/main Translation-en [16.3 kB]
+Get:21 http://id.archive.ubuntu.com/ubuntu focal-backports/main amd64 c-n-f Metadata [1,420 B]
+Get:22 http://id.archive.ubuntu.com/ubuntu focal-backports/universe amd64 Packages [23.9 kB]
+Get:23 http://id.archive.ubuntu.com/ubuntu focal-backports/universe Translation-en [16.0 kB]
+Get:24 http://id.archive.ubuntu.com/ubuntu focal-backports/universe amd64 c-n-f Metadata [860 B]
+Get:25 http://id.archive.ubuntu.com/ubuntu focal-security/main amd64 Packages [1,818 kB]
+Get:26 http://id.archive.ubuntu.com/ubuntu focal-security/main Translation-en [300 kB]
+Get:27 http://id.archive.ubuntu.com/ubuntu focal-security/main amd64 c-n-f Metadata [11.2 kB]
+Get:28 http://id.archive.ubuntu.com/ubuntu focal-security/restricted amd64 Packages [1,282 kB]
+Get:29 http://id.archive.ubuntu.com/ubuntu focal-security/restricted Translation-en [182 kB]
+Get:30 http://id.archive.ubuntu.com/ubuntu focal-security/restricted amd64 c-n-f Metadata [596 B]
+Get:31 http://id.archive.ubuntu.com/ubuntu focal-security/universe amd64 Packages [742 kB]
+Get:32 http://id.archive.ubuntu.com/ubuntu focal-security/universe Translation-en [137 kB]
+Get:33 http://id.archive.ubuntu.com/ubuntu focal-security/universe amd64 c-n-f Metadata [15.3 kB]
+Get:34 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse amd64 Packages [22.2 kB]
+Get:35 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse Translation-en [5,376 B]
+Get:36 http://id.archive.ubuntu.com/ubuntu focal-security/multiverse amd64 c-n-f Metadata [508 B]
+Fetched 10.4 MB in 3min 7s (55.6 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following NEW packages will be installed:
+  nginx-plus
+0 upgraded, 1 newly installed, 0 to remove and 135 not upgraded.
+Need to get 3,265 kB of archives.
+After this operation, 6,565 kB of additional disk space will be used.
+Get:1 https://pkgs.nginx.com/plus/ubuntu focal/nginx-plus amd64 nginx-plus amd64 27-2~focal [3,265 kB]
+Fetched 3,265 kB in 2min 0s (27.3 kB/s)
+Selecting previously unselected package nginx-plus.
+(Reading database ... 72025 files and directories currently installed.)
+Preparing to unpack .../nginx-plus_27-2~focal_amd64.deb ...
+----------------------------------------------------------------------
+
+Thank you for using NGINX!
+
+Please find the documentation for NGINX Plus here:
+/usr/share/nginx/html/nginx-modules-reference.pdf
+
+NGINX Plus is proprietary software. EULA and License information:
+/usr/share/doc/nginx-plus/
+
+For support information, please see:
+https://www.nginx.com/support/
+
+----------------------------------------------------------------------
+Unpacking nginx-plus (27-2~focal) ...
+Setting up nginx-plus (27-2~focal) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/nginx.service → /lib/systemd/system/nginx.service.
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for systemd (245.4-4ubuntu3.16) ...
+Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 10:58:16 UTC. --
+Oct 25 10:58:15 Master1.Ubuntu systemd[1]: Starting NGINX Plus - high performance web server...
+Oct 25 10:58:15 Master1.Ubuntu systemd[1]: nginx.service: Can't open PID file /run/nginx.pid (yet?) after start: Operation not permitted
+Oct 25 10:58:15 Master1.Ubuntu systemd[1]: Started NGINX Plus - high performance web server.
+root        2911  0.0  0.0   9264   900 ?        Ss   10:58   0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+nginx       2912  0.0  0.0   9924  3596 ?        S    10:58   0:00 nginx: worker process
+nginx       2913  0.0  0.0   9924  3596 ?        S    10:58   0:00 nginx: worker process
+ubuntu      3024  0.0  0.0   6300   720 pts/0    S+   10:58   0:00 grep nginx
+nginx version: nginx/1.21.6 (nginx-plus-r27-p1)
+built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
+built with OpenSSL 1.1.1f  31 Mar 2020
+TLS SNI support enabled
+configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --build=nginx-plus-r27-p1 --with-http_auth_jwt_module --with-http_f4f_module --with-http_hls_module --with-http_session_log_module --with-cc-opt='-g -O2 -fdebug-prefix-map=/data/builder/debuild/nginx-plus-1.21.6/debian/debuild-base/nginx-plus-1.21.6=. -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fPIC' --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -pie'
+2022/10/25 10:58:15 [notice] 2910#2910: using the "epoll" event method
+2022/10/25 10:58:15 [notice] 2910#2910: nginx/1.21.6 (nginx-plus-r27-p1)
+2022/10/25 10:58:15 [notice] 2910#2910: built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
+2022/10/25 10:58:15 [notice] 2910#2910: OS: Linux 5.4.0-107-generic
+2022/10/25 10:58:15 [notice] 2910#2910: getrlimit(RLIMIT_NOFILE): 1024:524288
+2022/10/25 10:58:15 [notice] 2911#2911: start worker processes
+2022/10/25 10:58:15 [notice] 2911#2911: start worker process 2912
+2022/10/25 10:58:15 [notice] 2911#2911: start worker process 2913
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  4632  100  4632    0     0   3644      0  0:00:01  0:00:01 --:--:--  3644
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server gpgconf gpgsm gpgv
+Suggested packages:
+  pinentry-gnome3 tor parcimonie xloadimage scdaemon
+The following NEW packages will be installed:
+  apt-transport-https
+The following packages will be upgraded:
+  ca-certificates dirmngr gnupg gnupg-l10n gnupg-utils gpg gpg-agent gpg-wks-client gpg-wks-server gpgconf gpgsm gpgv
+12 upgraded, 1 newly installed, 0 to remove and 123 not upgraded.
+Need to get 2,708 kB of archives.
+After this operation, 157 kB of additional disk space will be used.
+Get:1 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpg-wks-client amd64 2.2.19-3ubuntu2.2 [97.4 kB]
+Get:2 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 dirmngr amd64 2.2.19-3ubuntu2.2 [330 kB]
+Get:3 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gnupg-utils amd64 2.2.19-3ubuntu2.2 [481 kB]
+Get:4 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpg-wks-server amd64 2.2.19-3ubuntu2.2 [90.2 kB]
+Get:5 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpg-agent amd64 2.2.19-3ubuntu2.2 [232 kB]
+Get:6 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpg amd64 2.2.19-3ubuntu2.2 [482 kB]
+Get:7 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpgconf amd64 2.2.19-3ubuntu2.2 [124 kB]
+Get:8 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gnupg-l10n all 2.2.19-3ubuntu2.2 [51.7 kB]
+Get:9 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gnupg all 2.2.19-3ubuntu2.2 [259 kB]
+Get:10 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpgsm amd64 2.2.19-3ubuntu2.2 [217 kB]
+Get:11 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 gpgv amd64 2.2.19-3ubuntu2.2 [200 kB]
+Get:12 http://id.archive.ubuntu.com/ubuntu focal-updates/main amd64 ca-certificates all 20211016~20.04.1 [144 kB]
+Get:13 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 apt-transport-https all 2.0.9 [1,704 B]
+Fetched 2,708 kB in 10s (281 kB/s)
+Preconfiguring packages ...
+(Reading database ... 72064 files and directories currently installed.)
+Preparing to unpack .../00-gpg-wks-client_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpg-wks-client (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../01-dirmngr_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking dirmngr (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../02-gnupg-utils_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gnupg-utils (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../03-gpg-wks-server_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpg-wks-server (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../04-gpg-agent_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpg-agent (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../05-gpg_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpg (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../06-gpgconf_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpgconf (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../07-gnupg-l10n_2.2.19-3ubuntu2.2_all.deb ...
+Unpacking gnupg-l10n (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../08-gnupg_2.2.19-3ubuntu2.2_all.deb ...
+Unpacking gnupg (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../09-gpgsm_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpgsm (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Preparing to unpack .../10-gpgv_2.2.19-3ubuntu2.2_amd64.deb ...
+Unpacking gpgv (2.2.19-3ubuntu2.2) over (2.2.19-3ubuntu2.1) ...
+Setting up gpgv (2.2.19-3ubuntu2.2) ...
+(Reading database ... 72064 files and directories currently installed.)
+Preparing to unpack .../ca-certificates_20211016~20.04.1_all.deb ...
+Unpacking ca-certificates (20211016~20.04.1) over (20210119~20.04.2) ...
+Selecting previously unselected package apt-transport-https.
+Preparing to unpack .../apt-transport-https_2.0.9_all.deb ...
+Unpacking apt-transport-https (2.0.9) ...
+Setting up apt-transport-https (2.0.9) ...
+Setting up ca-certificates (20211016~20.04.1) ...
+Updating certificates in /etc/ssl/certs...
+rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+7 added, 8 removed; done.
+Setting up gnupg-l10n (2.2.19-3ubuntu2.2) ...
+Setting up gpgconf (2.2.19-3ubuntu2.2) ...
+Setting up gpg (2.2.19-3ubuntu2.2) ...
+Setting up gnupg-utils (2.2.19-3ubuntu2.2) ...
+Setting up gpg-agent (2.2.19-3ubuntu2.2) ...
+Setting up gpgsm (2.2.19-3ubuntu2.2) ...
+Setting up dirmngr (2.2.19-3ubuntu2.2) ...
+Setting up gpg-wks-server (2.2.19-3ubuntu2.2) ...
+Setting up gpg-wks-client (2.2.19-3ubuntu2.2) ...
+Setting up gnupg (2.2.19-3ubuntu2.2) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for install-info (6.7.0.dfsg.2-5) ...
+Processing triggers for ca-certificates (20211016~20.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Executing: /tmp/apt-key-gpghome.zCcUj0Uz0Z/gpg.1.sh --keyserver hkp://keyserver.ubuntu.com:80 --recv 8919F6BD2B48D754
+gpg: key 8919F6BD2B48D754: public key "ClickHouse Inc. Repositories Key <packages@clickhouse.com>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+deb https://packages.clickhouse.com/deb stable main
+Hit:1 http://id.archive.ubuntu.com/ubuntu focal InRelease
+Hit:2 http://id.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:3 http://id.archive.ubuntu.com/ubuntu focal-backports InRelease
+Hit:4 http://id.archive.ubuntu.com/ubuntu focal-security InRelease
+Get:5 https://packages.clickhouse.com/deb stable InRelease [2,484 B]
+Hit:6 https://pkgs.nginx.com/plus/ubuntu focal InRelease
+Get:7 https://packages.clickhouse.com/deb stable/main amd64 Packages [30.5 kB]
+Fetched 32.9 kB in 5s (6,197 B/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  clickhouse-common-static
+Suggested packages:
+  clickhouse-common-static-dbg
+The following NEW packages will be installed:
+  clickhouse-common-static clickhouse-server
+0 upgraded, 2 newly installed, 0 to remove and 123 not upgraded.
+Need to get 248 MB of archives.
+After this operation, 700 MB of additional disk space will be used.
+Get:1 https://packages.clickhouse.com/deb stable/main amd64 clickhouse-common-static amd64 22.9.3.18 [248 MB]
+Get:2 https://packages.clickhouse.com/deb stable/main amd64 clickhouse-server amd64 22.9.3.18 [111 kB]
+Fetched 248 MB in 3min 11s (1,300 kB/s)
+Selecting previously unselected package clickhouse-common-static.
+(Reading database ... 72067 files and directories currently installed.)
+Preparing to unpack .../clickhouse-common-static_22.9.3.18_amd64.deb ...
+Unpacking clickhouse-common-static (22.9.3.18) ...
+Selecting previously unselected package clickhouse-server.
+Preparing to unpack .../clickhouse-server_22.9.3.18_amd64.deb ...
+Unpacking clickhouse-server (22.9.3.18) ...
+Setting up clickhouse-common-static (22.9.3.18) ...
+Setting up clickhouse-server (22.9.3.18) ...
+ClickHouse binary is already located at /usr/bin/clickhouse
+Symlink /usr/bin/clickhouse-server already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-server to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-client to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-local to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-benchmark to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-copier already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-copier to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-obfuscator to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-git-import to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-compressor to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-format to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-extract-from-config already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-extract-from-config to /usr/bin/clickhouse.
+Symlink /usr/bin/clickhouse-keeper already exists but it points to /clickhouse. Will replace the old symlink to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-keeper to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-keeper-converter to /usr/bin/clickhouse.
+Creating symlink /usr/bin/clickhouse-disks to /usr/bin/clickhouse.
+Creating clickhouse group if it does not exist.
+ groupadd -r clickhouse
+Creating clickhouse user if it does not exist.
+ useradd -r --shell /bin/false --home-dir /nonexistent -g clickhouse clickhouse
+Will set ulimits for clickhouse user in /etc/security/limits.d/clickhouse.conf.
+Creating config directory /etc/clickhouse-server/config.d that is used for tweaks of main server configuration.
+Creating config directory /etc/clickhouse-server/users.d that is used for tweaks of users configuration.
+Config file /etc/clickhouse-server/config.xml already exists, will keep it and extract path info from it.
+/etc/clickhouse-server/config.xml has /var/lib/clickhouse/ as data path.
+/etc/clickhouse-server/config.xml has /var/log/clickhouse-server/ as log path.
+Users config file /etc/clickhouse-server/users.xml already exists, will keep it and extract users info from it.
+Creating log directory /var/log/clickhouse-server/.
+Creating data directory /var/lib/clickhouse/.
+Creating pid directory /var/run/clickhouse-server.
+ chown -R clickhouse:clickhouse '/var/log/clickhouse-server/'
+ chown -R clickhouse:clickhouse '/var/run/clickhouse-server'
+ chown  clickhouse:clickhouse '/var/lib/clickhouse/'
+ groupadd -r clickhouse-bridge
+ useradd -r --shell /bin/false --home-dir /nonexistent -g clickhouse-bridge clickhouse-bridge
+ chown -R clickhouse-bridge:clickhouse-bridge '/usr/bin/clickhouse-odbc-bridge'
+ chown -R clickhouse-bridge:clickhouse-bridge '/usr/bin/clickhouse-library-bridge'
+Password for default user is empty string. See /etc/clickhouse-server/users.xml and /etc/clickhouse-server/users.d to change it.
+Setting capabilities for clickhouse binary. This is optional.
+ chown -R clickhouse:clickhouse '/etc/clickhouse-server'
+
+ClickHouse has been successfully installed.
+
+Start clickhouse-server with:
+ sudo clickhouse start
+
+Start clickhouse-client with:
+ clickhouse-client
+
+Synchronizing state of clickhouse-server.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable clickhouse-server
+Created symlink /etc/systemd/system/multi-user.target.wants/clickhouse-server.service → /lib/systemd/system/clickhouse-server.service.
+Processing triggers for systemd (245.4-4ubuntu3.16) ...
+Synchronizing state of clickhouse-server.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable clickhouse-server
+/var/run/clickhouse-server/clickhouse-server.pid file exists and contains pid = 11204.
+The process with pid = 11204 is already running.
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:02:02 UTC. --
+Oct 25 11:02:01 Master1.Ubuntu systemd[1]: Started ClickHouse Server (analytic DBMS for big data).
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11202]: Processing configuration file '/etc/clickhouse-server/config.xml'.
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11202]: Logging trace to /var/log/clickhouse-server/clickhouse-server.log
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11202]: Logging errors to /var/log/clickhouse-server/clickhouse-server.err.log
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11204]: Processing configuration file '/etc/clickhouse-server/config.xml'.
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11204]: Saved preprocessed configuration to '/var/lib/clickhouse/preprocessed_configs/config.xml'.
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11204]: Processing configuration file '/etc/clickhouse-server/users.xml'.
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11204]: Saved preprocessed configuration to '/var/lib/clickhouse/preprocessed_configs/users.xml'.
+2022.10.25 11:02:01.313084 [ 11202 ] {} <Information> Application: Will watch for the process with pid 11204
+2022.10.25 11:02:01.313260 [ 11204 ] {} <Information> Application: Forked a child process to watch
+2022.10.25 11:02:01.313452 [ 11204 ] {} <Information> SentryWriter: Sending crash reports is disabled
+2022.10.25 11:02:01.313528 [ 11204 ] {} <Trace> Pipe: Pipe capacity is 1.00 MiB
+2022.10.25 11:02:01.353460 [ 11204 ] {} <Information> : Starting ClickHouse 22.9.3.18 with revision 54466, build id: 2FF5057A32C04624F2110CA79BB67F0102974C99, PID 11204
+2022.10.25 11:02:01.353567 [ 11204 ] {} <Information> Application: starting up
+2022.10.25 11:02:01.353580 [ 11204 ] {} <Information> Application: OS name: Linux, version: 5.4.0-107-generic, architecture: x86_64
+2022.10.25 11:02:01.361127 [ 11204 ] {} <Trace> AsynchronousMetrics: Scanning /sys/class/thermal
+2022.10.25 11:02:01.361151 [ 11204 ] {} <Trace> AsynchronousMetrics: Scanning /sys/block
+2022.10.25 11:02:01.361207 [ 11204 ] {} <Trace> AsynchronousMetrics: Scanning /sys/devices/system/edac
+2022.10.25 11:02:01.361219 [ 11204 ] {} <Trace> AsynchronousMetrics: Scanning /sys/class/hwmon
+2022.10.25 11:02:01.511824 [ 11204 ] {} <Information> Application: Integrity check of the executable successfully passed (checksum: 06A610082550DFA727475EBE3BB01E18)
+2022.10.25 11:02:01.511920 [ 11204 ] {} <Trace> Application: Will do mlock to prevent executable memory from being paged out. It may take a few seconds.
+2022.10.25 11:02:01.527678 [ 11204 ] {} <Trace> Application: The memory map of clickhouse executable has been mlock'ed, total 272.27 MiB
+2022.10.25 11:02:01.528831 [ 11204 ] {} <Debug> Application: rlimit on number of file descriptors is 500000
+2022.10.25 11:02:01.528853 [ 11204 ] {} <Debug> Application: rlimit on number of threads is 15252
+2022.10.25 11:02:01.528870 [ 11204 ] {} <Warning> Context: Maximum number of threads is lower than 30000. There could be problems with handling a lot of simultaneous queries.
+2022.10.25 11:02:01.528892 [ 11204 ] {} <Debug> Application: Initializing DateLUT.
+2022.10.25 11:02:01.528894 [ 11204 ] {} <Trace> Application: Initialized DateLUT with time zone 'Etc/UTC'.
+2022.10.25 11:02:01.528910 [ 11204 ] {} <Debug> Application: Setting up /var/lib/clickhouse/tmp/ to store temporary data in it
+2022.10.25 11:02:01.529299 [ 11204 ] {} <Debug> Application: Configuration parameter 'interserver_http_host' doesn't exist or exists and empty. Will use 'Master1' as replica host.
+2022.10.25 11:02:01.529315 [ 11204 ] {} <Debug> Application: Initializing interserver credentials.
+2022.10.25 11:02:01.529412 [ 11204 ] {} <Information> SensitiveDataMaskerConfigRead: 1 query masking rules loaded.
+2022.10.25 11:02:01.530849 [ 11204 ] {} <Debug> ConfigReloader: Loading config '/etc/clickhouse-server/config.xml'
+2022.10.25 11:02:01.532976 [ 11204 ] {} <Debug> ConfigReloader: Loaded config '/etc/clickhouse-server/config.xml', performing update on configuration
+2022.10.25 11:02:01.533782 [ 11204 ] {} <Information> Application: Setting max_server_memory_usage was set to 3.43 GiB (3.81 GiB available * 0.90 max_server_memory_usage_to_ram_ratio)
+2022.10.25 11:02:01.534824 [ 11204 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2022.10.25 11:02:01.534833 [ 11204 ] {} <Debug> ConfigReloader: Loaded config '/etc/clickhouse-server/config.xml', performed update on configuration
+2022.10.25 11:02:01.536263 [ 11204 ] {} <Debug> ConfigReloader: Loading config '/etc/clickhouse-server/users.xml'
+2022.10.25 11:02:01.536566 [ 11204 ] {} <Debug> ConfigReloader: Loaded config '/etc/clickhouse-server/users.xml', performing update on configuration
+2022.10.25 11:02:01.536900 [ 11204 ] {} <Debug> ConfigReloader: Loaded config '/etc/clickhouse-server/users.xml', performed update on configuration
+2022.10.25 11:02:01.537189 [ 11204 ] {} <Debug> Access(user directories): Added users.xml access storage 'users.xml', path: /etc/clickhouse-server/users.xml
+2022.10.25 11:02:01.537253 [ 11204 ] {} <Warning> Access(local directory): File /var/lib/clickhouse/access/users.list doesn't exist
+2022.10.25 11:02:01.537262 [ 11204 ] {} <Warning> Access(local directory): Recovering lists in directory /var/lib/clickhouse/access/
+2022.10.25 11:02:01.537326 [ 11204 ] {} <Debug> Access(user directories): Added local directory access storage 'local directory', path: /var/lib/clickhouse/access/
+2022.10.25 11:02:01.537340 [ 11204 ] {} <Information> Application: Uncompressed cache policy name
+2022.10.25 11:02:01.537345 [ 11204 ] {} <Information> Application: Uncompressed cache size was lowered to 1.90 GiB because the system has low amount of memory
+2022.10.25 11:02:01.537711 [ 11204 ] {} <Information> Context: Initialized background executor for merges and mutations with num_threads=16, num_tasks=32
+2022.10.25 11:02:01.537863 [ 11204 ] {} <Information> Context: Initialized background executor for move operations with num_threads=8, num_tasks=8
+2022.10.25 11:02:01.538053 [ 11204 ] {} <Information> Context: Initialized background executor for fetches with num_threads=8, num_tasks=8
+2022.10.25 11:02:01.538190 [ 11204 ] {} <Information> Context: Initialized background executor for common operations (e.g. clearing old parts) with num_threads=8, num_tasks=8
+2022.10.25 11:02:01.538241 [ 11204 ] {} <Information> Application: Mark cache size was lowered to 1.90 GiB because the system has low amount of memory
+2022.10.25 11:02:01.538302 [ 11204 ] {} <Information> BackgroundSchedulePool/BgSchPool: Create BackgroundSchedulePool with 128 threads
+2022.10.25 11:02:01.540473 [ 11204 ] {} <Information> DNSCacheUpdater: Update period 15 seconds
+2022.10.25 11:02:01.540483 [ 11204 ] {} <Information> Application: Loading user defined objects from /var/lib/clickhouse/
+2022.10.25 11:02:01.540491 [ 11204 ] {} <Debug> UserDefinedSQLObjectsLoader: Loading user defined objects
+2022.10.25 11:02:01.540511 [ 11204 ] {} <Debug> Application: Loaded user defined objects
+2022.10.25 11:02:01.540514 [ 11204 ] {} <Information> Application: Loading metadata from /var/lib/clickhouse/
+2022.10.25 11:02:01.550782 [ 11260 ] {} <Debug> DNSResolver: Updating DNS cache
+2022.10.25 11:02:01.550861 [ 11260 ] {} <Debug> DNSResolver: Updated DNS cache
+2022.10.25 11:02:01.594931 [ 11204 ] {} <Information> DatabaseAtomic (system): Metadata processed, database system has 0 tables and 0 dictionaries in total.
+2022.10.25 11:02:01.594946 [ 11204 ] {} <Information> TablesLoader: Parsed metadata of 0 tables in 1 databases in 0.000281384 sec
+2022.10.25 11:02:01.595088 [ 11204 ] {} <Information> TablesLoader: Loading 0 tables with 0 dependency level
+2022.10.25 11:02:01.596034 [ 11204 ] {} <Debug> SystemLog: Not creating system.text_log since corresponding section 'text_log' is missing from config
+2022.10.25 11:02:01.596808 [ 11204 ] {} <Debug> SystemLog: Not creating system.filesystem_cache_log since corresponding section 'filesystem_cache_log' is missing from config
+2022.10.25 11:02:01.597187 [ 11204 ] {} <Debug> SystemLog: Not creating system.zookeeper_log since corresponding section 'zookeeper_log' is missing from config
+2022.10.25 11:02:01.597196 [ 11204 ] {} <Debug> SystemLog: Not creating system.session_log since corresponding section 'session_log' is missing from config
+2022.10.25 11:02:01.597201 [ 11204 ] {} <Debug> SystemLog: Not creating system.transactions_info_log since corresponding section 'transactions_info_log' is missing from config
+2022.10.25 11:02:01.603278 [ 11204 ] {} <Information> DatabaseCatalog: Found 0 partially dropped tables. Will load them and retry removal.
+2022.10.25 11:02:01.603945 [ 11204 ] {} <Information> DatabaseAtomic (default): Metadata processed, database default has 0 tables and 0 dictionaries in total.
+2022.10.25 11:02:01.603954 [ 11204 ] {} <Information> TablesLoader: Parsed metadata of 0 tables in 1 databases in 3.2994e-05 sec
+2022.10.25 11:02:01.603976 [ 11204 ] {} <Information> TablesLoader: Loading 0 tables with 0 dependency level
+2022.10.25 11:02:01.603982 [ 11204 ] {} <Information> DatabaseAtomic (default): Starting up tables.
+2022.10.25 11:02:01.603989 [ 11204 ] {} <Information> DatabaseAtomic (system): Starting up tables.
+2022.10.25 11:02:01.604482 [ 11204 ] {} <Debug> Application: Loaded metadata.
+2022.10.25 11:02:01.604505 [ 11204 ] {} <Trace> Pipe: Pipe capacity is 1.00 MiB
+2022.10.25 11:02:01.604516 [ 11204 ] {} <Information> Application: Tasks stats provider: netlink
+2022.10.25 11:02:01.604774 [ 11204 ] {} <Trace> MySQLHandlerFactory: Failed to create SSL context. SSL will be disabled. Error: Poco::Exception. Code: 1000, e.code() = 0, SSL Exception: Configuration error: no certificate file has been specified (version 22.9.3.18 (official build))
+2022.10.25 11:02:01.604817 [ 11204 ] {} <Trace> MySQLHandlerFactory: Failed to read RSA key pair from server certificate. Error: Code: 139. DB::Exception: Certificate file is not set. (NO_ELEMENTS_IN_CONFIG) (version 22.9.3.18 (official build))
+2022.10.25 11:02:01.604820 [ 11204 ] {} <Trace> MySQLHandlerFactory: Generating new RSA key pair.
+2022.10.25 11:02:01.746858 [ 11204 ] {} <Trace> MySQLHandlerFactory: Failed to create SSL context. SSL will be disabled. Error: Poco::Exception. Code: 1000, e.code() = 0, SSL Exception: Configuration error: no certificate file has been specified (version 22.9.3.18 (official build))
+2022.10.25 11:02:01.746916 [ 11204 ] {} <Trace> MySQLHandlerFactory: Failed to read RSA key pair from server certificate. Error: Code: 139. DB::Exception: Certificate file is not set. (NO_ELEMENTS_IN_CONFIG) (version 22.9.3.18 (official build))
+2022.10.25 11:02:01.746919 [ 11204 ] {} <Trace> MySQLHandlerFactory: Generating new RSA key pair.
+2022.10.25 11:02:01.834470 [ 11204 ] {} <Information> CertificateReloader: One of paths is empty. Cannot apply new configuration for certificates. Fill all paths and try again.
+2022.10.25 11:02:01.834747 [ 11204 ] {} <Trace> AsynchronousMetrics: MemoryTracking: was 11.56 MiB, peak 15.96 MiB, will set to 358.34 MiB (RSS), difference: 338.27 MiB
+2022.10.25 11:02:01.835033 [ 11204 ] {} <Trace> AsynchronousMetrics: Update heavy metrics. Update period 1 sec. Update heavy metrics period 120 sec. Heavy metrics calculation elapsed: 9.455e-06 sec.
+2022.10.25 11:02:01.835203 [ 11204 ] {} <Information> Application: Available RAM: 3.81 GiB; physical cores: 2; logical cores: 2.
+2022.10.25 11:02:01.835545 [ 11204 ] {} <Information> Application: Listening for http://[::1]:8123
+2022.10.25 11:02:01.835575 [ 11204 ] {} <Information> Application: Listening for native protocol (tcp): [::1]:9000
+2022.10.25 11:02:01.835594 [ 11204 ] {} <Information> Application: Listening for MySQL compatibility protocol: [::1]:9004
+2022.10.25 11:02:01.835612 [ 11204 ] {} <Information> Application: Listening for PostgreSQL compatibility protocol: [::1]:9005
+2022.10.25 11:02:01.835631 [ 11204 ] {} <Information> Application: Listening for http://127.0.0.1:8123
+2022.10.25 11:02:01.835653 [ 11204 ] {} <Information> Application: Listening for native protocol (tcp): 127.0.0.1:9000
+2022.10.25 11:02:01.835671 [ 11204 ] {} <Information> Application: Listening for MySQL compatibility protocol: 127.0.0.1:9004
+2022.10.25 11:02:01.835688 [ 11204 ] {} <Information> Application: Listening for PostgreSQL compatibility protocol: 127.0.0.1:9005
+2022.10.25 11:02:01.835706 [ 11204 ] {} <Information> Application: Listening for replica communication (interserver): http://[::1]:9009
+2022.10.25 11:02:01.835722 [ 11204 ] {} <Information> Application: Listening for replica communication (interserver): http://127.0.0.1:9009
+2022.10.25 11:02:01.835726 [ 11204 ] {} <Information> Application: Ready for connections.
+2022.10.25 11:02:02.000870 [ 11435 ] {} <Trace> AsynchronousMetrics: MemoryTracking: was 358.34 MiB, peak 358.34 MiB, will set to 358.78 MiB (RSS), difference: -8.20 MiB
+2022.10.25 11:02:01.528870 [ 11204 ] {} <Warning> Context: Maximum number of threads is lower than 30000. There could be problems with handling a lot of simultaneous queries.
+2022.10.25 11:02:01.537253 [ 11204 ] {} <Warning> Access(local directory): File /var/lib/clickhouse/access/users.list doesn't exist
+2022.10.25 11:02:01.537262 [ 11204 ] {} <Warning> Access(local directory): Recovering lists in directory /var/lib/clickhouse/access/
+total 16
+drwxr-xr-x 2 root root 4096 Oct 25 10:52 ./
+drwxr-xr-x 5 root root 4096 Oct 25 10:52 ../
+-rw-r--r-- 1 root root 1573 Oct 25 10:52 nginx-repo.crt
+-rw-r--r-- 1 root root 1732 Oct 25 10:52 nginx-repo.key
+-rw-r--r-- 1 ubuntu ubuntu 3814 Oct 21 15:34 /home/ubuntu/nginx-manager.lic
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+lsb-release is already the newest version (11.1.0ubuntu2).
+lsb-release set to manually installed.
+ca-certificates is already the newest version (20211016~20.04.1).
+ca-certificates set to manually installed.
+apt-transport-https is already the newest version (2.0.9).
+The following additional packages will be installed:
+  libjq1 libonig5
+The following NEW packages will be installed:
+  jq libjq1 libonig5
+0 upgraded, 3 newly installed, 0 to remove and 123 not upgraded.
+Need to get 313 kB of archives.
+After this operation, 1,062 kB of additional disk space will be used.
+Get:1 http://id.archive.ubuntu.com/ubuntu focal/universe amd64 libonig5 amd64 6.9.4-1 [142 kB]
+Get:2 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 libjq1 amd64 1.6-1ubuntu0.20.04.1 [121 kB]
+Get:3 http://id.archive.ubuntu.com/ubuntu focal-updates/universe amd64 jq amd64 1.6-1ubuntu0.20.04.1 [50.2 kB]
+Fetched 313 kB in 0s (784 kB/s)
+Selecting previously unselected package libonig5:amd64.
+(Reading database ... 72096 files and directories currently installed.)
+Preparing to unpack .../libonig5_6.9.4-1_amd64.deb ...
+Unpacking libonig5:amd64 (6.9.4-1) ...
+Selecting previously unselected package libjq1:amd64.
+Preparing to unpack .../libjq1_1.6-1ubuntu0.20.04.1_amd64.deb ...
+Unpacking libjq1:amd64 (1.6-1ubuntu0.20.04.1) ...
+Selecting previously unselected package jq.
+Preparing to unpack .../jq_1.6-1ubuntu0.20.04.1_amd64.deb ...
+Unpacking jq (1.6-1ubuntu0.20.04.1) ...
+Setting up libonig5:amd64 (6.9.4-1) ...
+Setting up libjq1:amd64 (1.6-1ubuntu0.20.04.1) ...
+Setting up jq (1.6-1ubuntu0.20.04.1) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.7) ...
+--2022-10-25 11:02:05--  https://nginx.org/keys/nginx_signing.key
+Resolving nginx.org (nginx.org)... 3.125.197.172, 52.58.199.22
+Connecting to nginx.org (nginx.org)|3.125.197.172|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1561 (1.5K) [application/octet-stream]
+Saving to: ‘nginx_signing.key.1’
+
+nginx_signing.key.1                               100%[============================================================================================================>]   1.52K  --.-KB/s    in 0s
+
+2022-10-25 11:02:06 (608 MB/s) - ‘nginx_signing.key.1’ saved [1561/1561]
+
+OK
+deb https://pkgs.nginx.com/nms/ubuntu focal nginx-plus
+--2022-10-25 11:02:06--  https://cs.nginx.com/static/files/90pkgs-nginx
+Resolving cs.nginx.com (cs.nginx.com)... 3.126.134.177, 52.59.52.27
+Connecting to cs.nginx.com (cs.nginx.com)|3.126.134.177|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 258
+Saving to: ‘/etc/apt/apt.conf.d/90pkgs-nginx’
+
+/etc/apt/apt.conf.d/90pkgs-nginx                  100%[============================================================================================================>]     258  --.-KB/s    in 0s
+
+2022-10-25 11:02:07 (107 MB/s) - ‘/etc/apt/apt.conf.d/90pkgs-nginx’ saved [258/258]
+
+Hit:1 http://id.archive.ubuntu.com/ubuntu focal InRelease
+Hit:2 http://id.archive.ubuntu.com/ubuntu focal-updates InRelease
+Hit:3 http://id.archive.ubuntu.com/ubuntu focal-backports InRelease
+Hit:4 http://id.archive.ubuntu.com/ubuntu focal-security InRelease
+Hit:5 https://packages.clickhouse.com/deb stable InRelease
+Hit:6 https://pkgs.nginx.com/plus/ubuntu focal InRelease
+Get:7 https://pkgs.nginx.com/nms/ubuntu focal InRelease [1,496 B]
+Get:8 https://pkgs.nginx.com/nms/ubuntu focal/nginx-plus amd64 Packages [3,038 B]
+Fetched 4,534 B in 1s (3,109 B/s)
+Reading package lists... Done
+Acquire::https::pkgs.nginx.com::Verify-Peer "true";
+Acquire::https::pkgs.nginx.com::Verify-Host "true";
+Acquire::https::pkgs.nginx.com::SslCert     "/etc/ssl/nginx/nginx-repo.crt";
+Acquire::https::pkgs.nginx.com::SslKey      "/etc/ssl/nginx/nginx-repo.key";
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Recommended packages:
+  clickhouse-server
+The following NEW packages will be installed:
+  nms-instance-manager
+0 upgraded, 1 newly installed, 0 to remove and 123 not upgraded.
+Need to get 78.3 MB of archives.
+After this operation, 172 MB of additional disk space will be used.
+Get:1 https://pkgs.nginx.com/nms/ubuntu focal/nginx-plus amd64 nms-instance-manager amd64 2.5.1-663136348~focal [78.3 MB]
+Fetched 78.3 MB in 44s (1,798 kB/s)
+                                   Selecting previously unselected package nms-instance-manager.
+(Reading database ... 72113 files and directories currently installed.)
+Preparing to unpack .../nms-instance-manager_2.5.1-663136348~focal_amd64.deb ...
+Unpacking nms-instance-manager (2.5.1-663136348~focal) ...
+Setting up nms-instance-manager (2.5.1-663136348~focal) ...
+Reloading systemd manager configuration
+Found Post Install script args: configure
+Clean installation detected.
+Generating certificates with /etc/nms/scripts/certs.sh
+ * Creating certificates for NGINX Modules...
+ * Creating certificates for internal database components...
+Reloading systemd manager configuration
+Unmasking the service unit, 'systemctl unmask nms'
+Setting the preset flag for service unit, 'systemctl preset nms'
+Created symlink /etc/systemd/system/multi-user.target.wants/nms.service → /lib/systemd/system/nms.service.
+Unmasking the service unit, 'systemctl unmask nms-core'
+Setting the preset flag for service unit, 'systemctl preset nms-core'
+Created symlink /etc/systemd/system/nms.service.wants/nms-core.service → /lib/systemd/system/nms-core.service.
+Unmasking the service unit, 'systemctl unmask nms-dpm'
+Setting the preset flag for service unit, 'systemctl preset nms-dpm'
+Created symlink /etc/systemd/system/nms.service.wants/nms-dpm.service → /lib/systemd/system/nms-dpm.service.
+Unmasking the service unit, 'systemctl unmask nms-ingestion'
+Setting the preset flag for service unit, 'systemctl preset nms-ingestion'
+Created symlink /etc/systemd/system/nms.service.wants/nms-ingestion.service → /lib/systemd/system/nms-ingestion.service.
+Unmasking the service unit, 'systemctl unmask nms-integrations'
+Setting the preset flag for service unit, 'systemctl preset nms-integrations'
+Created symlink /etc/systemd/system/nms.service.wants/nms-integrations.service → /lib/systemd/system/nms-integrations.service.
+Adding user nginx to group nms
+Adding user www-data to group nms
+Adding user syslog to group nms
+Ensuring the log file exists, 'touch /var/log/nms/nms.log'
+Generating default password for 'admin' user account
+Using openssl version 1.1
+Writing admin password to /etc/nms/nginx/.htpasswd
+Checking if clickhouse-server is installed, 'which clickhouse-server'.
+/usr/bin/clickhouse-server
+Restarting rsyslog process
+----------------------------------------------------------------------
+NGINX Management Suite package has been successfully installed.
+
+Please follow the next steps to start the software:
+    # Start the Clickhouse database server
+    sudo systemctl start clickhouse-server
+
+    # Start NGINX web server
+    sudo systemctl start nginx
+
+    # If NGINX is already running, reload it
+    sudo service nginx reload
+
+    # to ensure the services starts whenever the system boots
+    sudo systemctl enable nms
+    sudo systemctl enable nms-core
+    sudo systemctl enable nms-dpm
+    sudo systemctl enable nms-ingestion
+    sudo systemctl enable nms-integrations
+
+    # Optional: load the included SELinux policy
+    sudo semodule -n -i /usr/share/selinux/packages/nms.pp
+    sudo /usr/sbin/load_policy
+    sudo restorecon -F -R /usr/bin/nms-core
+    sudo restorecon -F -R /usr/bin/nms-dpm
+    sudo restorecon -F -R /usr/bin/nms-ingestion
+    sudo restorecon -F -R /usr/bin/nms-integrations
+    sudo restorecon -F -R /usr/lib/systemd/system/nms.service
+    sudo restorecon -F -R /usr/lib/systemd/system/nms-core.service
+    sudo restorecon -F -R /usr/lib/systemd/system/nms-dpm.service
+    sudo restorecon -F -R /usr/lib/systemd/system/nms-ingestion.service
+    sudo restorecon -F -R /usr/lib/systemd/system/nms-integrations.service
+    sudo restorecon -F -R /var/lib/nms/modules/manager.json
+    sudo restorecon -F -R /var/lib/nms/modules.json
+    sudo restorecon -F -R /var/lib/nms/streaming
+    sudo restorecon -F -R /var/lib/nms
+    sudo restorecon -F -R /var/lib/nms/dqlite
+    sudo restorecon -F -R /var/run/nms
+    sudo restorecon -F -R /var/lib/nms/modules
+    sudo restorecon -F -R /var/log/nms
+
+    # Start NGINX Management Suite services
+    sudo systemctl start nms
+
+    Admin username: admin
+
+    Admin password: uU9BHcPffsrFplulAyB4TYJcjqJSEz
+
+Please change this password with your own as soon as possible:
+https://docs.nginx.com/nginx-instance-manager/admin-guide/authentication/
+
+For UI access, point your browser to the HTTPS port of this machine.
+----------------------------------------------------------------------
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for rsyslog (8.2001.0-1ubuntu1.1) ...
+TUlNRS1WZXJzaW9uOiAxLjAKQ29udGVudC1UeXBlOiBtdWx0aXBhcnQvc2lnbmVkOyBwcm90b2Nv\nbD0iYXBwbGljYXRpb24veC1wa2NzNy1zaWduYXR1cmUiOyBtaWNhbGc9InNoYS0yNTYiOyBib3Vu\nZGFyeT0iLS01MEY2OTI0MDUxNTUxMUVEQTY1OTUzRDBFODRBOTcwMyIKClRoaXMgaXMgYW4gUy9N\nSU1FIHNpZ25lZCBtZXNzYWdlCgotLS0tNTBGNjkyNDA1MTU1MTFFREE2NTk1M0QwRTg0QTk3MDMK\nZXdvZ0ltRjBkSEpwWW5WMFpYTWlPaUI3Q2lBZ0ltVjRjR2x5ZVNJNklDSXlNREl5TFRFeExUSXdW\nREUxT2pNd09qTTFMalE1TTFvDQppTEFvZ0lDSnpkV0p6WTNKcGNIUnBiMjRpT2lBaVRrZFlMVk4x\nWW5OamNtbHdkR2x2YmkweExWUlNUQzB3T0RVNU9EZ2lMQW9nSUMNCkowZVhCbElqb2dJbVYyWVd3\naUNpQjlMQW9nSW14cFkyVnVjMlZ6SWpvZ1d3b2dJSHNLSUNBZ0ltWmxZWFIxY21WZlpteGhaeUk2\nSQ0KQ0p6ZFdOalpYTnpablZzWDJGd2FWOWpZV3hzYzE5dGFXeHNhVzl1Y3lJc0NpQWdJQ0p3Y205\na2RXTjBYMk52WkdVaU9pQWlRVkJKDQpUU0lzQ2lBZ0lDSnpaWEpwWVd3aU9pQXhNekU0TkRZM09E\na3pPVEV5TWpJeUxBb2dJQ0FpZG1WeWMybHZiaUk2SURJc0NpQWdJQ0oNCjFibXhwYldsMFpXUWlP\naUIwY25WbENpQWdmU3dLSUNCN0NpQWdJQ0ptWldGMGRYSmxYMlpzWVdjaU9pQWlhVzFmYVc1emRH\nRnVZMg0KVnpJaXdLSUNBZ0luQnliMlIxWTNSZlkyOWtaU0k2SUNKSlRsTlVRVTVEUlY5TlFVNUJS\nMFZTSWl3S0lDQWdJbk5sY21saGJDSTZJDQpEWTNNalUxTkRnME1ERXdORGcwTURnc0NpQWdJQ0oy\nWlhKemFXOXVJam9nTWl3S0lDQWdJblZ1YkdsdGFYUmxaQ0k2SUhSeWRXVUsNCklDQjlDaUJkQ24w\nPQ0KCi0tLS01MEY2OTI0MDUxNTUxMUVEQTY1OTUzRDBFODRBOTcwMwpDb250ZW50LVR5cGU6IGFw\ncGxpY2F0aW9uL3gtcGtjczctc2lnbmF0dXJlOyBuYW1lPSJzbWltZS5wN3MiCkNvbnRlbnQtVHJh\nbnNmZXItRW5jb2Rpbmc6IGJhc2U2NApDb250ZW50LURpc3Bvc2l0aW9uOiBhdHRhY2htZW50OyBm\naWxlbmFtZT0ic21pbWUucDdzIgoKTUlJSHd3WUpLb1pJaHZjTkFRY0NvSUlIdERDQ0I3QUNBUUV4\nRHpBTkJnbGdoa2dCWlFNRUFnRUZBRENDQW9rR0NTcUdTSWIzRFFFDQpIQWFDQ0Fub0VnZ0oyWlhk\ndlowbHRSakJrU0Vwd1dXNVdNRnBZVFdsUGFVSTNRMmxCWjBsdFZqUmpSMng1WlZOSk5rbERTWGxO\nUkUNCmw1VEZSRmVFeFVTWGRXUkVVeFQycE5kMDlxVFRGTWFsRTFUVEZ2RFFwcFRFRnZaMGxEU25w\na1YwcDZXVE5LY0dOSVVuQmlNalJwVA0KMmxCYVZSclpGbE1WazR4V1c1T2FtTnRiSGRrUjJ4Mllt\na3dlRXhXVWxOVVF6QjNUMFJWTlU5RVoybE1RVzluU1VNTkNrb3daVmhDDQpiRWxxYjJkSmJWWXlX\nVmQzYVVOcFFqbE1RVzluU1cxNGNGa3lWblZqTWxaNlNXcHZaMWQzYjJkSlNITkxTVU5CWjBsdFdt\neFpXRkkNCnhZMjFXWmxwdGVHaGFlVWsyU1EwS1EwcDZaRmRPYWxwWVRucGFibFp6V0RKR2QyRldP\nV3BaVjNoell6RTVkR0ZYZUhOaFZ6bDFZMw0KbEpjME5wUVdkSlEwcDNZMjA1YTJSWFRqQllNazUy\nV2tkVmFVOXBRV2xSVmtKS0RRcFVVMGx6UTJsQlowbERTbnBhV0Vwd1dWZDNhDQpVOXBRWGhOZWtV\nMFRrUlpNMDlFYTNwUFZFVjVUV3BKZVV4QmIyZEpRMEZwWkcxV2VXTXliSFppYVVrMlNVUkpjME5w\nUVdkSlEwb04NCkNqRmliWGh3WWxkc01GcFhVV2xQYVVJd1kyNVdiRU5wUVdkbVUzZExTVU5DTjBO\ncFFXZEpRMHB0V2xkR01HUllTbXhZTWxweldWZA0KamFVOXBRV2xoVnpGbVlWYzFlbVJIUm5WWk1n\nMEtWbnBKYVhkTFNVTkJaMGx1UW5saU1sSXhXVE5TWmxreU9XdGFVMGsyU1VOS1NsDQpSc1RsVlJW\nVFZFVWxZNVRsRlZOVUpTTUZaVFNXbDNTMGxEUVdkSmJrNXNZMjFzYUdKRFNUWkpEUXBFV1ROTmFs\nVXhUa1JuTUUxRVINClhkT1JHY3dUVVJuYzBOcFFXZEpRMG95V2xoS2VtRlhPWFZKYW05blRXbDNT\nMGxEUVdkSmJsWjFZa2RzZEdGWVVteGFRMGsyU1VoUw0KZVdSWFZVc05Da2xEUWpsRGFVSmtRMjR3\nUFEwS29JSUROakNDQXpJd2dnSWFvQU1DQVFJQ0NRQ0RNNlYwQjZVc21qQU5CZ2txaGtpDQpHOXcw\nQkFRc0ZBREF1TVJJd0VBWURWUVFLREFsT1IwbE9XQ0JKYm1NeEdEQVdCZ05WQkFNTUQwTnZiblJ5\nYjJ4c1pYSWdRMEVnTVQNCkFlRncweU1UQTFNVE15TWpJME1EQmFGdzB5TmpBMU1USXlNakkwTURC\nYU1DNHhFakFRQmdOVkJBb01DVTVIU1U1WUlFbHVZekVZTQ0KQllHQTFVRUF3d1BRMjl1ZEhKdmJH\neGxjaUJEUVNBeE1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBDQow\nVlhFUnRaMWlrOWp2N0s2K21IN0RJT3hBc3FSb2E0ZDZ3N0JYUkxxU3VVSFVPekVmOXg1Ry9lQTJQ\nTWZTM0NIZVZISDZsdFdXTHINCk1ZR1JUWmNmYUtabUg0cDM0ckZvYXEzcm1DVEk2VkR1aC8rZi8y\nRU9qWlZqU2dCZ3RvOCtpNVJnL2x0Tm93RXQzUmozTnhNamYybw0KTzhsTEZ5WmlYcnhFL3J0S3BV\nSytBS1dJNzRGa3IrSm9sZ1hJMzladGQ3T1JVOUdycGZ0UkNNeDBGeW8vcFdoaXh6Q3JHaGJkUm9m\nDQo2dE1tWVNqTXE0cVdDdzR4a0hqRUtMTWVaV2dBSUNlemR5NThVSjgwWWdPZ3JmUVJXNktmOUJl\nMCtyK3VBS2dUeHArQVpzNkpRcjMNCnJHSUlwUG83Z2c1VERoVEpWTWE2a3M5UUwwSGo3UElHS3FH\nZ0s3VW5Fd0lEQVFBQm8xTXdVVEFkQmdOVkhRNEVGZ1FVRW1saHBscQ0KckpqTExNVnFmbDQ1YzVN\nTXAvRjB3SHdZRFZSMGpCQmd3Rm9BVUVtbGhwbHFySmpMTE1WcWZsNDVjNU1NcC9GMHdEd1lEVlIw\nVEFRDQpIL0JBVXdBd0VCL3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQXVuaXlycFY4clUrNEFi\nU05GM0Jub1l6dUhibVluTjhIZW5NYnoNCmtWS1lrRFd4VEFoTk9ENVp3c2YyZmdBN01TYXNaRlFD\na2g4NlhzSHVvV0JtRG5TUjh3QnVJYmZ2MjRyMnE1TjZqTnFreEp6MFhJQQ0KODI4KzVkQ1hRNmpq\nYUFpeUZydWtlRXVCMnNGcmhTeFRFaXFDNlh4KzJrNWhFQ01OUnl1eEdLQ2t0aDkwTDU5QXJRZEhM\nMjNKM3BUDQpCK2tpWnl3UkVIeC9jRVpkUjVwelJQYVNFNnBmYWxXSlZwWVNWSHRrS3dITFlEK0pI\nUnRuVGF5UkNxakdQS2JnWUpVNlRjYjNndlINCkFXamRRLzJxTllYdkRMN3E5V29aNzU3dVJQM2hY\nbGNTRWczY3FvNktYcjRRQlU4QjczV0owV1gwOFYyMGx2d0FzT081U3JtdTdYTQ0KdkZmMkRHQ0Fk\nRXdnZ0hOQWdFQk1Ec3dMakVTTUJBR0ExVUVDZ3dKVGtkSlRsZ2dTVzVqTVJnd0ZnWURWUVFEREE5\nRGIyNTBjbTlzDQpiR1Z5SUVOQklERUNDUUNETTZWMEI2VXNtakFOQmdsZ2hrZ0JaUU1FQWdFRkFL\nQnBNQmdHQ1NxR1NJYjNEUUVKQXpFTEJna3Foa2kNCkc5dzBCQndFd0x3WUpLb1pJaHZjTkFRa0VN\nU0lFSUR5aUJKS3VHQkdpOHhnWlJKNXpxbjNaSEcybW1LNCtTcHI0RjMzMFJpVEFNQg0Kd0dDU3FH\nU0liM0RRRUpCVEVQRncweU1qRXdNakV4TlRNd016bGFNQTBHQ1NxR1NJYjNEUUVCQVFVQUJJSUJB\nRUl3RjBqWk9ubWtkDQpzbWpSUmRobVZkYUw5S0Q1MmlveVFyblJPSXZMK21PY3YrWUFKLy9uVVJ4\nRCttVmNRQmJYOWZuSmUxY0gwWTFQWjJpQ1ZEdzI1NE4NCisreVBoWVV6L05PRm5sRlVKN0VjdG5S\nOTg3ajM3YmNOMGVtVEFqeVN4REZueTVtcTJONnl6TXRzNS9RVDRaaFpvaVZHQWpVNndLTQ0KMWtN\nQlZGdEdHM0FWcjhPS1dmVENQK240TjZVNVN1Q1pvYkw2c0tRYjl4d21hcE5OTTBkY0lRWGFQWUhz\nSFdIdTgxQUFybzcxNDZoDQpJNTV3SEF4SmJ5RjRXZm5sRm9hSVNDYUkyWkNPM3dmeExtNHk5bk9l\nTTlidFdtNWhDemRHNEVmSFNOTlNlWmN1NENUYmNzRVMvdDcNCjlVbHFYYUpaYi81eFZkMmN5ZE45\nWlloNW0yYWg4dz0KCi0tLS01MEY2OTI0MDUxNTUxMUVEQTY1OTUzRDBFODRBOTcwMy0tCg==
+uU9BHcPffsrFplulAyB4TYJcjqJSEz
+TUlNRS1WZXJzaW9uOiAxLjAKQ29udGVudC1UeXBlOiBtdWx0aXBhcnQvc2lnbmVkOyBwcm90b2Nv\nbD0iYXBwbGljYXRpb24veC1wa2NzNy1zaWduYXR1cmUiOyBtaWNhbGc9InNoYS0yNTYiOyBib3Vu\nZGFyeT0iLS01MEY2OTI0MDUxNTUxMUVEQTY1OTUzRDBFODRBOTcwMyIKClRoaXMgaXMgYW4gUy9N\nSU1FIHNpZ25lZCBtZXNzYWdlCgotLS0tNTBGNjkyNDA1MTU1MTFFREE2NTk1M0QwRTg0QTk3MDMK\nZXdvZ0ltRjBkSEpwWW5WMFpYTWlPaUI3Q2lBZ0ltVjRjR2x5ZVNJNklDSXlNREl5TFRFeExUSXdW\nREUxT2pNd09qTTFMalE1TTFvDQppTEFvZ0lDSnpkV0p6WTNKcGNIUnBiMjRpT2lBaVRrZFlMVk4x\nWW5OamNtbHdkR2x2YmkweExWUlNUQzB3T0RVNU9EZ2lMQW9nSUMNCkowZVhCbElqb2dJbVYyWVd3\naUNpQjlMQW9nSW14cFkyVnVjMlZ6SWpvZ1d3b2dJSHNLSUNBZ0ltWmxZWFIxY21WZlpteGhaeUk2\nSQ0KQ0p6ZFdOalpYTnpablZzWDJGd2FWOWpZV3hzYzE5dGFXeHNhVzl1Y3lJc0NpQWdJQ0p3Y205\na2RXTjBYMk52WkdVaU9pQWlRVkJKDQpUU0lzQ2lBZ0lDSnpaWEpwWVd3aU9pQXhNekU0TkRZM09E\na3pPVEV5TWpJeUxBb2dJQ0FpZG1WeWMybHZiaUk2SURJc0NpQWdJQ0oNCjFibXhwYldsMFpXUWlP\naUIwY25WbENpQWdmU3dLSUNCN0NpQWdJQ0ptWldGMGRYSmxYMlpzWVdjaU9pQWlhVzFmYVc1emRH\nRnVZMg0KVnpJaXdLSUNBZ0luQnliMlIxWTNSZlkyOWtaU0k2SUNKSlRsTlVRVTVEUlY5TlFVNUJS\nMFZTSWl3S0lDQWdJbk5sY21saGJDSTZJDQpEWTNNalUxTkRnME1ERXdORGcwTURnc0NpQWdJQ0oy\nWlhKemFXOXVJam9nTWl3S0lDQWdJblZ1YkdsdGFYUmxaQ0k2SUhSeWRXVUsNCklDQjlDaUJkQ24w\nPQ0KCi0tLS01MEY2OTI0MDUxNTUxMUVEQTY1OTUzRDBFODRBOTcwMwpDb250ZW50LVR5cGU6IGFw\ncGxpY2F0aW9uL3gtcGtjczctc2lnbmF0dXJlOyBuYW1lPSJzbWltZS5wN3MiCkNvbnRlbnQtVHJh\nbnNmZXItRW5jb2Rpbmc6IGJhc2U2NApDb250ZW50LURpc3Bvc2l0aW9uOiBhdHRhY2htZW50OyBm\naWxlbmFtZT0ic21pbWUucDdzIgoKTUlJSHd3WUpLb1pJaHZjTkFRY0NvSUlIdERDQ0I3QUNBUUV4\nRHpBTkJnbGdoa2dCWlFNRUFnRUZBRENDQW9rR0NTcUdTSWIzRFFFDQpIQWFDQ0Fub0VnZ0oyWlhk\ndlowbHRSakJrU0Vwd1dXNVdNRnBZVFdsUGFVSTNRMmxCWjBsdFZqUmpSMng1WlZOSk5rbERTWGxO\nUkUNCmw1VEZSRmVFeFVTWGRXUkVVeFQycE5kMDlxVFRGTWFsRTFUVEZ2RFFwcFRFRnZaMGxEU25w\na1YwcDZXVE5LY0dOSVVuQmlNalJwVA0KMmxCYVZSclpGbE1WazR4V1c1T2FtTnRiSGRrUjJ4Mllt\na3dlRXhXVWxOVVF6QjNUMFJWTlU5RVoybE1RVzluU1VNTkNrb3daVmhDDQpiRWxxYjJkSmJWWXlX\nVmQzYVVOcFFqbE1RVzluU1cxNGNGa3lWblZqTWxaNlNXcHZaMWQzYjJkSlNITkxTVU5CWjBsdFdt\neFpXRkkNCnhZMjFXWmxwdGVHaGFlVWsyU1EwS1EwcDZaRmRPYWxwWVRucGFibFp6V0RKR2QyRldP\nV3BaVjNoell6RTVkR0ZYZUhOaFZ6bDFZMw0KbEpjME5wUVdkSlEwcDNZMjA1YTJSWFRqQllNazUy\nV2tkVmFVOXBRV2xSVmtKS0RRcFVVMGx6UTJsQlowbERTbnBhV0Vwd1dWZDNhDQpVOXBRWGhOZWtV\nMFRrUlpNMDlFYTNwUFZFVjVUV3BKZVV4QmIyZEpRMEZwWkcxV2VXTXliSFppYVVrMlNVUkpjME5w\nUVdkSlEwb04NCkNqRmliWGh3WWxkc01GcFhVV2xQYVVJd1kyNVdiRU5wUVdkbVUzZExTVU5DTjBO\ncFFXZEpRMHB0V2xkR01HUllTbXhZTWxweldWZA0KamFVOXBRV2xoVnpGbVlWYzFlbVJIUm5WWk1n\nMEtWbnBKYVhkTFNVTkJaMGx1UW5saU1sSXhXVE5TWmxreU9XdGFVMGsyU1VOS1NsDQpSc1RsVlJW\nVFZFVWxZNVRsRlZOVUpTTUZaVFNXbDNTMGxEUVdkSmJrNXNZMjFzYUdKRFNUWkpEUXBFV1ROTmFs\nVXhUa1JuTUUxRVINClhkT1JHY3dUVVJuYzBOcFFXZEpRMG95V2xoS2VtRlhPWFZKYW05blRXbDNT\nMGxEUVdkSmJsWjFZa2RzZEdGWVVteGFRMGsyU1VoUw0KZVdSWFZVc05Da2xEUWpsRGFVSmtRMjR3\nUFEwS29JSUROakNDQXpJd2dnSWFvQU1DQVFJQ0NRQ0RNNlYwQjZVc21qQU5CZ2txaGtpDQpHOXcw\nQkFRc0ZBREF1TVJJd0VBWURWUVFLREFsT1IwbE9XQ0JKYm1NeEdEQVdCZ05WQkFNTUQwTnZiblJ5\nYjJ4c1pYSWdRMEVnTVQNCkFlRncweU1UQTFNVE15TWpJME1EQmFGdzB5TmpBMU1USXlNakkwTURC\nYU1DNHhFakFRQmdOVkJBb01DVTVIU1U1WUlFbHVZekVZTQ0KQllHQTFVRUF3d1BRMjl1ZEhKdmJH\neGxjaUJEUVNBeE1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBDQow\nVlhFUnRaMWlrOWp2N0s2K21IN0RJT3hBc3FSb2E0ZDZ3N0JYUkxxU3VVSFVPekVmOXg1Ry9lQTJQ\nTWZTM0NIZVZISDZsdFdXTHINCk1ZR1JUWmNmYUtabUg0cDM0ckZvYXEzcm1DVEk2VkR1aC8rZi8y\nRU9qWlZqU2dCZ3RvOCtpNVJnL2x0Tm93RXQzUmozTnhNamYybw0KTzhsTEZ5WmlYcnhFL3J0S3BV\nSytBS1dJNzRGa3IrSm9sZ1hJMzladGQ3T1JVOUdycGZ0UkNNeDBGeW8vcFdoaXh6Q3JHaGJkUm9m\nDQo2dE1tWVNqTXE0cVdDdzR4a0hqRUtMTWVaV2dBSUNlemR5NThVSjgwWWdPZ3JmUVJXNktmOUJl\nMCtyK3VBS2dUeHArQVpzNkpRcjMNCnJHSUlwUG83Z2c1VERoVEpWTWE2a3M5UUwwSGo3UElHS3FH\nZ0s3VW5Fd0lEQVFBQm8xTXdVVEFkQmdOVkhRNEVGZ1FVRW1saHBscQ0KckpqTExNVnFmbDQ1YzVN\nTXAvRjB3SHdZRFZSMGpCQmd3Rm9BVUVtbGhwbHFySmpMTE1WcWZsNDVjNU1NcC9GMHdEd1lEVlIw\nVEFRDQpIL0JBVXdBd0VCL3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQXVuaXlycFY4clUrNEFi\nU05GM0Jub1l6dUhibVluTjhIZW5NYnoNCmtWS1lrRFd4VEFoTk9ENVp3c2YyZmdBN01TYXNaRlFD\na2g4NlhzSHVvV0JtRG5TUjh3QnVJYmZ2MjRyMnE1TjZqTnFreEp6MFhJQQ0KODI4KzVkQ1hRNmpq\nYUFpeUZydWtlRXVCMnNGcmhTeFRFaXFDNlh4KzJrNWhFQ01OUnl1eEdLQ2t0aDkwTDU5QXJRZEhM\nMjNKM3BUDQpCK2tpWnl3UkVIeC9jRVpkUjVwelJQYVNFNnBmYWxXSlZwWVNWSHRrS3dITFlEK0pI\nUnRuVGF5UkNxakdQS2JnWUpVNlRjYjNndlINCkFXamRRLzJxTllYdkRMN3E5V29aNzU3dVJQM2hY\nbGNTRWczY3FvNktYcjRRQlU4QjczV0owV1gwOFYyMGx2d0FzT081U3JtdTdYTQ0KdkZmMkRHQ0Fk\nRXdnZ0hOQWdFQk1Ec3dMakVTTUJBR0ExVUVDZ3dKVGtkSlRsZ2dTVzVqTVJnd0ZnWURWUVFEREE5\nRGIyNTBjbTlzDQpiR1Z5SUVOQklERUNDUUNETTZWMEI2VXNtakFOQmdsZ2hrZ0JaUU1FQWdFRkFL\nQnBNQmdHQ1NxR1NJYjNEUUVKQXpFTEJna3Foa2kNCkc5dzBCQndFd0x3WUpLb1pJaHZjTkFRa0VN\nU0lFSUR5aUJKS3VHQkdpOHhnWlJKNXpxbjNaSEcybW1LNCtTcHI0RjMzMFJpVEFNQg0Kd0dDU3FH\nU0liM0RRRUpCVEVQRncweU1qRXdNakV4TlRNd016bGFNQTBHQ1NxR1NJYjNEUUVCQVFVQUJJSUJB\nRUl3RjBqWk9ubWtkDQpzbWpSUmRobVZkYUw5S0Q1MmlveVFyblJPSXZMK21PY3YrWUFKLy9uVVJ4\nRCttVmNRQmJYOWZuSmUxY0gwWTFQWjJpQ1ZEdzI1NE4NCisreVBoWVV6L05PRm5sRlVKN0VjdG5S\nOTg3ajM3YmNOMGVtVEFqeVN4REZueTVtcTJONnl6TXRzNS9RVDRaaFpvaVZHQWpVNndLTQ0KMWtN\nQlZGdEdHM0FWcjhPS1dmVENQK240TjZVNVN1Q1pvYkw2c0tRYjl4d21hcE5OTTBkY0lRWGFQWUhz\nSFdIdTgxQUFybzcxNDZoDQpJNTV3SEF4SmJ5RjRXZm5sRm9hSVNDYUkyWkNPM3dmeExtNHk5bk9l\nTTlidFdtNWhDemRHNEVmSFNOTlNlWmN1NENUYmNzRVMvdDcNCjlVbHFYYUpaYi81eFZkMmN5ZE45\nWlloNW0yYWg4dz0KCi0tLS01MEY2OTI0MDUxNTUxMUVEQTY1OTUzRDBFODRBOTcwMy0tCg==
+uU9BHcPffsrFplulAyB4TYJcjqJSEz
+Synchronizing state of clickhouse-server.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable clickhouse-server
+Synchronizing state of nginx.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable nginx
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  5351  100    59  100  5292   3105   271k --:--:-- --:--:-- --:--:--  275k
+Warning: Transient problem: HTTP error Will retry in 1 seconds. 333 retries
+Warning: left.
+{
+  "code": 502,
+  "message": "Upstream Unavailable"
+}
+100  6292  100  1000  100  5292  50000   258k --:--:-- --:--:-- --:--:--  307k
+{
+  "currentStatus": {
+    "entitlement": {
+      "features": [
+        {
+          "expiry": "2022-11-20T15:30:35.493Z",
+          "gracePeriodDays": 0,
+          "id": "APIM",
+          "limit": 0,
+          "name": "NGINX API Management",
+          "type": "EVAL",
+          "unitOfMeasure": "SUCCESSFUL_API_CALLS_IN_MILLIONS",
+          "unlimited": true
+        },
+        {
+          "expiry": "2022-11-20T15:30:35.493Z",
+          "gracePeriodDays": 0,
+          "id": "INSTANCE_MANAGER",
+          "limit": 0,
+          "name": "NGINX Management",
+          "type": "EVAL",
+          "unitOfMeasure": "INSTANCES",
+          "unlimited": true
+        }
+      ]
+    },
+    "state": {
+      "currentInstance": {
+        "configState": {
+          "selfConfigState": {
+            "configured": 1,
+            "isConfigured": true,
+            "total": 1
+          }
+        },
+        "features": [
+          {
+            "daysUntilExpiry": 27,
+            "gracePeriodRemainingDays": 0,
+            "id": "APIM",
+            "name": "NGINX API Management",
+            "unitOfMeasure": "SUCCESSFUL_API_CALLS_IN_MILLIONS"
+          },
+          {
+            "daysUntilExpiry": 27,
+            "gracePeriodRemainingDays": 0,
+            "id": "INSTANCE_MANAGER",
+            "name": "NGINX Management",
+            "unitOfMeasure": "INSTANCES"
+          }
+        ],
+        "id": "",
+        "status": "VALID",
+        "type": "NGINX Manager",
+        "version": ""
+      }
+    },
+    "subscription": {
+      "id": "NGX-Subscription-1-TRL-085988"
+    }
+  },
+  "desiredState": {
+    "content": "********"
+  },
+  "metadata": {
+    "name": "license"
+  }
+}
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  1730  100  1730    0     0   4032      0 --:--:-- --:--:-- --:--:--  4032
+Waiting for other nodes to sync-up.
+1
+2
+3
+uU9BHcPffsrFplulAyB4TYJcjqJSEz
+ubuntu     14252  0.0  0.0   6300   720 pts/0    S+   11:05   0:00  |               \_ grep nms
+nms        13895  0.0  0.6 1246536 25800 ?       Ssl  11:03   0:00 /usr/bin/nms-ingestion
+nms        13988  0.0  0.6 1347224 24192 ?       Ssl  11:03   0:00 /usr/bin/nms-integrations
+nms        14091  0.4  1.3 1364016 54504 ?       Ssl  11:03   0:00 /usr/bin/nms-dpm
+nms        14139  0.1  0.9 1424808 39724 ?       Ssl  11:03   0:00 /usr/bin/nms-core
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 11:02:01 Master1.Ubuntu systemd[1]: Started ClickHouse Server (analytic DBMS for big data).
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11202]: Processing configuration file '/etc/clickhouse-server/config.xml'.
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11202]: Logging trace to /var/log/clickhouse-server/clickhouse-server.log
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11202]: Logging errors to /var/log/clickhouse-server/clickhouse-server.err.log
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11204]: Processing configuration file '/etc/clickhouse-server/config.xml'.
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11204]: Saved preprocessed configuration to '/var/lib/clickhouse/preprocessed_configs/config.xml'.
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11204]: Processing configuration file '/etc/clickhouse-server/users.xml'.
+Oct 25 11:02:01 Master1.Ubuntu clickhouse-server[11204]: Saved preprocessed configuration to '/var/lib/clickhouse/preprocessed_configs/users.xml'.
+Oct 25 11:03:01 Master1.Ubuntu systemd[1]: Stopping ClickHouse Server (analytic DBMS for big data)...
+Oct 25 11:03:04 Master1.Ubuntu systemd[1]: clickhouse-server.service: Succeeded.
+Oct 25 11:03:04 Master1.Ubuntu systemd[1]: Stopped ClickHouse Server (analytic DBMS for big data).
+Oct 25 11:03:04 Master1.Ubuntu systemd[1]: Started ClickHouse Server (analytic DBMS for big data).
+Oct 25 11:03:04 Master1.Ubuntu clickhouse-server[13354]: Processing configuration file '/etc/clickhouse-server/config.xml'.
+Oct 25 11:03:04 Master1.Ubuntu clickhouse-server[13354]: Logging trace to /var/log/clickhouse-server/clickhouse-server.log
+Oct 25 11:03:04 Master1.Ubuntu clickhouse-server[13354]: Logging errors to /var/log/clickhouse-server/clickhouse-server.err.log
+Oct 25 11:03:04 Master1.Ubuntu clickhouse-server[13378]: Processing configuration file '/etc/clickhouse-server/config.xml'.
+Oct 25 11:03:04 Master1.Ubuntu clickhouse-server[13378]: Saved preprocessed configuration to '/var/lib/clickhouse/preprocessed_configs/config.xml'.
+Oct 25 11:03:04 Master1.Ubuntu clickhouse-server[13378]: Processing configuration file '/etc/clickhouse-server/users.xml'.
+Oct 25 11:03:04 Master1.Ubuntu clickhouse-server[13378]: Saved preprocessed configuration to '/var/lib/clickhouse/preprocessed_configs/users.xml'.
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 10:58:15 Master1.Ubuntu systemd[1]: Starting NGINX Plus - high performance web server...
+Oct 25 10:58:15 Master1.Ubuntu systemd[1]: nginx.service: Can't open PID file /run/nginx.pid (yet?) after start: Operation not permitted
+Oct 25 10:58:15 Master1.Ubuntu systemd[1]: Started NGINX Plus - high performance web server.
+Oct 25 11:03:05 Master1.Ubuntu systemd[1]: Stopping NGINX Plus - high performance web server...
+Oct 25 11:03:05 Master1.Ubuntu systemd[1]: nginx.service: Succeeded.
+Oct 25 11:03:05 Master1.Ubuntu systemd[1]: Stopped NGINX Plus - high performance web server.
+Oct 25 11:03:05 Master1.Ubuntu systemd[1]: Starting NGINX Plus - high performance web server...
+Oct 25 11:03:05 Master1.Ubuntu systemd[1]: Started NGINX Plus - high performance web server.
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 11:03:06 Master1.Ubuntu systemd[1]: Starting NGINX Management Suite...
+Oct 25 11:03:06 Master1.Ubuntu systemd[1]: Finished NGINX Management Suite.
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 11:03:06 Master1.Ubuntu systemd[1]: Starting NGINX Management Suite - Core...
+Oct 25 11:03:07 Master1.Ubuntu systemd[1]: Started NGINX Management Suite - Core.
+Oct 25 11:03:07 Master1.Ubuntu <COR>[14139]: ⇨ http server started on /var/run/nms/core.sock
+Oct 25 11:03:08 Master1.Ubuntu <COR>[14139]: 2022-10-25T11:03:08.614Z        [ERROR]        /usr/bin/nms-core        license/impl.go:250                        publisher failed to send: not connected
+Oct 25 11:03:08 Master1.Ubuntu <COR>[14139]: 2022-10-25T11:03:08.614Z        [ERROR]        /usr/bin/nms-core        license/impl.go:256                        publisher failed to send: not connected
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 11:03:06 Master1.Ubuntu systemd[1]: Starting NGINX Management Suite - Data Plane Manager...
+Oct 25 11:03:07 Master1.Ubuntu systemd[1]: Started NGINX Management Suite - Data Plane Manager.
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF] Starting nats-server
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]   Version:  2.7.4
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]   Git:      [not set]
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]   Name:     NCJDF3WRA6GHG7S2SJQDKOY6IKVLRDWYT7VLKOGGFX7OQK5CIUTJ2MOO
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]   Node:     v9mZxD5v
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]   ID:       NCJDF3WRA6GHG7S2SJQDKOY6IKVLRDWYT7VLKOGGFX7OQK5CIUTJ2MOO
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF] Starting JetStream
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]          https://docs.nats.io/jetstream
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF] ---------------- JETSTREAM ----------------
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]   Max Memory:      1.00 GB
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]   Max Storage:     10.00 GB
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF]   Store Directory: "/var/lib/nms/streaming/jetstream"
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF] -------------------------------------------
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF] Listening for client connections on 127.0.0.1:9100
+Oct 25 11:03:07 Master1.Ubuntu <DPM>[14091]: [14091] [INF] Server is ready
+Oct 25 11:03:09 Master1.Ubuntu <DPM>[14091]: ⇨ http server started on /var/run/nms/dpm.sock
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 11:03:06 Master1.Ubuntu systemd[1]: Starting NGINX Management Suite - Ingestion...
+Oct 25 11:03:06 Master1.Ubuntu systemd[1]: Started NGINX Management Suite - Ingestion.
+Oct 25 11:03:06 Master1.Ubuntu <ING>[13895]: [13895] [INF] Starting nats-server
+Oct 25 11:03:06 Master1.Ubuntu <ING>[13895]: [13895] [INF]   Version:  2.7.4
+Oct 25 11:03:06 Master1.Ubuntu <ING>[13895]: [13895] [INF]   Git:      [not set]
+Oct 25 11:03:06 Master1.Ubuntu <ING>[13895]: [13895] [INF]   Name:     NBOQQGEEIRSOSDVJ4RSK6OZMJRNQEHEMOQZOFETIY2ONB45GVXY4C3O3
+Oct 25 11:03:06 Master1.Ubuntu <ING>[13895]: [13895] [INF]   ID:       NBOQQGEEIRSOSDVJ4RSK6OZMJRNQEHEMOQZOFETIY2ONB45GVXY4C3O3
+Oct 25 11:03:06 Master1.Ubuntu <ING>[13895]: [13895] [INF] Listening for client connections on 127.0.0.1:4222
+Oct 25 11:03:06 Master1.Ubuntu <ING>[13895]: [13895] [INF] Server is ready
+-- Logs begin at Tue 2022-04-19 12:57:58 UTC, end at Tue 2022-10-25 11:05:19 UTC. --
+Oct 25 11:03:06 Master1.Ubuntu systemd[1]: Starting NGINX Management Suite - Integrations...
+Oct 25 11:03:06 Master1.Ubuntu systemd[1]: Started NGINX Management Suite - Integrations.
+Oct 25 11:03:06 Master1.Ubuntu <INT>[13988]: ⇨ http server started on /var/run/nms/integrations.sock
+nms-core version
+NGINX Instance Manager version: 2.5.1-663136348
+Build time: Mon Oct 10 20:46:38 UTC 2022
+Build details: release-2-5-1/bd418da0
+
+(c) NGINX, Inc.
+(c) F5 Inc.
+2022.10.25 11:02:01.528870 [ 11204 ] {} <Warning> Context: Maximum number of threads is lower than 30000. There could be problems with handling a lot of simultaneous queries.
+2022.10.25 11:02:01.537253 [ 11204 ] {} <Warning> Access(local directory): File /var/lib/clickhouse/access/users.list doesn't exist
+2022.10.25 11:02:01.537262 [ 11204 ] {} <Warning> Access(local directory): Recovering lists in directory /var/lib/clickhouse/access/
+2022.10.25 11:03:04.913708 [ 13378 ] {} <Warning> Context: Maximum number of threads is lower than 30000. There could be problems with handling a lot of simultaneous queries.
+2022/10/25 10:58:15 [notice] 2910#2910: using the "epoll" event method
+2022/10/25 10:58:15 [notice] 2910#2910: nginx/1.21.6 (nginx-plus-r27-p1)
+2022/10/25 10:58:15 [notice] 2910#2910: built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
+2022/10/25 10:58:15 [notice] 2910#2910: OS: Linux 5.4.0-107-generic
+2022/10/25 10:58:15 [notice] 2910#2910: getrlimit(RLIMIT_NOFILE): 1024:524288
+2022/10/25 10:58:15 [notice] 2911#2911: start worker processes
+2022/10/25 10:58:15 [notice] 2911#2911: start worker process 2912
+2022/10/25 10:58:15 [notice] 2911#2911: start worker process 2913
+2022/10/25 11:03:05 [notice] 2911#2911: signal 15 (SIGTERM) received from 13693, exiting
+2022/10/25 11:03:05 [notice] 2912#2912: exiting
+2022/10/25 11:03:05 [notice] 2912#2912: exit
+2022/10/25 11:03:05 [notice] 2913#2913: exiting
+2022/10/25 11:03:05 [notice] 2913#2913: exit
+2022/10/25 11:03:05 [notice] 2911#2911: signal 15 (SIGTERM) received from 1, exiting
+2022/10/25 11:03:05 [notice] 2911#2911: signal 17 (SIGCHLD) received from 2912
+2022/10/25 11:03:05 [notice] 2911#2911: worker process 2912 exited with code 0
+2022/10/25 11:03:05 [notice] 2911#2911: signal 29 (SIGIO) received
+2022/10/25 11:03:05 [notice] 2911#2911: signal 17 (SIGCHLD) received from 2913
+2022/10/25 11:03:05 [notice] 2911#2911: worker process 2913 exited with code 0
+2022/10/25 11:03:05 [notice] 2911#2911: exit
+2022/10/25 11:03:05 [notice] 13718#13718: using the "epoll" event method
+2022/10/25 11:03:05 [notice] 13718#13718: nginx/1.21.6 (nginx-plus-r27-p1)
+2022/10/25 11:03:05 [notice] 13718#13718: built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
+2022/10/25 11:03:05 [notice] 13718#13718: OS: Linux 5.4.0-107-generic
+2022/10/25 11:03:05 [notice] 13718#13718: getrlimit(RLIMIT_NOFILE): 1024:524288
+2022/10/25 11:03:05 [notice] 13719#13719: start worker processes
+2022/10/25 11:03:05 [notice] 13719#13719: start worker process 13720
+2022/10/25 11:03:05 [notice] 13719#13719: start worker process 13721
+2022/10/25 11:03:07 [crit] 13721#13721: *1 connect() to unix:/var/run/nms/core.sock failed (2: No such file or directory) while connecting to upstream, client: 127.0.0.1, server: _, request: "PUT /api/platform/v1/license HTTP/2.0", upstream: "http://unix:/var/run/nms/core.sock:/api/platform/v1/license", host: "127.0.0.1"
+Oct 25 11:03:06 Master1 <ING>[13895]: [13895] [INF] Starting nats-server
+Oct 25 11:03:06 Master1 <ING>[13895]: [13895] [INF]   Version:  2.7.4
+Oct 25 11:03:06 Master1 <ING>[13895]: [13895] [INF]   Git:      [not set]
+Oct 25 11:03:06 Master1 <ING>[13895]: [13895] [INF]   Name:     NBOQQGEEIRSOSDVJ4RSK6OZMJRNQEHEMOQZOFETIY2ONB45GVXY4C3O3
+Oct 25 11:03:06 Master1 <ING>[13895]: [13895] [INF]   ID:       NBOQQGEEIRSOSDVJ4RSK6OZMJRNQEHEMOQZOFETIY2ONB45GVXY4C3O3
+Oct 25 11:03:06 Master1 <ING>[13895]: [13895] [INF] Listening for client connections on 127.0.0.1:4222
+Oct 25 11:03:06 Master1 <ING>[13895]: [13895] [INF] Server is ready
+Oct 25 11:03:06 Master1 <INT>[13988]: ⇨ http server started on /var/run/nms/integrations.sock
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF] Starting nats-server
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]   Version:  2.7.4
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]   Git:      [not set]
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]   Name:     NCJDF3WRA6GHG7S2SJQDKOY6IKVLRDWYT7VLKOGGFX7OQK5CIUTJ2MOO
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]   Node:     v9mZxD5v
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]   ID:       NCJDF3WRA6GHG7S2SJQDKOY6IKVLRDWYT7VLKOGGFX7OQK5CIUTJ2MOO
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF] Starting JetStream
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]     _ ___ _____ ___ _____ ___ ___   _   __  __
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]  _ | | __|_   _/ __|_   _| _ \ __| /_\ |  \/  |
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF] | || | _|  | | \__ \ | | |   / _| / _ \| |\/| |
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]  \__/|___| |_| |___/ |_| |_|_\___/_/ \_\_|  |_|
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]          https://docs.nats.io/jetstream
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF] ---------------- JETSTREAM ----------------
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]   Max Memory:      1.00 GB
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]   Max Storage:     10.00 GB
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF]   Store Directory: "/var/lib/nms/streaming/jetstream"
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF] -------------------------------------------
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF] Listening for client connections on 127.0.0.1:9100
+Oct 25 11:03:07 Master1 <DPM>[14091]: [14091] [INF] Server is ready
+Oct 25 11:03:07 Master1 <COR>[14139]: ⇨ http server started on /var/run/nms/core.sock
+Oct 25 11:03:08 Master1 <COR>[14139]: 2022-10-25T11:03:08.614Z#011[ERROR]#011/usr/bin/nms-core#011license/impl.go:250                #011publisher failed to send: not connected
+Oct 25 11:03:08 Master1 <COR>[14139]: 2022-10-25T11:03:08.614Z#011[ERROR]#011/usr/bin/nms-core#011license/impl.go:256                #011publisher failed to send: not connected
+Oct 25 11:03:09 Master1 <DPM>[14091]: ⇨ http server started on /var/run/nms/dpm.sock
+NMS Instance Manager version 2 - UserName: admin Password: uU9BHcPffsrFplulAyB4TYJcjqJSEz
+ubuntu@Master1:~$

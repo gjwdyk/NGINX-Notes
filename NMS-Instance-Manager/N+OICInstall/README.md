@@ -28,7 +28,7 @@ NGINX OpenID-Connect References:
 
 ***
 
-Snippet for NGINX-Plus Installation with OpenID-Connect:
+Below is a snippet code for NGINX-Plus Installation with OpenID-Connect. The pre-requisite for the installation : the `nginx-repo.crt` and `nginx-repo.key` files must already exist and are located at `$HOME` directory/folder.
 
 `cd $HOME;sudo curl -k -L -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/N%2BOICInstall/NPOICInstall.sh;sudo chmod 777 $HOME/NPOICInstall.sh;/bin/bash $HOME/NPOICInstall.sh`
 

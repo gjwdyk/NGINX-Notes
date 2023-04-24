@@ -1,0 +1,51 @@
+# NGINX-Plus Installation with OpenID-Connect
+
+![Under Construction Green](../../Image/UnderConstructionGreen.svg)
+
+<br><br><br>
+
+***
+
+![Under Construction Yellow](../../Image/UnderConstructionYellow.svg)
+
+<br><br><br>
+
+***
+
+![Under Construction Red](../../Image/UnderConstructionRed.svg)
+
+<br><br><br>
+
+***
+
+NGINX OpenID-Connect References:
+- [ ] [NGINX OpenID-Connect](https://github.com/nginxinc/nginx-openid-connect)
+- [ ] [NGINX OpenID-Connect Lab Example](https://clouddocs.f5.com/training/community/nginx/html/class9/class9.html)
+
+
+
+<br><br><br>
+
+***
+
+Snippet for NGINX-Plus Installation with OpenID-Connect:
+
+`cd $HOME;sudo curl -k -L -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/N%2BOICInstall/NPOICInstall.sh;sudo chmod 777 $HOME/NPOICInstall.sh;/bin/bash $HOME/NPOICInstall.sh`
+
+
+
+<br><br><br>
+
+***
+
+<br><br><br>
+```
+╔═╦═════════════════╦═╗
+╠═╬═════════════════╬═╣
+║ ║ End of Document ║ ║
+╠═╬═════════════════╬═╣
+╚═╩═════════════════╩═╝
+```
+<br><br><br>
+
+

@@ -41,16 +41,6 @@ Snippet for KeyCloak Installation:
 
 ***
 
-## External Reference Test
-
-- [ ] [Sub-Sub-Section of Referred Sub-Folder of Test Repository](https://github.com/gjwdyk/TestRepository/tree/main/ReferredSubFolder#sub-sub-section)
-
-
-
-<br><br><br>
-
-***
-
 <br><br><br>
 ```
 ╔═╦═════════════════╦═╗

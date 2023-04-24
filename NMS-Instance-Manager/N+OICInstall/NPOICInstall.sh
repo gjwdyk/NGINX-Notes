@@ -58,6 +58,12 @@ sudo systemctl enable nginx
 
 
 
+export NGINXPlusVersion=$(nginx -v 2>&1 | egrep -o "\(nginx-plus-r[0-9]+\)" | egrep -o "r[0-9]+")
+git clone --branch $NGINXPlusVersion https://github.com/nginxinc/nginx-openid-connect.git
+ls -lap nginx-openid-connect
+
+
+
 #╔══════════╗
 #║   Test   ║
 #╚══════════╝

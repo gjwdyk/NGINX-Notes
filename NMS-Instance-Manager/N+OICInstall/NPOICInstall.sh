@@ -61,7 +61,6 @@ sudo systemctl enable nginx
 export NGINXPlusVersion=$(nginx -v 2>&1 | egrep -o "\(nginx-plus-r[0-9]+\)" | egrep -o "r[0-9]+")
 export NOICBranchVersion=$(echo "$NGINXPlusVersion" | tr '[:lower:]' '[:upper:]')
 git clone --branch $NOICBranchVersion https://github.com/nginxinc/nginx-openid-connect.git
-ls -lap nginx-openid-connect
 
 
 
@@ -74,6 +73,7 @@ ps axu | grep nginx
 nginx -V
 sudo cat /var/log/nginx/error.log
 sudo ls -lap /etc/nginx/modules
+ls -lap nginx-openid-connect
 
 
 

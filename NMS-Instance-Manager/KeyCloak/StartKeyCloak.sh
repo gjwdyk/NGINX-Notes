@@ -9,7 +9,7 @@ cd $HOME
 export KEYCLOAK_ADMIN="admin"
 export KEYCLOAK_ADMIN_PASSWORD="admin"
 
-/root/keycloak/bin/kc.sh start-dev &
+/root/keycloak/bin/kc.sh start-dev --log="console,file" &
 echo "$!" | tee /root/keycloak/KeyCloakPID
 chmod 666 /root/keycloak/KeyCloakPID
 
@@ -41,6 +41,8 @@ while ( [ "$Loop" == "Yes" ] ) ; do
   sleep $Loop_Period
  fi
 done
+
+sudo cat /root/keycloak/data/log/keycloak.log
 
 
 

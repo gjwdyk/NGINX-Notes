@@ -82,6 +82,23 @@ Based on [KeyCloak File Logging](https://www.keycloak.org/server/logging#:~:text
 The default location of the log file is: file name `keycloak.log` inside the `data/log` directory of your KeyCloak installation folder.
 Observing the `keycloak.log` may help you getting further clues of what went wrong.
 
+Also note that between KeyCloak versions, the format/syntax and/or the KeyCloak Admin API structure may have changed.
+For example, for the version 16.1.1, the format/syntax to obtain the admin token is as described below.
+
+```
+export KeyCloakToken=$(curl -fksSL -X POST "http://localhost:8080/auth/realms/master/protocol/openid-connect/token" -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=admin' -d 'password=admin' -d 'grant_type=password' -d 'client_id=admin-cli' | jq -r '.access_token')
+echo "KeyCloakToken = $KeyCloakToken"
+```
+
+Notice the URL/endpoint which we need to call, there was additional `auth` in the path.
+
+```
+ubuntu@infra:~$ export KeyCloakToken=$(curl -fksSL -X POST "http://localhost:8080/auth/realms/master/protocol/openid-connect/token" -H 'Content-Type: application/x-www-form-urlencoded' -d 'username=admin' -d 'password=admin' -d 'grant_type=password' -d 'client_id=admin-cli' | jq -r '.access_token')
+ubuntu@infra:~$ echo "KeyCloakToken = $KeyCloakToken"
+KeyCloakToken = eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJCcUdKc28tSjNQb1NCQUdsazVHZnp4TmsyWXN0TDU4ZU5DcUVyQkZoSTh3In0.eyJleHAiOjE2ODIxODA3MzMsImlhdCI6MTY4MjE4MDY3MywianRpIjoiNTI4N2EwZWItYWIxOC00MTgwLTg1ZTAtY2EyNWMzOWRjY2I1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL2F1dGgvcmVhbG1zL21hc3RlciIsInN1YiI6IjZhYTkzYTI5LTFjZTctNDllNC1iYmMwLWU0NGRmZWRmOGFhZSIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFkbWluLWNsaSIsInNlc3Npb25fc3RhdGUiOiI3ZDFhY2YyNy01OWYwLTRkMmYtOGQ4NS01MDQwOWM2NGEzYjYiLCJhY3IiOiIxIiwic2NvcGUiOiJwcm9maWxlIGVtYWlsIiwic2lkIjoiN2QxYWNmMjctNTlmMC00ZDJmLThkODUtNTA0MDljNjRhM2I2IiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJhZG1pbiJ9.XHqna77yFSOrknzLGu-IdKqrFFKsvZ9_cwgdreI8r5RKN7RPaYQesfHlQkWGywNgTvmA0kroC50g3CknRAGNKHkUwVrhmA44QxQo5OdyHIPgnxe43FZNUpjB5zv0-4RzJ2L5KAxdmClZ1QkVrtkqp71IafsFO3N2cvz-0jcFB40mB5S6qVovDWk03IgOzVlVHGE3IKyjYhNRO5zIb6-a4cMREIEy0jc4QKRpKDrWFleAFLw-xWKbAAhqMYLqPLEajLEpb3TSl9TP-BEEGxCGesIy8Kww3fR8xV2tJiaDs1lxEXgabYPBsFkygV7pWiFsOGebGDd91nOkaE5ERXx5sw
+ubuntu@infra:~$
+```
+
 
 
 <br><br><br>

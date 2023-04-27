@@ -160,7 +160,8 @@ echo "KeyCloakClientID = $KeyCloakClientID"
 echo "KeyCloakClientSecret = $KeyCloakClientSecret"
 ```
 
-Alternative for second line, you can also do as described below.
+Alternative for third line, you can also do as described below.
+Retrieving only one Client object using the ClientID information, and then extracting a field called 'secret' from that returned Client object.
 Reviewing the [ClientRepresentation](https://www.keycloak.org/docs-api/21.1.0/rest-api/#_clientrepresentation) object may result to a lot more clarity into the matter.
 
 ```
@@ -184,7 +185,7 @@ KeyCloakClientSecret = RGnWN7HTyGPN1SZOSHJrF0S7iJO8WlTg
 ubuntu@Client:~$
 ```
 
-There is alternative to obtain only one particular Client when querying the KeyCloak Admin API, such as described in second line below.
+There is alternative to obtain only one particular Client when querying the KeyCloak Admin API (i.e. try to skip the ClientID and try to go directly to Client's Secret), such as described in second line below.
 However, unfortunately the return value is encapsulated in an array; i.e. the return value is an array containing only one json object of type 'Client'.
 
 ```
@@ -226,11 +227,18 @@ ubuntu@Client:~$
 
 ## Create Client Role
 
+There are two types of roles in KeyCloak, Client Role and Realm Role.
+In this example, we deal only with Client Role.
+
+To create a Client Role, you will need to provide the Role's name (in this example, it is `operator-role`), and the ClientID information (which we obtained through the section above).
+
 ```
 export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
 export KeyCloakClientID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.clientId=="operator-client")' | jq -r '.id')
 curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/clients/$KeyCloakClientID/roles --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '{ "name": "operator-role" }' | jq
 ```
+
+The example execution. The Client Role creation command does not return anything.
 
 ```
 ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
@@ -238,6 +246,100 @@ ubuntu@Client:~$ export KeyCloakClientID=$(curl -fksSL --request GET http://192.
 ubuntu@Client:~$ curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/clients/$KeyCloakClientID/roles --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '{ "name": "operator-role" }' | jq
 ubuntu@Client:~$
 ```
+
+
+
+<br><br><br>
+
+***
+
+## Obtain Client-Role's ID
+
+Obtaining Client-Role's ID (third line command below) require the admin's token (first line below), ClientID information (second line below) and the Client-Role's name.
+Similar to obtaining Client's secret, the curl command on the third line below returns multiple Role objects (including pre-built-in Realm Role objects).
+`jq '.[] | select(.name=="operator-role")'` helps to single out and return only one Role object where the `name` field value is `operator-role`.
+The result is further piped through `jq -r '.id'` where only the value of field `id` of the single-out object is returned; which is the Role's ID we want.
+
+```
+export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+export KeyCloakClientID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.clientId=="operator-client")' | jq -r '.id')
+export KeyCloakRoleID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/$KeyCloakClientID/roles --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.name=="operator-role")' | jq -r '.id')
+echo "KeyCloakRoleID = $KeyCloakRoleID"
+```
+
+Below is an example of the execution and result. Note that the Role's ID value that we obtained is clean, just the value, without any additional quotes surrounding the value.
+
+```
+ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+ubuntu@Client:~$ export KeyCloakClientID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.clientId=="operator-client")' | jq -r '.id')
+ubuntu@Client:~$ export KeyCloakRoleID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/$KeyCloakClientID/roles --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.name=="operator-role")' | jq -r '.id')
+ubuntu@Client:~$ echo "KeyCloakRoleID = $KeyCloakRoleID"
+KeyCloakRoleID = dc2518b1-e8c9-4f6b-8a1d-cc6929024dca
+ubuntu@Client:~$
+```
+
+
+
+<br><br><br>
+
+***
+
+## Create User
+
+To create a User object in KeyCloak, you need to provide username (in this example case `operator`) and password (in this example case `P@55w0rd`).
+
+```
+export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '{ "username": "operator", "credentials": [ { "type": "password", "value": "P@55w0rd", "temporary": false } ] }' | jq
+```
+
+```
+ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+ubuntu@Client:~$ curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '{ "username": "operator", "credentials": [ { "type": "password", "value": "P@55w0rd", "temporary": false } ] }' | jq
+ubuntu@Client:~$
+```
+
+
+
+<br><br><br>
+
+***
+
+## Obtain User's ID
+
+Similar to the previous sections, the curl command returns all the User objects in form of an array.
+`jq '.[] | select(.username=="operator")'` helps to select only one User object with the pre-conditon we specify.
+Then we extract the `id` of that object.
+
+```
+export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+export KeyCloakUserID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.username=="operator")' | jq -r '.id')
+echo "KeyCloakUserID = $KeyCloakUserID"
+```
+
+```
+ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+ubuntu@Client:~$ export KeyCloakUserID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.username=="operator")' | jq -r '.id')
+ubuntu@Client:~$ echo "KeyCloakUserID = $KeyCloakUserID"
+KeyCloakUserID = 8dbeeea1-8e47-4cef-80e9-2c5f8298d45d
+ubuntu@Client:~$
+```
+
+
+
+<br><br><br>
+
+***
+
+## Create Client-Role Mapping
+
+
+
+
+
+
+
+
 
 
 

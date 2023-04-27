@@ -391,8 +391,8 @@ ubuntu@Client:~$
 export KeyCloakHostPort="192.168.123.203:8080"
 export KeyCloakAPIBaseURL="http://$KeyCloakHostPort"
 export KeyCloakRealmName="master"
-export KeyCloakAdminUserName="admin"
-export KeyCloakAdminPassword="admin"
+export KEYCLOAK_ADMIN="admin"
+export KEYCLOAK_ADMIN_PASSWORD="admin"
 
 # Client, Role and User Parameters
 export KeyCloakClientName="operator-client"
@@ -403,7 +403,7 @@ export KeyCloakMemberUserName="operator"
 export KeyCloakMemberPassword="operator"
 
 # Obtain Token
-export KeyCloakToken=$(curl -fksSL --request POST $KeyCloakAPIBaseURL/realms/$KeyCloakRealmName/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode "username=$KeyCloakAdminUserName" --data-urlencode "password=$KeyCloakAdminPassword" --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+export KeyCloakToken=$(curl -fksSL --request POST $KeyCloakAPIBaseURL/realms/$KeyCloakRealmName/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode "username=$KEYCLOAK_ADMIN" --data-urlencode "password=$KEYCLOAK_ADMIN_PASSWORD" --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
 echo "KeyCloakToken = $KeyCloakToken"
 # Create Client
 curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/clients --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"clientId\": \"$KeyCloakClientName\", \"protocol\": \"openid-connect\", \"publicClient\": false, \"authorizationServicesEnabled\": true, \"serviceAccountsEnabled\": true, \"redirectUris\": [ \"$KeyCloakRedirectURI\" ] }" | jq

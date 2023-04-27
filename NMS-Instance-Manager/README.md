@@ -30,7 +30,6 @@ Note that NOT all pre-prepared VM nodes are used simultaneously in all section o
 
 The sub sections not mentioned above are:
 - [ ] [NOS-Install](NOS-Install), contains simple scripts and sample configurations of NGINX OpenSource version, which may be used to implement NGINX OpenSource version to be monitored by the NMS Instance Manager.
-- [ ] [CF](CF) sub section is planned for implementation the same environment on AWS CloudFormation. This sub section is still "under construction" and will take some times to finish.
 
 
 

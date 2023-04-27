@@ -18,13 +18,15 @@
 
 ***
 
-KeyCloak References :
+References :
 - [ ] [KeyCloak Getting Started](https://www.keycloak.org/getting-started/getting-started-zip)
 - [ ] [KeyCloak Guides](https://www.keycloak.org/guides#getting-started)
 - [ ] [KeyCloak GitHub](https://github.com/keycloak/keycloak-quickstarts)
 - [ ] [Lab Sample Integration to NGINX+](https://clouddocs.f5.com/training/community/nginx/html/class9/class9.html)
 - [ ] [KeyCloak Admin API version 16.1](https://www.keycloak.org/docs-api/16.1/rest-api/)
 - [ ] [KeyCloak Admin API version 21.1.0](https://www.keycloak.org/docs-api/21.1.0/rest-api/)
+- [ ] [jq Documentation DevDocs](https://devdocs.io/jq/)
+- [ ] [jq Manual (Development Version) GitHub](https://stedolan.github.io/jq/manual/)
 
 <br><br><br>
 
@@ -37,13 +39,17 @@ This section of repository only notes some learning I gathered during building t
 Basically only a collections of commands to reach certain goals, what's working and what's not working.
 The notes here follow the main and high level procedure described in [Lab Sample Integration to NGINX+](https://clouddocs.f5.com/training/community/nginx/html/class9/class9.html).
 
-First step on using the KeyCloak Admin API, is to obtain the admin's credential/token, so we can access the rest of the endpoints functions provided by the KeyCloak Admin API.
+First step on using the KeyCloak Admin API, is to obtain the admin's token, so we can access the rest of the endpoints/functions provided by the KeyCloak Admin API.
+In this example scenario, we assume the KeyCloak-Admin-API's Base-URL is `http://192.168.123.203:8080` ; which is also KeyCloak's Server's IP Address and the default port where KeyCloak's Web-based UI is listening.
+You will also need to provide admin's username and admin's password in order to obtain admin's token (in this example case, both admin's username and admin's password are `admin`).
+In this example scenario, we use only the default Realm `master`.
+Below is the format/syntax to obtain the admin token.
 
 ```
 curl --location --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli'
 ```
 
-Example:
+Example execution and result:
 
 ```
 ubuntu@Client:~$ curl --location --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli'
@@ -51,16 +57,30 @@ ubuntu@Client:~$ curl --location --request POST http://192.168.123.203:8080/real
 ubuntu@Client:~$
 ```
 
+As you notice, the returned result is a json object, while on the script you need only the token value itself.
+To parse and extract only the object(s) and value(s) from a json object or jason map or json array, I use `jq` to help me do that.
 
+```
+export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+echo "KeyCloakToken = $KeyCloakToken"
+```
 
+Example execution and result:
 
-<br><br><br>
+```
+ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+ubuntu@Client:~$ echo "KeyCloakToken = $KeyCloakToken"
+KeyCloakToken = eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJ2N0FnRklULTkxaVVzQVo4Q195TE1wWHhaREVWdWJhSWMyc2p1YnNfLUZRIn0.eyJleHAiOjE2ODIxNDgwMTYsImlhdCI6MTY4MjE0Nzk1NiwianRpIjoiYjZlZjgyMWEtYTNjZi00ODUzLWIwY2QtYjU4MmE3MWU3ZTk2IiwiaXNzIjoiaHR0cDovLzE5Mi4xNjguMTIzLjIwMzo4MDgwL3JlYWxtcy9tYXN0ZXIiLCJzdWIiOiI0ZDgyM2U3NS0wY2U1LTRkZjgtYTllMC01MGNjMzc1NGY5MTgiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiZGNmZTg5ZjEtNDU0Ny00N2IzLTg0ZDEtNDUwMGVkZmY3M2E3IiwiYWNyIjoiMSIsInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6ImRjZmU4OWYxLTQ1NDctNDdiMy04NGQxLTQ1MDBlZGZmNzNhNyIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW4ifQ.EvbZbQSf8ylRTl_qDvCrjP9_lG_y9OoroHNhmpbEMf8z0Y-NkfAmZuA-DhJYwRr6Bi2FxgKxTzE47Hma1vrrPZYlrRtMlKzuvDBknSHg9GuxTfASo5NWVyCM6eqkBssUgPZRl_o3G8FP0q88rgVbWrMw76ofda3adzYXy0e7pi7rKddh8aiIzjQevp-9P_14-hHVlR9-vLT56Ovc0lEffsELVJXL1Geew7hMUl_7g-2mejws3SJt_H9LFc-uiXZmXt928bER4othXp5NjvHibx_ln5Sf0brxjjUu5Ror9yutTrGhyCszhucU83iU82Nj73FhhOukKU_pRBiuiYSM7g
+ubuntu@Client:~$
+```
 
-***
+As you can see on the last example above, we manage to obtain only the token's value and keep the value in a variable to be used later when we access other endpoints/functions of KeyCloak Admin API.
+By default, as per my experience, the validity time of the admin's token is not very long, so you may need to execute the above line with every endpoints/functions access.
 
-Snippet for KeyCloak Installation:
-
-`cd $HOME;sudo curl -k -L -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/KeyCloak/KeyCloakInstall.sh;sudo chmod 777 $HOME/KeyCloakInstall.sh;/bin/bash $HOME/KeyCloakInstall.sh`
+A note when you are facing some issue or error situation, to help you troubleshoot, you may want more error or warning messages.
+Based on [KeyCloak File Logging](https://www.keycloak.org/server/logging#:~:text=Logging%20to%20a%20file%20is%20disabled%20by%20default.%20To%20enable%20it,%20enter%20the%20following%20command), you need to activate file logging first.
+The default location of the log file is: file name `keycloak.log` inside the `data/log` directory of your KeyCloak installation folder.
+Observing the `keycloak.log` may help you getting further clues of what went wrong.
 
 
 

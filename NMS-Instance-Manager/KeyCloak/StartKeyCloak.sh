@@ -5,9 +5,7 @@ cd $HOME
 
 # Reference of URL to install and configure:
 # https://www.keycloak.org/getting-started/getting-started-zip
-
-export KEYCLOAK_ADMIN="admin"
-export KEYCLOAK_ADMIN_PASSWORD="admin"
+cd $HOME;sudo curl -fksSL -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/KeyCloak/KeyCloakEnvironmentVariable.sh;sudo chmod 777 $HOME/KeyCloakEnvironmentVariable.sh;sudo chown $(id -u):$(id -g) $HOME/KeyCloakEnvironmentVariable.sh;source $HOME/KeyCloakEnvironmentVariable.sh
 
 /root/keycloak/bin/kc.sh start-dev --log="console,file" &
 echo "$!" | tee /root/keycloak/KeyCloakPID

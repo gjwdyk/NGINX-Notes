@@ -62,6 +62,8 @@ while ( [ "$Loop" == "Yes" ] ) ; do
  fi
 done
 
+sudo cat /root/keycloak/data/log/keycloak.log
+
 
 
 #╔═════════╗

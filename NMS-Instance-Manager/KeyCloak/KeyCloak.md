@@ -1,23 +1,5 @@
 # KeyCloak Configurations
 
-![Under Construction Green](../../Image/UnderConstructionGreen.svg)
-
-<br><br><br>
-
-***
-
-![Under Construction Yellow](../../Image/UnderConstructionYellow.svg)
-
-<br><br><br>
-
-***
-
-![Under Construction Red](../../Image/UnderConstructionRed.svg)
-
-<br><br><br>
-
-***
-
 References :
 - [ ] [KeyCloak Getting Started](https://www.keycloak.org/getting-started/getting-started-zip)
 - [ ] [KeyCloak Guides](https://www.keycloak.org/guides#getting-started)

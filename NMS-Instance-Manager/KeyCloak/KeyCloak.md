@@ -225,7 +225,7 @@ ubuntu@Client:~$
 
 ***
 
-## Create Client Role
+## Create Client-Role
 
 There are two types of roles in KeyCloak, Client Role and Realm Role.
 In this example, we deal only with Client Role.
@@ -333,15 +333,98 @@ ubuntu@Client:~$
 
 ## Create Client-Role Mapping
 
+To create Role Mapping, we'll need: admin's token, ClientID, User's ID, Role's name and Role's ID (review the value used below against the value obtained in the section examples above).
+But before executing the below commands, you may want to execute the below "see the result of the Role Mapping" first, just to ensure there is/are difference(s) before and after.
+
+```
+export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+export KeyCloakClientID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.clientId=="operator-client")' | jq -r '.id')
+export KeyCloakUserID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.username=="operator")' | jq -r '.id')
+curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/users/$KeyCloakUserID/role-mappings/clients/$KeyCloakClientID --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '[ { "id": "dc2518b1-e8c9-4f6b-8a1d-cc6929024dca", "name": "operator-role" } ]' | jq
+```
+
+```
+ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+ubuntu@Client:~$ export KeyCloakClientID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.clientId=="operator-client")' | jq -r '.id')
+ubuntu@Client:~$ export KeyCloakUserID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.username=="operator")' | jq -r '.id')
+ubuntu@Client:~$ curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/users/$KeyCloakUserID/role-mappings/clients/$KeyCloakClientID --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '[ { "id": "dc2518b1-e8c9-4f6b-8a1d-cc6929024dca", "name": "operator-role" } ]' | jq
+ubuntu@Client:~$
+```
+
+To see the result of the Role Mapping, just do the GET without payload data instead of POST.
+
+```
+export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+export KeyCloakClientID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.clientId=="operator-client")' | jq -r '.id')
+export KeyCloakUserID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.username=="operator")' | jq -r '.id')
+curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/users/$KeyCloakUserID/role-mappings/clients/$KeyCloakClientID --header "Authorization: Bearer $KeyCloakToken" | jq
+```
+
+```
+ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+ubuntu@Client:~$ export KeyCloakClientID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.clientId=="operator-client")' | jq -r '.id')
+ubuntu@Client:~$ export KeyCloakUserID=$(curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" | jq '.[] | select(.username=="operator")' | jq -r '.id')
+ubuntu@Client:~$ curl -fksSL --request GET http://192.168.123.203:8080/admin/realms/master/users/$KeyCloakUserID/role-mappings/clients/$KeyCloakClientID --header "Authorization: Bearer $KeyCloakToken" | jq
+[
+  {
+    "id": "dc2518b1-e8c9-4f6b-8a1d-cc6929024dca",
+    "name": "operator-role",
+    "composite": false,
+    "clientRole": true,
+    "containerId": "8aa2b7cf-0ca6-41e8-90f5-8ea01e8ffbdc"
+  }
+]
+ubuntu@Client:~$
+```
 
 
 
+<br><br><br>
 
+***
 
+## Summarize and Parameterize the commands
 
+```
+# System and Realm Parameters
+export KeyCloakHostPort="192.168.123.203:8080"
+export KeyCloakAPIBaseURL="http://$KeyCloakHostPort"
+export KeyCloakRealmName="master"
+export KeyCloakAdminUserName="admin"
+export KeyCloakAdminPassword="admin"
 
+# Client, Role and User Parameters
+export KeyCloakClientName="operator-client"
+export ServiceHostPort="192.168.123.102:43210"
+export KeyCloakRedirectURI="http://$ServiceHostPort/_codexch"
+export KeyCloakRoleName="operator-role"
+export KeyCloakMemberUserName="operator"
+export KeyCloakMemberPassword="operator"
 
-
+# Obtain Token
+export KeyCloakToken=$(curl -fksSL --request POST $KeyCloakAPIBaseURL/realms/$KeyCloakRealmName/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode "username=${KeyCloakAdminUserName}" --data-urlencode "password=${KeyCloakAdminPassword}" --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
+echo "KeyCloakToken = $KeyCloakToken"
+# Create Client
+curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/clients --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"clientId\": \"$KeyCloakClientName\", \"protocol\": \"openid-connect\", \"publicClient\": false, \"authorizationServicesEnabled\": true, \"serviceAccountsEnabled\": true, \"redirectUris\": [ \"$KeyCloakRedirectURI\" ] }" | jq
+# Obtain Client ID
+export KeyCloakClientID=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq ".[] | select(.clientId==\"$KeyCloakClientName\")" | jq -r '.id')
+echo "KeyCloakClientID = $KeyCloakClientID"
+# Obtain Client Secret
+export KeyCloakClientSecret=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/clients/$KeyCloakClientID/client-secret --header "Authorization: Bearer $KeyCloakToken" | jq -r '.value')
+echo "KeyCloakClientSecret = $KeyCloakClientSecret"
+# Create Role
+curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/clients/$KeyCloakClientID/roles --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"name\": \"$KeyCloakRoleName\" }" | jq
+# Obtain Role ID
+export KeyCloakRoleID=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/clients/$KeyCloakClientID/roles --header "Authorization: Bearer $KeyCloakToken" | jq ".[] | select(.name==\"$KeyCloakRoleName\")" | jq -r '.id')
+echo "KeyCloakRoleID = $KeyCloakRoleID"
+# Create User
+curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"username\": \"$KeyCloakMemberUserName\", \"credentials\": [ { \"type\": \"password\", \"value\": \"$KeyCloakMemberPassword\", \"temporary\": false } ] }" | jq
+# Obtain User ID
+export KeyCloakUserID=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/users --header "Authorization: Bearer $KeyCloakToken" | jq ".[] | select(.username==\"$KeyCloakMemberUserName\")" | jq -r '.id')
+echo "KeyCloakUserID = $KeyCloakUserID"
+# Create Client-Role Mapping
+curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/users/$KeyCloakUserID/role-mappings/clients/$KeyCloakClientID --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "[ { \"id\": \"$KeyCloakRoleID\", \"name\": \"$KeyCloakRoleName\" } ]" | jq
+```
 
 
 

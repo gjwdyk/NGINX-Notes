@@ -119,6 +119,7 @@ As stated above, you may need to execute the token retrieval command (first line
 Second line is the format/syntax to create a 'Client' within the KeyCloak system.
 
 You need to provide the ClientID (client's name), in this example case it is `operator-client`. And RedirectURIs, in this example case it is `http://192.168.123.102:43210/_codexch`.
+Kindly review [Core Concepts and Terms](https://www.keycloak.org/docs/latest/server_admin/#core-concepts-and-terms) for explanation of what term means what, in this section of repository.
 Don't forget to add header `Content-Type: application/json` to properly describe the format of the data forwarded to KeyCloak system.
 
 Refer to [Clients Resource](https://www.keycloak.org/docs-api/21.1.0/rest-api/#_clients_resource) and [ClientRepresentation](https://www.keycloak.org/docs-api/21.1.0/rest-api/#_clientrepresentation) for further details of data structure of the json payload which you can send to KeyCloak system.

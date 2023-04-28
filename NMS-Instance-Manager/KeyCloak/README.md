@@ -41,6 +41,16 @@ Snippet for KeyCloak Installation:
 
 ***
 
+Snippet for KeyCloak Installation and Configuration:
+
+`cd $HOME;sudo curl -k -L -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/KeyCloak/KeyCloakInstallConfigure.sh;sudo chmod 777 $HOME/KeyCloakInstallConfigure.sh;/bin/bash $HOME/KeyCloakInstallConfigure.sh`
+
+
+
+<br><br><br>
+
+***
+
 <br><br><br>
 ```
 ╔═╦═════════════════╦═╗

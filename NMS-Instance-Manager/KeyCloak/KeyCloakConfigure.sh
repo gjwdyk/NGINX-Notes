@@ -3,7 +3,7 @@
 sudo echo "Executing $0 $1 $2 $3 $4 $5 $6 $7 $8 $9"
 cd $HOME
 
-cd $HOME;sudo curl -fksSL -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/KeyCloak/KeyCloakEnvironmentVariable.sh;sudo chmod 777 $HOME/KeyCloakEnvironmentVariable.sh;sudo chown $(id -u):$(id -g) $HOME/KeyCloakEnvironmentVariable.sh;source $HOME/KeyCloakEnvironmentVariable.sh
+sudo curl -k -L -o /root/keycloak/KeyCloakEnvironmentVariable.sh --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/KeyCloak/KeyCloakEnvironmentVariable.sh;sudo chmod 777 /root/keycloak/KeyCloakEnvironmentVariable.sh;sudo chown $(id -u):$(id -g) /root/keycloak/KeyCloakEnvironmentVariable.sh;source /root/keycloak/KeyCloakEnvironmentVariable.sh
 
 # Ability to configure a complex organization in such a linear method as below is of-course impossible in real-world.
 # However, as this script aims only for demo and learning purposes, it will do at the moment.

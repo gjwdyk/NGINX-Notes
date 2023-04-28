@@ -415,10 +415,10 @@ curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/u
 
 ***
 
-## KeyCloak OpenID-Connect `.well-known` EndPoint
+## KeyCloak OpenID-Connect Discovery
 
-Below is an example of KeyCloak's OpenID-Connect `.well-known` EndPoint information.
-The OpenID-Connect `.well-known` EndPoint is usually used by Client to integrate with OpenID-Connect such as KeyCloak.
+Below is an example of KeyCloak's OpenID-Connect `.well-known/openid-configuration` EndPoint information. Some times also called as OpenID-Connect Discovery.
+The OpenID-Connect `.well-known/openid-configuration` EndPoint is usually used by Client to integrate with OpenID-Connect such as KeyCloak.
 
 ```
 ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')

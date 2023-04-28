@@ -48,6 +48,16 @@ Below is a snippet code for NGINX-Plus Installation (as LB with [Single Node K8s
 
 ***
 
+Below is a snippet code for NGINX-Plus Installation (as LB with [Single Node K8s](../K8sServer#single-node-cluster) as the Application Server) with OpenID-Connect (Configured). The pre-requisite for the installation : the `nginx-repo.crt` and `nginx-repo.key` files must already exist and are located at `$HOME` directory/folder.
+
+`cd $HOME;sudo curl -k -L -O --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/N%2BOICInstall/NOICLB.sh;sudo chmod 777 $HOME/NOICLB.sh;/bin/bash $HOME/NOICLB.sh`
+
+
+
+<br><br><br>
+
+***
+
 <br><br><br>
 ```
 ╔═╦═════════════════╦═╗

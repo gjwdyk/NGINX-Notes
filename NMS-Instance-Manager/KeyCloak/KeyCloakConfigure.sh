@@ -62,10 +62,12 @@ for counter in $(seq 0 $max_counter) ; do
  curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/${KeyCloakRealmName[$counter]}/clients --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"clientId\": \"${KeyCloakClientName[$counter]}\", \"protocol\": \"openid-connect\", \"publicClient\": false, \"authorizationServicesEnabled\": true, \"serviceAccountsEnabled\": true, \"redirectUris\": [ \"${KeyCloakRedirectURI[$counter]}\" ] }" | jq
  # Obtain Client ID
  export KeyCloakClientID=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/${KeyCloakRealmName[$counter]}/clients/ --header "Authorization: Bearer $KeyCloakToken" | jq ".[] | select(.clientId==\"${KeyCloakClientName[$counter]}\")" | jq -r '.id')
- echo "KeyCloakClientID = $KeyCloakClientID"
+ echo "$KeyCloakClientID" > KeyCloakClientID$counter
+ echo "KeyCloakClientID = $(cat KeyCloakClientID$counter)"
  # Obtain Client Secret
  export KeyCloakClientSecret=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/${KeyCloakRealmName[$counter]}/clients/$KeyCloakClientID/client-secret --header "Authorization: Bearer $KeyCloakToken" | jq -r '.value')
- echo "KeyCloakClientSecret = $KeyCloakClientSecret"
+ echo "$KeyCloakClientSecret" > KeyCloakClientSecret$counter
+ echo "KeyCloakClientSecret = $(cat KeyCloakClientSecret$counter)"
  # Create Role
  curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/${KeyCloakRealmName[$counter]}/clients/$KeyCloakClientID/roles --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"name\": \"${KeyCloakRoleName[$counter]}\" }" | jq
  # Obtain Role ID

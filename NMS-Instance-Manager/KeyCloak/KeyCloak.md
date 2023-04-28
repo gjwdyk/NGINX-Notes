@@ -713,7 +713,7 @@ ubuntu@Client:~$ curl -fksSL --request GET http://192.168.123.203:8080/realms/ma
     "backchannel_authentication_endpoint": "http://192.168.123.203:8080/realms/master/protocol/openid-connect/ext/ciba/auth"
   }
 }
-ubuntu@Worker2:~$
+ubuntu@Client:~$
 ```
 
 

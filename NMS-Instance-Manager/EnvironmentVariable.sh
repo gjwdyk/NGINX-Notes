@@ -38,9 +38,13 @@ export eWorkerVIP1=192.168.101.111
 export eWorkerVIP2=192.168.101.112
 export eWorkerVIP3=192.168.101.113
 
+export LogServer=$Master3
 export LogPort1=6514
 export LogPort2=6515
 export LogPort3=6516
+
+export OICServer=$Server3
+export OICPort=8080
 
 
 
@@ -76,9 +80,13 @@ export LogPort3=6516
 # echo $eWorkerVIP2
 # echo $eWorkerVIP3
 
+# echo $LogServer
 # echo $LogPort1
 # echo $LogPort2
 # echo $LogPort3
+
+# echo $OICServer
+# echo $OICPort
 
 
 

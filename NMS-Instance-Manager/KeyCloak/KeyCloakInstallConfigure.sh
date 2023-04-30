@@ -35,6 +35,10 @@ echo "@reboot         root         sudo /bin/bash /root/keycloak/StartKeyCloak.s
 
 sudo curl -k -L -o /root/keycloak/KeyCloakConfigure.sh --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/KeyCloak/KeyCloakConfigure.sh;sudo chmod 777 /root/keycloak/KeyCloakConfigure.sh;sudo /bin/bash /root/keycloak/KeyCloakConfigure.sh
 
+cd $HOME;sudo curl -k -L -o $HOME/.ssh/id_rsa --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa;sudo chmod 600 $HOME/.ssh/id_rsa;sudo chown $(id -u):$(id -g) $HOME/.ssh/id_rsa
+cd $HOME;sudo curl -k -L -o $HOME/.ssh/id_rsa.pub --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa.pub;sudo chmod 644 $HOME/.ssh/id_rsa.pub;sudo chown $(id -u):$(id -g) $HOME/.ssh/id_rsa.pub
+cd $HOME;sudo curl -k -L -o $HOME/.ssh/authorized_keys --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa.pub;sudo chmod 600 $HOME/.ssh/authorized_keys;sudo chown $(id -u):$(id -g) $HOME/.ssh/authorized_keys
+
 
 
 #╔═══════════════════╗

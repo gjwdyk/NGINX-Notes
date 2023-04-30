@@ -3,6 +3,10 @@
 echo "Executing $0 $1 $2 $3 $4 $5 $6 $7 $8 $9"
 cd $HOME
 
+cd $HOME;sudo curl -k -L -o $HOME/.ssh/id_rsa --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa;sudo chmod 600 $HOME/.ssh/id_rsa;sudo chown $(id -u):$(id -g) $HOME/.ssh/id_rsa
+cd $HOME;sudo curl -k -L -o $HOME/.ssh/id_rsa.pub --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa.pub;sudo chmod 644 $HOME/.ssh/id_rsa.pub;sudo chown $(id -u):$(id -g) $HOME/.ssh/id_rsa.pub
+cd $HOME;sudo curl -k -L -o $HOME/.ssh/authorized_keys --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa.pub;sudo chmod 600 $HOME/.ssh/authorized_keys;sudo chown $(id -u):$(id -g) $HOME/.ssh/authorized_keys
+
 let counter=0;while ( (sudo lsof /var/cache/apt/archives/lock) || (sudo lsof /var/lib/apt/lists/lock) || (sudo lsof /var/lib/dpkg/lock*) || ((`(ps aux -A | grep -i -c "apt")` > 1)) );do let counter++;echo "$counter";if (sudo lsof /var/cache/apt/archives/lock);then printf "$counter sudo lsof /var/cache/apt/archives/lock\n`sudo lsof /var/cache/apt/archives/lock`\n";fi;if (sudo lsof /var/lib/apt/lists/lock);then printf "$counter sudo lsof /var/lib/apt/lists/lock\n`sudo lsof /var/lib/apt/lists/lock`\n";fi;if (sudo lsof /var/lib/dpkg/lock*);then printf "$counter sudo lsof /var/lib/dpkg/lock*\n`sudo lsof /var/lib/dpkg/lock*`\n";fi;if ((`(ps aux -A | grep -i -c "apt")` > 1));then printf "$counter ps aux -A | grep -i \"apt\"\n`ps aux -A | grep -i \"apt\"`\n";fi;sleep 1s;done
 sudo apt update -y
 let counter=0;while ( (sudo lsof /var/cache/apt/archives/lock) || (sudo lsof /var/lib/apt/lists/lock) || (sudo lsof /var/lib/dpkg/lock*) || ((`(ps aux -A | grep -i -c "apt")` > 1)) );do let counter++;echo "$counter";if (sudo lsof /var/cache/apt/archives/lock);then printf "$counter sudo lsof /var/cache/apt/archives/lock\n`sudo lsof /var/cache/apt/archives/lock`\n";fi;if (sudo lsof /var/lib/apt/lists/lock);then printf "$counter sudo lsof /var/lib/apt/lists/lock\n`sudo lsof /var/lib/apt/lists/lock`\n";fi;if (sudo lsof /var/lib/dpkg/lock*);then printf "$counter sudo lsof /var/lib/dpkg/lock*\n`sudo lsof /var/lib/dpkg/lock*`\n";fi;if ((`(ps aux -A | grep -i -c "apt")` > 1));then printf "$counter ps aux -A | grep -i \"apt\"\n`ps aux -A | grep -i \"apt\"`\n";fi;sleep 1s;done
@@ -34,10 +38,6 @@ sudo curl -k -L -o /root/keycloak/StartKeyCloak.sh --retry 333 https://raw.githu
 echo "@reboot         root         sudo /bin/bash /root/keycloak/StartKeyCloak.sh" | sudo tee -a /etc/crontab
 
 sudo curl -k -L -o /root/keycloak/KeyCloakConfigure.sh --retry 333 https://raw.githubusercontent.com/gjwdyk/NGINX-Notes/main/NMS-Instance-Manager/KeyCloak/KeyCloakConfigure.sh;sudo chmod 777 /root/keycloak/KeyCloakConfigure.sh;sudo /bin/bash /root/keycloak/KeyCloakConfigure.sh
-
-cd $HOME;sudo curl -k -L -o $HOME/.ssh/id_rsa --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa;sudo chmod 600 $HOME/.ssh/id_rsa;sudo chown $(id -u):$(id -g) $HOME/.ssh/id_rsa
-cd $HOME;sudo curl -k -L -o $HOME/.ssh/id_rsa.pub --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa.pub;sudo chmod 644 $HOME/.ssh/id_rsa.pub;sudo chown $(id -u):$(id -g) $HOME/.ssh/id_rsa.pub
-cd $HOME;sudo curl -k -L -o $HOME/.ssh/authorized_keys --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa.pub;sudo chmod 600 $HOME/.ssh/authorized_keys;sudo chown $(id -u):$(id -g) $HOME/.ssh/authorized_keys
 
 
 

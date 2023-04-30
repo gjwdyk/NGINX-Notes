@@ -25,6 +25,7 @@ cd $HOME;sudo curl -k -L -o $HOME/.ssh/id_rsa.pub --retry 333 https://raw.github
 cd $HOME;sudo curl -k -L -o $HOME/.ssh/authorized_keys --retry 333 https://raw.githubusercontent.com/gjwdyk/PublicKeys/main/SShKeyPair/RSA/id_rsa.pub;sudo chmod 600 $HOME/.ssh/authorized_keys;sudo chown $(id -u):$(id -g) $HOME/.ssh/authorized_keys
 
 Loop="Yes"
+Loop_Period="9s"
 while ( [ "$Loop" == "Yes" ] ) ; do
  if ( ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakStatus | egrep -o "^([0-9]{14} KeyCloak is Ready \.)$" ) ; then
   ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakAPIBaseURL | tee KeyCloakAPIBaseURL

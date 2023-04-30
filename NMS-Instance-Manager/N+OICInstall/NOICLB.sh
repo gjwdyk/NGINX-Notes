@@ -32,6 +32,12 @@ while ( [ "$Loop" == "Yes" ] ) ; do
   ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakRealmName0 | tee KeyCloakRealmName0
   ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakClientName0 | tee KeyCloakClientName0
   ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakClientSecret0 | egrep -o "^[a-zA-Z0-9]{32}$" | tee KeyCloakClientSecret0
+  ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakRealmName1 | tee KeyCloakRealmName1
+  ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakClientName1 | tee KeyCloakClientName1
+  ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakClientSecret1 | egrep -o "^[a-zA-Z0-9]{32}$" | tee KeyCloakClientSecret1
+  ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakRealmName2 | tee KeyCloakRealmName2
+  ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakClientName2 | tee KeyCloakClientName2
+  ssh -o StrictHostKeyChecking=no $OICServer sudo cat /root/KeyCloakClientSecret2 | egrep -o "^[a-zA-Z0-9]{32}$" | tee KeyCloakClientSecret2
   echo "`date +%Y%m%d%H%M%S` KeyCloak Server is Ready ."
   Loop="No"
  else
@@ -41,10 +47,25 @@ while ( [ "$Loop" == "Yes" ] ) ; do
 done
 echo "`date +%Y%m%d%H%M%S` Out of Checking Loop for KeyCloak Server."
 
-./nginx-openid-connect/configure.sh -h $Worker1 -k request -i $(cat KeyCloakClientName0) -s $(cat KeyCloakClientSecret0) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName0)/.well-known/openid-configuration
+./nginx-openid-connect/configure.sh -h $Worker1:80 -k request -i $(cat KeyCloakClientName2) -s $(cat KeyCloakClientSecret2) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName2)/.well-known/openid-configuration
+./nginx-openid-connect/configure.sh -h $Worker1:8080 -k request -i $(cat KeyCloakClientName1) -s $(cat KeyCloakClientSecret1) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName1)/.well-known/openid-configuration
+./nginx-openid-connect/configure.sh -h $Worker1:43210 -k request -i $(cat KeyCloakClientName0) -s $(cat KeyCloakClientSecret0) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName0)/.well-known/openid-configuration
+
+sudo cp $HOME/nginx-openid-connect/openid_connect.js /etc/nginx/conf.d/ ; sudo chmod 666 /etc/nginx/conf.d/openid_connect.js
+sudo cp $HOME/nginx-openid-connect/openid_connect.server_conf /etc/nginx/conf.d/ ; sudo chmod 666 /etc/nginx/conf.d/openid_connect.server_conf
+sudo cp $HOME/nginx-openid-connect/openid_connect_configuration.conf /etc/nginx/conf.d/ ; sudo chmod 666 /etc/nginx/conf.d/openid_connect_configuration.conf
+
+sudo sed -n '/^\ *resolver\ *[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\ *\;\ */p' /etc/nginx/conf.d/openid_connect.server_conf
+sudo sed -i 's#resolver\ *[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\ *\;#resolver   127.0.0.53 ;#g' /etc/nginx/conf.d/openid_connect.server_conf
+sudo sed -n '/^\ *resolver\ *[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\ *\;\ */p' /etc/nginx/conf.d/openid_connect.server_conf
 
 
-sudo nginx -t;sudo nginx -s reload
+
+
+
+if (sudo nginx -t 2>&1 | egrep "syntax is ok") && (sudo nginx -t 2>&1 | egrep "test is successful") ; then sudo nginx -s reload ; echo "NGINX ReLoaded." ; else "Error in NGINX Configuration." ; fi
+
+
 
 #╔══════════╗
 #║   Test   ║

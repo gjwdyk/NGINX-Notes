@@ -46,7 +46,9 @@ export LogPort3=6516
 export OICServer=$Server3
 export OICPort=8080
 
-
+export DomainName1=operation.magrathea.website
+export DomainName2=membership.ggrks.click
+export DomainName3=subscription.aadc.link
 
 # echo $Master1
 # echo $Master2

@@ -47,9 +47,9 @@ while ( [ "$Loop" == "Yes" ] ) ; do
 done
 echo "`date +%Y%m%d%H%M%S` Out of Checking Loop for KeyCloak Server."
 
-./nginx-openid-connect/configure.sh -h $Worker1:80 -k request -i $(cat KeyCloakClientName2) -s $(cat KeyCloakClientSecret2) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName2)/.well-known/openid-configuration
-./nginx-openid-connect/configure.sh -h $Worker1:8080 -k request -i $(cat KeyCloakClientName1) -s $(cat KeyCloakClientSecret1) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName1)/.well-known/openid-configuration
-./nginx-openid-connect/configure.sh -h $Worker1:43210 -k request -i $(cat KeyCloakClientName0) -s $(cat KeyCloakClientSecret0) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName0)/.well-known/openid-configuration
+./nginx-openid-connect/configure.sh -h $DomainName3 -k request -i $(cat KeyCloakClientName2) -s $(cat KeyCloakClientSecret2) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName2)/.well-known/openid-configuration
+./nginx-openid-connect/configure.sh -h $DomainName2 -k request -i $(cat KeyCloakClientName1) -s $(cat KeyCloakClientSecret1) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName1)/.well-known/openid-configuration
+./nginx-openid-connect/configure.sh -h $DomainName1 -k request -i $(cat KeyCloakClientName0) -s $(cat KeyCloakClientSecret0) -x $(cat KeyCloakAPIBaseURL)/realms/$(cat KeyCloakRealmName0)/.well-known/openid-configuration
 
 sudo cp $HOME/nginx-openid-connect/openid_connect.js /etc/nginx/conf.d/ ; sudo chmod 666 /etc/nginx/conf.d/openid_connect.js
 sudo cp $HOME/nginx-openid-connect/openid_connect.server_conf /etc/nginx/conf.d/ ; sudo chmod 666 /etc/nginx/conf.d/openid_connect.server_conf

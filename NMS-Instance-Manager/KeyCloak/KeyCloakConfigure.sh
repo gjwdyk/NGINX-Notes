@@ -84,7 +84,7 @@ for counter in $(seq 0 $max_counter) ; do
  if [ $ErrorFree = true ] && [ ! -z $KeyCloakRoleID ] ; then ErrorFree=true ; else ErrorFree=false ; fi
  echo "KeyCloakRoleID = $KeyCloakRoleID"
  # Create User
- curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/${KeyCloakRealmName[$counter]}/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"username\": \"${KeyCloakMemberUserName[$counter]}\", \"credentials\": [ { \"type\": \"password\", \"value\": \"${KeyCloakMemberPassword[$counter]}\", \"temporary\": false } ] }" | jq
+ curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/${KeyCloakRealmName[$counter]}/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"username\": \"${KeyCloakMemberUserName[$counter]}\", \"credentials\": [ { \"type\": \"password\", \"value\": \"${KeyCloakMemberPassword[$counter]}\", \"temporary\": false } ], \"enabled\": true }" | jq
  # Obtain User ID
  export KeyCloakUserID=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/${KeyCloakRealmName[$counter]}/users --header "Authorization: Bearer $KeyCloakToken" | jq ".[] | select(.username==\"${KeyCloakMemberUserName[$counter]}\")" | jq -r '.id')
  if [ $ErrorFree = true ] && [ ! -z $KeyCloakUserID ] ; then ErrorFree=true ; else ErrorFree=false ; fi

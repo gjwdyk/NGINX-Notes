@@ -273,12 +273,12 @@ To create a User object in KeyCloak, you need to provide username (in this examp
 
 ```
 export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
-curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '{ "username": "operator", "credentials": [ { "type": "password", "value": "P@55w0rd", "temporary": false } ] }' | jq
+curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '{ "username": "operator", "credentials": [ { "type": "password", "value": "P@55w0rd", "temporary": false } ], "enabled": true }' | jq
 ```
 
 ```
 ubuntu@Client:~$ export KeyCloakToken=$(curl -fksSL --request POST http://192.168.123.203:8080/realms/master/protocol/openid-connect/token --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'username=admin' --data-urlencode 'password=admin' --data-urlencode 'grant_type=password' --data-urlencode 'client_id=admin-cli' | jq -r '.access_token')
-ubuntu@Client:~$ curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '{ "username": "operator", "credentials": [ { "type": "password", "value": "P@55w0rd", "temporary": false } ] }' | jq
+ubuntu@Client:~$ curl -fksSL --request POST http://192.168.123.203:8080/admin/realms/master/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data '{ "username": "operator", "credentials": [ { "type": "password", "value": "P@55w0rd", "temporary": false } ], "enabled": true }' | jq
 ubuntu@Client:~$
 ```
 
@@ -401,7 +401,7 @@ curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/c
 export KeyCloakRoleID=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/clients/$KeyCloakClientID/roles --header "Authorization: Bearer $KeyCloakToken" | jq ".[] | select(.name==\"$KeyCloakRoleName\")" | jq -r '.id')
 echo "KeyCloakRoleID = $KeyCloakRoleID"
 # Create User
-curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"username\": \"$KeyCloakMemberUserName\", \"credentials\": [ { \"type\": \"password\", \"value\": \"$KeyCloakMemberPassword\", \"temporary\": false } ] }" | jq
+curl -fksSL --request POST $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/users --header "Authorization: Bearer $KeyCloakToken" --header 'Content-Type: application/json' --data "{ \"username\": \"$KeyCloakMemberUserName\", \"credentials\": [ { \"type\": \"password\", \"value\": \"$KeyCloakMemberPassword\", \"temporary\": false } ], "enabled": true }" | jq
 # Obtain User ID
 export KeyCloakUserID=$(curl -fksSL --request GET $KeyCloakAPIBaseURL/admin/realms/$KeyCloakRealmName/users --header "Authorization: Bearer $KeyCloakToken" | jq ".[] | select(.username==\"$KeyCloakMemberUserName\")" | jq -r '.id')
 echo "KeyCloakUserID = $KeyCloakUserID"

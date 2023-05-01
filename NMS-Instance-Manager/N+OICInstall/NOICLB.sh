@@ -59,7 +59,17 @@ sudo sed -n '/^\ *resolver\ *[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\ *\;\ */p' /etc/ngi
 sudo sed -i 's#resolver\ *[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\ *\;#resolver   127.0.0.53 ;#g' /etc/nginx/conf.d/openid_connect.server_conf
 sudo sed -n '/^\ *resolver\ *[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\ *\;\ */p' /etc/nginx/conf.d/openid_connect.server_conf
 
+sudo sed -n '/^\ *'"$DomainName1"'\ *0\;$/p' /etc/nginx/conf.d/openid_connect_configuration.conf
+sudo sed -i 's#'"$DomainName1"'\ *0\;#'"$DomainName1"'   '"$(cat KeyCloakClientSecret0)"' ;#g' /etc/nginx/conf.d/openid_connect_configuration.conf
+sudo sed -nE '/^\ *'"$DomainName1"'\ *[a-zA-Z0-9]{32}\ *\;\ *$/p' /etc/nginx/conf.d/openid_connect_configuration.conf
 
+sudo sed -n '/^\ *'"$DomainName2"'\ *0\;$/p' /etc/nginx/conf.d/openid_connect_configuration.conf
+sudo sed -i 's#'"$DomainName2"'\ *0\;#'"$DomainName2"'   '"$(cat KeyCloakClientSecret1)"' ;#g' /etc/nginx/conf.d/openid_connect_configuration.conf
+sudo sed -nE '/^\ *'"$DomainName2"'\ *[a-zA-Z0-9]{32}\ *\;\ *$/p' /etc/nginx/conf.d/openid_connect_configuration.conf
+
+sudo sed -n '/^\ *'"$DomainName3"'\ *0\;$/p' /etc/nginx/conf.d/openid_connect_configuration.conf
+sudo sed -i 's#'"$DomainName3"'\ *0\;#'"$DomainName3"'   '"$(cat KeyCloakClientSecret2)"' ;#g' /etc/nginx/conf.d/openid_connect_configuration.conf
+sudo sed -nE '/^\ *'"$DomainName3"'\ *[a-zA-Z0-9]{32}\ *\;\ *$/p' /etc/nginx/conf.d/openid_connect_configuration.conf
 
 
 

@@ -7,7 +7,7 @@ export NumberOfWorkerNodes=3
 export WorkerNodeNamePrefix='Server'
 
 # Change the value into empty string '' or "", if you just want to install the latest versions but don't know which version is the latest one.
-export KubernetesVersion=''
+export KubernetesVersion='1.26.3-00'
 
 # Don't change the following variables if you don't really need to and know what you're doing. Below variables can NOT have empty value.
 export PodNetworkCIDR='10.244.0.0/16'

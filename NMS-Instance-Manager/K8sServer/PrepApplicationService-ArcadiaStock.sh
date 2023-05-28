@@ -178,6 +178,7 @@ while ( [ "$Loop" == "Yes" ] ) ; do
  if [ `kubectl get pod --all-namespaces --no-headers | wc -l` -gt 0 ] && [ `kubectl get pod --all-namespaces -o wide --no-headers | grep -e "Completed" -e "Running" | wc -l` -ge `kubectl get pod --all-namespaces --no-headers | wc -l` ] ; then
   echo "`date +%Y%m%d%H%M%S` All Pods are Completed or Running."
   Loop="No"
+  sleep $Loop_Period
  else
   echo "`date +%Y%m%d%H%M%S` Waiting for All Pods to be Completed or Running."
   sleep $Loop_Period
@@ -201,6 +202,11 @@ done
 kubectl exec -it -n hackazon $(kubectl get pods -n hackazon --no-headers=true | awk '{print $1}') -- cat /var/www/hackazon/assets/config/email.php
 kubectl exec -it -n hackazon $(kubectl get pods -n hackazon --no-headers=true | awk '{print $1}') -- sed -i "s/'type' *=> 'sendmail'/'type' => 'native'/g" /var/www/hackazon/assets/config/email.php
 kubectl exec -it -n hackazon $(kubectl get pods -n hackazon --no-headers=true | awk '{print $1}') -- cat /var/www/hackazon/assets/config/email.php
+
+# There is a glitch, if you access directly to nodePort: 30082, the glitch appears after you login, or when registering new user:
+# "Error: 400 Invalid Referer"
+# However, when accessed through another NGINX Reverse Proxy, the glitch does not appear.
+# So the glitch may be related to either or combination of: HTTP Header Host, Referer, Non-Standard Port Usage, etc.
 
 #╔═════════════════╗
 #║   HipsterShop   ║

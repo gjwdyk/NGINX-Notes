@@ -904,6 +904,156 @@ while ( [ "$Loop" == "Yes" ] ) ; do
  fi
 done
 
+#╔═══════════════════════╗
+#║   WitcherPortal CTF   ║
+#╚═══════════════════════╝
+
+#
+# ---------
+#
+# image: sbacker/ctfapi2@sha256:128fa2fb754dcd8e962d54c2f2fb975f60fc081381454a3276525298c5b5fbd8
+# is the CTFd. CTFd is only like a registry or book-keeper which take notes of what you have obtained.
+# It knows the correct answer (pre-configured). Just like an Exam/Test machine.
+# It is OK to run this image on any random port.
+#
+# Credential
+# admin
+# @F5Netw0rks
+#
+# Participant needs to register first before joining CTF (i.e. the Exam/Test).
+#
+# ---------
+#
+# image: sbacker/witcherportal2@sha256:8b9f0b24d974be1f8ad5f61ee56bbd07d21c62f7f0b9d07320125d046bc8f50f
+# is the WitcherPortal (the main part), where participant will try to break into the portal with little or no clue/information.
+# It is OK to run this image on any random port.
+#
+# ---------
+#
+# image: sbacker/witchermesgserver@sha256:1b4cd3d801be60990641ae28a2603f7c424db4e681712f75fa6487e299d038cd
+# is the WebSocket part of the WitcherPortal.
+#
+# The main WitcherPortal insist to stick with the below structure.
+#
+# http://witcherportal.domain.tld:30086
+#   ws://          wsr.domain.tld:8080
+#
+# Where 'domain.tld' (and also 'witcherportal') can be variable (can be changed to your local needs).
+# Protocol used is 'ws://'. 'wss://' is not supported.
+# 'wsr' part of the domain name apparently fixed by the main WitcherPortal.
+# The main WitcherPortal always redirect traffic to port 8080 (refer to the 'structure' above).
+# While the WebSocket image itself can be listening at different port (in this case port 30087).
+#
+# Notes from others: Access must use Domain Name (websocket part of the application will break if not).
+# Example, add the following example line to 'hosts' file:
+# 192.168.123.201 Server1 Server1.Ubuntu
+# However, my own test reveals exactly the other way around. Access with Domain Name fails, but accessing with IP Address is OK.
+#
+# NGINX Reverse Proxy is needed in-front for the purpose of fixing this hardwire-coded 'structure'.
+# Some reference which may help:
+# https://www.nginx.com/blog/websocket-nginx/
+#
+# ---------
+#
+# The three containers above can be implemented in same pod/deployment or separately each in its own pod/deployment; since there is no internal communications between those containers.
+#
+# ---------
+#
+
+kubectl apply -f - << EOF
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: f5-ctf
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: f5-ctf
+  namespace: f5-ctf
+spec:
+  selector:
+    matchLabels:
+      app: f5-ctf
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: f5-ctf
+    spec:
+      containers:
+      - name: ctfapi2
+        image: sbacker/ctfapi2@sha256:128fa2fb754dcd8e962d54c2f2fb975f60fc081381454a3276525298c5b5fbd8
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+          name: ctfapi2
+      - name: witcherportal2
+        image: sbacker/witcherportal2@sha256:8b9f0b24d974be1f8ad5f61ee56bbd07d21c62f7f0b9d07320125d046bc8f50f
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          name: witcherportal2
+      - name: msgserver
+        image: sbacker/witchermesgserver@sha256:1b4cd3d801be60990641ae28a2603f7c424db4e681712f75fa6487e299d038cd
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+          name: msgserver
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: f5-ctf
+  name: f5-ctf
+  namespace: f5-ctf
+spec:
+  ports:
+  - nodePort: 30085
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+    name: ctfapi2
+  - nodePort: 30086
+    port: 80
+    protocol: TCP
+    targetPort: 80
+    name: witcherportal2
+  - nodePort: 30087
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+    name: msgserver
+  selector:
+    app: f5-ctf
+  type: NodePort
+EOF
+
+# Below may not be applicable for aLL cases nor future-proof
+Loop_Period="9s"
+Loop="Yes"
+while ( [ "$Loop" == "Yes" ] ) ; do
+ if [ `kubectl get pod --all-namespaces --no-headers | wc -l` -gt 0 ] && [ `kubectl get pod --all-namespaces -o wide --no-headers | grep -e "Completed" -e "Running" | wc -l` -ge `kubectl get pod --all-namespaces --no-headers | wc -l` ] ; then
+  echo "`date +%Y%m%d%H%M%S` All Pods are Completed or Running."
+  Loop="No"
+  sleep $Loop_Period
+ else
+  echo "`date +%Y%m%d%H%M%S` Waiting for All Pods to be Completed or Running."
+  sleep $Loop_Period
+ fi
+done
+
 #╔═════════════════╗
 #║   F5-Demo-App   ║
 #╚═════════════════╝

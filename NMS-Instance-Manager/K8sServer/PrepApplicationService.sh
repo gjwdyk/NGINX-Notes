@@ -1047,7 +1047,6 @@ while ( [ "$Loop" == "Yes" ] ) ; do
  if [ `kubectl get pod --all-namespaces --no-headers | wc -l` -gt 0 ] && [ `kubectl get pod --all-namespaces -o wide --no-headers | grep -e "Completed" -e "Running" | wc -l` -ge `kubectl get pod --all-namespaces --no-headers | wc -l` ] ; then
   echo "`date +%Y%m%d%H%M%S` All Pods are Completed or Running."
   Loop="No"
-  sleep $Loop_Period
  else
   echo "`date +%Y%m%d%H%M%S` Waiting for All Pods to be Completed or Running."
   sleep $Loop_Period

@@ -1,8 +1,8 @@
 #!/bin/bash -xe
 
-# ╔════════════╗
-# ║   Calico   ║
-# ╚════════════╝
+# ╔═════════════╗
+# ║   Flannel   ║
+# ╚═════════════╝
 
 sudo echo "Executing $0 $1 $2 $3 $4 $5 $6 $7 $8 $9"
 cd $HOME
@@ -11,25 +11,18 @@ cd $HOME;sudo curl -fksSL -O --retry 333 https://raw.githubusercontent.com/gjwdy
 
 Loop_Period="9s"
 
-CalicoBlockSize=24         # <<<--- Calico Parameter
-
 declare -a file_url
 declare -a file_name
 declare -a file_acl
 declare -a file_own
 declare -a file_result
 
-file_url[0]="https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/tigera-operator.yaml"         # <<<--- Calico Parameter
-file_name[0]="$HOME/calico-operator.yaml"
+file_url[0]="https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml"         # <<<--- Flannel Parameter
+file_name[0]="$HOME/kube-flannel.yml"
 file_acl[0]="644"
 file_own[0]="ubuntu:ubuntu"
 
-file_url[1]="https://raw.githubusercontent.com/projectcalico/calico/v3.25.1/manifests/custom-resources.yaml"         # <<<--- Calico Parameter
-file_name[1]="$HOME/calico-resources.yaml"
-file_acl[1]="644"
-file_own[1]="ubuntu:ubuntu"
-
-max_counter=1
+max_counter=0
 
 URLRegEx="^(http:\/\/|https:\/\/)?[a-z0-9]+((\-|\.)[a-z0-9]+)*\.[a-z]{2,}(:[0-9]{1,5})?(\/.*)*$"
 
@@ -48,25 +41,20 @@ for counter in $(seq 0 $max_counter) ; do
  fi
 done
 
-kubectl create -f $HOME/calico-operator.yaml
+cat $HOME/kube-flannel.yml | sed -n '/^ *"Network": "[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\/[0-9]\+",$/p'
+sed -i 's#"Network": "[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\/[0-9]\+",$#"Network": "'$PodNetworkCIDR'",#g' $HOME/kube-flannel.yml
+cat $HOME/kube-flannel.yml | sed -n '/^ *"Network": "[0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\/[0-9]\+",$/p'
 
-cat $HOME/calico-resources.yaml | sed -n '/^ *- blockSize: [0-9]\+$/p'
-sed -i 's/- blockSize: [0-9]\+$/- blockSize: '"$CalicoBlockSize"'/g' $HOME/calico-resources.yaml
-cat $HOME/calico-resources.yaml | sed -n '/^ *- blockSize: [0-9]\+$/p'
+kubectl apply -f $HOME/kube-flannel.yml
 
-cat $HOME/calico-resources.yaml | sed -n '/^ *cidr: [0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\/[0-9]\+$/p'
-sed -i 's#cidr: [0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\/[0-9]\+$#cidr: '"$PodNetworkCIDR"'#g' $HOME/calico-resources.yaml
-cat $HOME/calico-resources.yaml | sed -n '/^ *cidr: [0-9]\+.[0-9]\+.[0-9]\+.[0-9]\+\/[0-9]\+$/p'
-
-kubectl apply -f $HOME/calico-resources.yaml
-
+# Below may not be applicable for aLL cases nor future-proof
 Loop="Yes"
 while ( [ "$Loop" == "Yes" ] ) ; do
- if [ `kubectl get pod --namespace calico-system --no-headers | wc -l` -gt 0 ] && [ `kubectl get pod --namespace calico-system -o wide --no-headers | grep "Running" | wc -l` -ge `kubectl get pod --namespace calico-system --no-headers | wc -l` ] ; then
-  echo "`date +%Y%m%d%H%M%S` Calico is Ready."
+ if [ `kubectl get pod --all-namespaces --no-headers | wc -l` -gt 0 ] && [ `kubectl get pod --all-namespaces -o wide --no-headers | grep -e "Completed" -e "Running" | wc -l` -ge `kubectl get pod --all-namespaces --no-headers | wc -l` ] ; then
+  echo "`date +%Y%m%d%H%M%S` All Pods are Completed or Running."
   Loop="No"
  else
-  echo "`date +%Y%m%d%H%M%S` Waiting for Calico to be Ready."
+  echo "`date +%Y%m%d%H%M%S` Waiting for All Pods to be Completed or Running."
   sleep $Loop_Period
  fi
 done
@@ -75,7 +63,7 @@ done
 #║   Review Status   ║
 #╚═══════════════════╝
 
-kubectl get pods --namespace calico-system
+kubectl get pod --all-namespaces -o wide
 
 #╔═════════╗
 #║   End   ║

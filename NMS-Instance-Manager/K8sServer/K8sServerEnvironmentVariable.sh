@@ -3,7 +3,7 @@
 sudo echo "Executing $0 $1 $2 $3 $4 $5 $6 $7 $8 $9"
 cd $HOME
 
-export NumberOfWorkerNodes=3
+export NumberOfWorkerNodes=2
 export WorkerNodeNamePrefix='Server'
 
 # Change the value into empty string '' or "", if you just want to install the latest versions but don't know which version is the latest one.
